@@ -1,0 +1,42 @@
+[
+  {
+    "title": "Web Development",
+    "description": "Build modern, responsive websites and web apps using the latest technologies.",
+    "icon": "web-dev.png"
+  },
+  {
+    "title": "API Services",
+    "description": "Create robust and scalable APIs to power your applications and integrations.",
+    "icon": "api-services.png"
+  },
+  {
+    "title": "Cloud Services",
+    "description": "Deploy, manage, and scale applications seamlessly with cloud infrastructure.",
+    "icon": "cloud-services.png"
+  },
+  {
+    "title": "Data Analytics",
+    "description": "Turn raw data into actionable insights with our data analytics solutions.",
+    "icon": "data-analytics.png"
+  },
+  {
+    "title": "IoT Solutions",
+    "description": "Connect and manage smart devices with reliable IoT systems.",
+    "icon": "iot-solutions.png"
+  },
+  {
+    "title": "Mobile Development",
+    "description": "Develop sleek and performant mobile applications for Android and iOS.",
+    "icon": "mobile-dev.png"
+  },
+  {
+    "title": "Digital Marketing",
+    "description": "Boost your online presence with SEO, social media, and digital campaigns.",
+    "icon": "digital-marketing.png"
+  },
+  {
+    "title": "Corporate Training",
+    "description": "Empower your workforce with customized technical and soft skill training.",
+    "icon": "corporate-training.png"
+  }
+]
