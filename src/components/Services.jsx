@@ -14,11 +14,15 @@ const styles = {
   serviceItem: {
     display: "flex",
     alignItems: "center",
-    gap: "1rem",
+    border: "1px solid #ccc",
+    padding: "1.5rem",
+    borderRadius: "5%",
+    gap: "1.5rem",
   },
   icon: {
-    width: "40px",
-    height: "40px",
+    width: "200px",
+    height: "200px",
+    borderRadius: "10%"
   },
   title: {
     fontWeight: "bold",
@@ -41,7 +45,7 @@ const Services = () => {
       {services.map((service, index) => (
         <div key={index} style={styles.serviceItem}>
           <img
-            src={`../assets/${service.icon}`}
+            src={service.icon}
             alt={service.title}
             style={styles.icon}
           />

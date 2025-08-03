@@ -1,42 +1,42 @@
 [
   {
     "title": "Web Development",
-    "description": "Build modern, responsive websites and web apps using the latest technologies.",
-    "icon": "web-dev.png"
+    "description": "Build modern, responsive websites and web apps using the latest technologies. Our expert developers use HTML5, CSS3, JavaScript, React, and other frameworks to create engaging user interfaces. Whether it's a business site or a complex web application, we ensure scalability, performance, and great user experience.",
+    "icon": "https://www.techfunnel.com/wp-content/uploads/2021/10/web-application.png"
   },
   {
     "title": "API Services",
-    "description": "Create robust and scalable APIs to power your applications and integrations.",
-    "icon": "api-services.png"
+    "description": "Create robust and scalable APIs to power your applications and integrations. We specialize in RESTful and GraphQL APIs, ensuring seamless communication between different systems and platforms. Our APIs are secure, well-documented, and optimized for high performance under load.",
+    "icon": "https://media.excellentwebworld.com/wp-content/uploads/2022/03/17091451/best-api-development-services.webp"
   },
   {
     "title": "Cloud Services",
-    "description": "Deploy, manage, and scale applications seamlessly with cloud infrastructure.",
-    "icon": "cloud-services.png"
+    "description": "Deploy, manage, and scale applications seamlessly with cloud infrastructure. We offer cloud solutions using AWS, Azure, and Google Cloud to provide reliable uptime, auto-scaling, and cost-efficient deployments. Our services include cloud migration, DevOps automation, and continuous integration/delivery pipelines.",
+    "icon": "https://blog.1byte.com/wp-content/uploads/2023/04/overview-4-1024x683.jpg"
   },
   {
     "title": "Data Analytics",
-    "description": "Turn raw data into actionable insights with our data analytics solutions.",
-    "icon": "data-analytics.png"
+    "description": "Turn raw data into actionable insights with our data analytics solutions. Our team uses tools like Python, R, Power BI, and Tableau to analyze large datasets, identify trends, and help you make data-driven decisions. We also offer predictive analytics and data visualization services tailored to your business needs.",
+    "icon": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRl905190f3d3rw6d_uA5wKInZMfLMSAhIvfg&s"
   },
   {
     "title": "IoT Solutions",
-    "description": "Connect and manage smart devices with reliable IoT systems.",
-    "icon": "iot-solutions.png"
+    "description": "Connect and manage smart devices with reliable IoT systems. We develop custom IoT architectures for smart homes, industrial automation, and smart cities. Our solutions include device integration, cloud data storage, remote monitoring, and real-time data analytics.",
+    "icon": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfCuL1Lm8-i23sX4lGnDgmV6SE3JA1VquVOA&s"
   },
   {
     "title": "Mobile Development",
-    "description": "Develop sleek and performant mobile applications for Android and iOS.",
-    "icon": "mobile-dev.png"
+    "description": "Develop sleek and performant mobile applications for Android and iOS. From design to deployment, we build native and cross-platform apps using Flutter, React Native, and Swift. Our apps are user-friendly, highly optimized, and built with a focus on security and functionality.",
+    "icon": "https://fuestech.com/wp-content/uploads/2024/07/KT-CC-10.jpg"
   },
   {
     "title": "Digital Marketing",
-    "description": "Boost your online presence with SEO, social media, and digital campaigns.",
-    "icon": "digital-marketing.png"
+    "description": "Boost your online presence with SEO, social media, and digital campaigns. Our team creates effective marketing strategies tailored to your target audience. We handle content marketing, paid advertising, email campaigns, and analytics to drive traffic and conversions.",
+    "icon": "https://www.macrohype.com/wp-content/uploads/2024/08/Digital-Marketing.png"
   },
   {
     "title": "Corporate Training",
-    "description": "Empower your workforce with customized technical and soft skill training.",
-    "icon": "corporate-training.png"
+    "description": "Empower your workforce with customized technical and soft skill training. We offer on-site and virtual sessions in programming, cloud computing, project management, communication, and leadership. Our training is interactive, practical, and designed to maximize employee performance.",
+    "icon": "https://www.adaptiveus.com/hubfs/AI%20Analysis.jpg"
   }
 ]
