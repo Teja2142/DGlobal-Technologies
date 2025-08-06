@@ -29,6 +29,12 @@ const Careers = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const validationError = validateForm();
+    if (validationError) {
+      setError(validationError);
+      return;
+    }
+
     setIsLoading(true);
     setError('');
 
@@ -62,6 +68,24 @@ const Careers = () => {
       setIsLoading(false);
     }
   };
+
+
+  const validateForm = () => {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const phoneRegex = /^[0-9]{10}$/;
+
+  if (!formData.fullName.trim()) return "Full name is required.";
+  if (!emailRegex.test(formData.email)) return "Invalid email format.";
+  if (!phoneRegex.test(formData.phone)) return "Phone number must be 10 digits.";
+  if (!formData.position.trim()) return "Position is required.";
+  if (!formData.workAuth) return "Work authorization is required.";
+  if (!formData.location) return "Preferred location is required.";
+  if (!formData.availability.trim()) return "Availability is required.";
+  if (!formData.resume) return "Resume is required.";
+
+  return null; // valid
+};
+
 
   const FloatingParticles = () => (
     <div className="floating-particles">
@@ -598,7 +622,7 @@ const Careers = () => {
                 </div>
               )}
               
-              <div onSubmit={handleSubmit}>
+              <form onSubmit={handleSubmit}>
                 <div className="form-grid">
                   <div className="form-group">
                     <label className="form-label">Full Name *</label>
@@ -754,7 +778,7 @@ const Careers = () => {
                     'Submit Your Interest'
                   )}
                 </button>
-              </div>
+              </form>
             </div>
           ) : (
             <div className="success-container">

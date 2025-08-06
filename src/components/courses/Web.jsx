@@ -1,681 +1,898 @@
-
-import React from "react";
-import { Link } from "react-router-dom";
-
-
+import React from 'react';
 const Web = () => {
   return (
-    <div style={{ 
-      fontFamily: "'Poppins', Arial, sans-serif", 
-      padding: "0", 
-      background: "#f8f9fa",
-      color: "#333",
-      maxWidth: "100vw",
-      overflowX: "hidden"
-    }}>
-      {/* Hero Section */}
-      <div style={{ 
-        background: "linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)", 
-        padding: "80px 20px", 
-        color: "#fff", 
-        textAlign: "center",
-        position: "relative",
-        overflow: "hidden"
-      }}>
-        <div style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          background: "url('https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover",
-          opacity: 0.1,
-          zIndex: 0
-        }}></div>
-        <div style={{ position: "relative", zIndex: 1 }}>
-          <h1 style={{ 
-            margin: "0", 
-            fontWeight: "800", 
-            fontSize: "3rem",
-            marginBottom: "15px",
-            textShadow: "2px 2px 4px rgba(0,0,0,0.3)"
-          }}>Web Development Services</h1>
-          <p style={{ 
-            margin: "0 auto", 
-            fontSize: "1.2rem", 
-            maxWidth: "700px",
-            lineHeight: "1.6",
-            opacity: 0.9
-          }}>
-            Crafting exceptional digital experiences with cutting-edge web technologies
-          </p>
-          <div style={{ 
-            display: "flex", 
-            justifyContent: "center", 
-            gap: "20px", 
-            marginTop: "30px" 
-          }}>
-            <Link to="/contact" style={{
-              textDecoration: "none",
-              background: "#f7941d",
-              color: "#fff",
-              padding: "12px 30px",
-              borderRadius: "50px",
-              fontWeight: "600",
-              transition: "all 0.3s ease",
-              boxShadow: "0 4px 15px rgba(247, 148, 29, 0.3)",
-              ":hover": {
-                transform: "translateY(-3px)",
-                boxShadow: "0 6px 20px rgba(247, 148, 29, 0.4)"
-              }
-            }}>Get Started</Link>
-            <Link to="/" style={{
-              textDecoration: "none",
-              background: "transparent",
-              color: "#fff",
-              padding: "12px 30px",
-              borderRadius: "50px",
-              border: "2px solid #fff",
-              fontWeight: "600",
-              transition: "all 0.3s ease",
-              ":hover": {
-                background: "rgba(255,255,255,0.1)",
-                transform: "translateY(-3px)"
-              }
-            }}>View Portfolio</Link>
-          </div>
-        </div>
-      </div>
+    <>
+      <style>{`
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-      {/* Breadcrumb */}
-      <div style={{ 
-        background: "#fff", 
-        padding: "15px 40px", 
-        boxShadow: "0 2px 10px rgba(0,0,0,0.05)"
-      }}>
-        <p style={{ margin: "0", fontSize: "14px" }}>
-          <Link to="/" style={{ color: "#f7941d", fontWeight: "bold", textDecoration: "none" }}>HOME</Link> &gt; 
-          <Link to="/services" style={{ color: "#f7941d", fontWeight: "bold", textDecoration: "none" }}> SERVICES</Link> &gt; 
-          <span style={{ color: "#1a1a2e" }}> WEB DEVELOPMENT</span>
-        </p>
-      </div>
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            background: #764ba2;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-      {/* Main Content */}
-      <div style={{ 
-        display: "flex", 
-        padding: "40px", 
-        gap: "30px", 
-        maxWidth: "1400px", 
-        margin: "0 auto" 
-      }}>
-        {/* Left Content */}
-        <div style={{ flex: "3" }}>
-          {/* Service Overview */}
-          <div style={{ 
-            background: "#fff", 
-            borderRadius: "10px", 
-            padding: "30px", 
-            boxShadow: "0 5px 15px rgba(0,0,0,0.05)",
-            marginBottom: "30px",
-            transition: "transform 0.3s ease, box-shadow 0.3s ease",
-            ":hover": {
-              transform: "translateY(-5px)",
-              boxShadow: "0 10px 25px rgba(0,0,0,0.1)"
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 100px 20px;
+            color: #fff;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero h1 {
+            font-weight: 800;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            background: linear-gradient(45deg, #fff, #f7941d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            max-width: 700px;
+            margin: 0 auto 40px;
+            opacity: 0.95;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .card img {
+            width: 100%;
+            max-height: 700px;      /* Set your preferred max height */
+            object-fit: cover;      /* Ensures the image covers the area without stretching */
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease;
+        }
+            
+        .btn-primary, .btn-secondary {
+            text-decoration: none;
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            border: none;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #f7941d, #ffa733);
+            color: #fff;
+            box-shadow: 0 8px 25px rgba(247, 148, 29, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(247, 148, 29, 0.6);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #fff;
+            border: 2px solid rgba(255,255,255,0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.15);
+            transform: translateY(-5px);
+            border-color: #f7941d;
+            box-shadow: 0 10px 25px rgba(255,255,255,0.2);
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+            padding: 20px 40px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border-bottom: 3px solid #764ba2;
+        }
+
+        .breadcrumb a {
+            color: #764ba2;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .breadcrumb a:hover {
+            color: #f7941d;
+            text-shadow: 0 2px 4px rgba(247, 148, 29, 0.3);
+        }
+
+        /* Main Container */
+        .container {
+            display: flex;
+            padding: 50px 40px;
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+            min-height: calc(100vh - 200px);
+        }
+
+        .main-content {
+            flex: 3;
+        }
+
+        .sidebar {
+            flex: 1;
+            min-width: 320px;
+        }
+
+        /* Card Styles */
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(118, 75, 162, 0.15);
+            margin-bottom: 30px;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(118, 75, 162, 0.25);
+        }
+
+        .card img {
+            width: 100%;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .card img:hover {
+            transform: scale(1.02);
+        }
+
+        .section-title {
+            color: #764ba2;
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(45deg, #f7941d, #764ba2);
+            border-radius: 2px;
+        }
+
+        /* Feature Grid */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #f9f9f9 0%, #ffffff 100%);
+            padding: 30px;
+            border-radius: 15px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(247, 148, 29, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .feature-card:hover::before {
+            left: 100%;
+        }
+
+        .feature-card:hover {
+            background: linear-gradient(135deg, #764ba2, #667eea);
+            color: #fff;
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 20px 40px rgba(118, 75, 162, 0.3);
+            border-color: #f7941d;
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: scale(1.2) rotate(5deg);
+        }
+
+        .feature-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        /* Technology Stack */
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .tech-tag {
+            background: linear-gradient(135deg, #f5f5f5, #e9ecef);
+            padding: 12px 20px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.4s ease;
+            font-weight: 500;
+            border: 2px solid transparent;
+        }
+
+        .tech-tag:hover {
+            background: linear-gradient(135deg, #764ba2, #667eea);
+            color: #fff;
+            transform: scale(1.1) translateY(-5px);
+            box-shadow: 0 10px 20px rgba(118, 75, 162, 0.4);
+            border-color: #f7941d;
+        }
+
+        .tech-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        /* Process Timeline */
+        .process-timeline {
+            position: relative;
+            margin-top: 40px;
+        }
+
+        .timeline-connector {
+            position: absolute;
+            left: 35px;
+            top: 30px;
+            bottom: 30px;
+            width: 4px;
+            background: linear-gradient(to bottom, #f7941d, #764ba2);
+            border-radius: 2px;
+            z-index: 1;
+        }
+
+        .process-step {
+            display: flex;
+            gap: 25px;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .step-icon {
+            flex-shrink: 0;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 8px 20px rgba(118, 75, 162, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .step-icon:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 30px rgba(118, 75, 162, 0.5);
+        }
+
+        .step-content {
+            background: linear-gradient(135deg, #f9f9f9, #ffffff);
+            padding: 25px;
+            border-radius: 15px;
+            flex: 1;
+            transition: all 0.4s ease;
+            border-left: 4px solid #764ba2;
+        }
+
+        .step-content:hover {
+            transform: translateX(15px);
+            box-shadow: 0 10px 25px rgba(118, 75, 162, 0.15);
+            border-left-color: #f7941d;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            padding: 50px;
+            text-align: center;
+            color: #fff;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(247, 148, 29, 0.1) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+
+        /* Sidebar Styles */
+        .sidebar-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(118, 75, 162, 0.15);
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .sidebar-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(118, 75, 162, 0.2);
+        }
+
+        .sidebar-title {
+            color: #764ba2;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .sidebar-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(45deg, #f7941d, #764ba2);
+            border-radius: 2px;
+        }
+
+        .service-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .service-item a {
+            text-decoration: none;
+            color: #555;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 15px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #f9f9f9, #ffffff);
+            transition: all 0.4s ease;
+            border: 2px solid transparent;
+        }
+
+        .service-item a:hover {
+            background: linear-gradient(135deg, #764ba2, #667eea);
+            color: #fff;
+            transform: translateX(8px) scale(1.02);
+            border-color: #f7941d;
+            box-shadow: 0 8px 20px rgba(118, 75, 162, 0.3);
+        }
+
+        .service-icon {
+            font-size: 1.3rem;
+            transition: transform 0.3s ease;
+        }
+
+        .service-item a:hover .service-icon {
+            transform: scale(1.2);
+        }
+
+        /* Help Section */
+        .help-section {
+            background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+            border: 3px solid #f7941d;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .help-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #f7941d, #ffa733);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 2rem;
+            color: #fff;
+            box-shadow: 0 8px 20px rgba(247, 148, 29, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .help-icon:hover {
+            transform: scale(1.1) rotate(10deg);
+            box-shadow: 0 15px 30px rgba(247, 148, 29, 0.6);
+        }
+
+        .contact-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .contact-btn {
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: all 0.4s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: radial-gradient(circle, rgba(255,255,255,0.3), transparent);
+            transition: all 0.4s ease;
+            transform: translate(-50%, -50%);
+        }
+
+        .contact-btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-5px);
+        }
+
+        .phone-btn {
+            background: linear-gradient(135deg, #764ba2, #667eea);
+            color: #fff;
+        }
+
+        .email-btn {
+            background: linear-gradient(135deg, #f9f9f9, #e9ecef);
+            color: #764ba2;
+            border: 2px solid #764ba2;
+        }
+
+        .email-btn:hover {
+            background: linear-gradient(135deg, #764ba2, #667eea);
+            color: #fff;
+        }
+
+        .whatsapp-btn {
+            background: linear-gradient(135deg, #25D366, #20c053);
+            color: #fff;
+        }
+
+        /* Testimonials */
+        .testimonial {
+            background: linear-gradient(135deg, #f9f9f9, #ffffff);
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            transition: all 0.4s ease;
+            border-left: 4px solid #764ba2;
+        }
+
+        .testimonial::before {
+            content: '"';
+            position: absolute;
+            top: 15px;
+            left: 20px;
+            font-size: 3rem;
+            color: rgba(247, 148, 29, 0.2);
+            font-weight: bold;
+            line-height: 1;
+        }
+
+        .testimonial:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(118, 75, 162, 0.15);
+            border-left-color: #f7941d;
+        }
+
+        .testimonial-text {
+            margin: 20px 0;
+            font-style: italic;
+            color: #555;
+            line-height: 1.7;
+        }
+
+        .testimonial-author {
+            border-top: 2px solid #eee;
+            padding-top: 15px;
+            margin-top: 20px;
+        }
+
+        .author-name {
+            font-weight: 600;
+            color: #764ba2;
+            margin-bottom: 5px;
+        }
+
+        .author-role {
+            font-size: 0.9rem;
+            color: #777;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
             }
-          }}>
-            <img 
-              src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" 
-              alt="Web Development" 
-              style={{ 
-                width: "100%", 
-                borderRadius: "8px", 
-                marginBottom: "25px",
-                boxShadow: "0 4px 6px rgba(0,0,0,0.1)"
-              }} 
-            />
-            <h2 style={{ 
-              marginTop: "0", 
-              color: "#1a1a2e", 
-              fontSize: "2rem",
-              position: "relative",
-              paddingBottom: "15px"
-            }}>
-              <span style={{
-                position: "absolute",
-                bottom: 0,
-                left: 0,
-                width: "60px",
-                height: "4px",
-                background: "#f7941d",
-                borderRadius: "2px"
-              }}></span>
-              Web Development Services
-            </h2>
-            <p style={{ 
-              color: "#555", 
-              lineHeight: "1.8", 
-              fontSize: "1.1rem",
-              marginBottom: "20px"
-            }}>
-              At GK Technology, we create powerful, scalable, and user-friendly web applications 
-              tailored to your business needs. Our expert developers leverage the latest technologies 
-              to ensure high performance, security, and exceptional user experiences.
-            </p>
-            
-            <div style={{ 
-              display: "grid", 
-              gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", 
-              gap: "20px",
-              margin: "30px 0"
-            }}>
-              {[
-                {
-                  icon: "🚀",
-                  title: "Custom Web Development",
-                  desc: "Tailored solutions designed specifically for your business requirements."
-                },
-                {
-                  icon: "📱",
-                  title: "Responsive Design",
-                  desc: "Flawless performance across all devices and screen sizes."
-                },
-                {
-                  icon: "🔍",
-                  title: "SEO Optimization",
-                  desc: "Built with search engine visibility in mind from the ground up."
-                },
-                {
-                  icon: "⚡",
-                  title: "Performance Focused",
-                  desc: "Lightning-fast load times and smooth interactions."
-                },
-                {
-                  icon: "🛡️",
-                  title: "Security First",
-                  desc: "Enterprise-grade security measures to protect your data."
-                },
-                {
-                  icon: "🔄",
-                  title: "Continuous Support",
-                  desc: "Ongoing maintenance and updates to keep your site current."
-                }
-              ].map((feature, index) => (
-                <div key={index} style={{ 
-                  background: "#f9f9f9",
-                  padding: "20px",
-                  borderRadius: "8px",
-                  transition: "all 0.3s ease",
-                  ":hover": {
-                    background: "#1a1a2e",
-                    color: "#fff",
-                    transform: "translateY(-5px)",
-                    boxShadow: "0 10px 20px rgba(0,0,0,0.1)"
-                  }
-                }}>
-                  <div style={{ 
-                    fontSize: "2rem",
-                    marginBottom: "15px"
-                  }}>{feature.icon}</div>
-                  <h3 style={{ 
-                    margin: "0 0 10px",
-                    fontSize: "1.2rem"
-                  }}>{feature.title}</h3>
-                  <p style={{ 
-                    margin: 0,
-                    lineHeight: "1.6",
-                    fontSize: "0.95rem"
-                  }}>{feature.desc}</p>
-                </div>
-              ))}
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 0.3;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.5;
+                transform: scale(1.1);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                padding: 30px 20px;
+            }
+
+            .hero {
+                padding: 80px 20px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                max-width: 280px;
+                text-align: center;
+            }
+
+            .breadcrumb {
+                padding: 15px 20px;
+            }
+
+            .card {
+                padding: 25px;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .cta-section {
+                padding: 35px 25px;
+            }
+
+            .cta-section h2 {
+                font-size: 2rem;
+            }
+
+            .process-step {
+                gap: 15px;
+            }
+
+            .step-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+
+            .timeline-connector {
+                left: 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .tech-stack {
+                justify-content: center;
+            }
+
+            .tech-tag {
+                padding: 10px 15px;
+                font-size: 0.9rem;
+            }
+
+            .contact-buttons {
+                gap: 12px;
+            }
+
+            .contact-btn {
+                padding: 12px;
+                font-size: 0.9rem;
+            }
+        }
+      `}</style>
+
+      <div>
+        {/* Hero Section */}
+        <section className="hero">
+          <div className="hero-content">
+            <h1>Web Development Services</h1>
+            <p>Crafting exceptional digital experiences with cutting-edge web technologies</p>
+            <div className="hero-buttons">
+              <a href="/contact" className="btn-primary">Get Started</a>
+              <a href="/" className="btn-secondary">View Portfolio</a>
             </div>
           </div>
+        </section>
 
-          {/* Technology Stack */}
-          <div style={{ 
-            background: "#fff", 
-            borderRadius: "10px", 
-            padding: "30px", 
-            boxShadow: "0 5px 15px rgba(0,0,0,0.05)",
-            marginBottom: "30px"
-          }}>
-            <h2 style={{ 
-              marginTop: "0", 
-              color: "#1a1a2e", 
-              fontSize: "1.8rem",
-              position: "relative",
-              paddingBottom: "15px"
-            }}>
-              <span style={{
-                position: "absolute",
-                bottom: 0,
-                left: 0,
-                width: "60px",
-                height: "4px",
-                background: "#f7941d",
-                borderRadius: "2px"
-              }}></span>
-              Our Technology Stack
-            </h2>
-            <p style={{ 
-              color: "#555", 
-              lineHeight: "1.8", 
-              fontSize: "1.1rem",
-              marginBottom: "20px"
-            }}>
-              We work with the most advanced and reliable technologies to deliver 
-              exceptional results for our clients.
-            </p>
-            
-            <div style={{ 
-              display: "flex",
-              flexWrap: "wrap",
-              gap: "15px",
-              margin: "20px 0"
-            }}>
-              {[
-                { name: "React", color: "#61DAFB" },
-                { name: "Node.js", color: "#68A063" },
-                { name: "Express", color: "#000000" },
-                { name: "MongoDB", color: "#47A248" },
-                { name: "PostgreSQL", color: "#336791" },
-                { name: "TypeScript", color: "#3178C6" },
-                { name: "Tailwind CSS", color: "#38B2AC" },
-                { name: "Docker", color: "#2496ED" },
-                { name: "AWS", color: "#FF9900" }
-              ].map((tech, index) => (
-                <div key={index} style={{ 
-                  background: "#f5f5f5",
-                  padding: "8px 15px",
-                  borderRadius: "50px",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "8px",
-                  transition: "all 0.3s ease",
-                  ":hover": {
-                    background: tech.color,
-                    color: "#fff",
-                    transform: "scale(1.05)",
-                    boxShadow: `0 4px 8px ${tech.color}40`
-                  }
-                }}>
-                  <div style={{
-                    width: "10px",
-                    height: "10px",
-                    borderRadius: "50%",
-                    background: tech.color
-                  }}></div>
-                  {tech.name}
+        <div className="container">
+          <main className="main-content">
+            <section className="card">
+              <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Web Development" />
+              <h2 className="section-title">Web Development Services</h2>
+              <p style={{ color: '#555', lineHeight: 1.8, fontSize: '1.1rem', marginBottom: 20 }}>
+                At GK Technology, we create powerful, scalable, and user-friendly web applications
+                tailored to your business needs. Our expert developers leverage the latest technologies
+                to ensure high performance, security, and exceptional user experiences.
+              </p>
+
+              <div className="feature-grid">
+                <div className="feature-card">
+                  <span className="feature-icon">🚀</span>
+                  <h3 className="feature-title">Custom Web Development</h3>
+                  <p>Tailored solutions designed specifically for your business requirements.</p>
                 </div>
-              ))}
-            </div>
-          </div>
+                <div className="feature-card">
+                  <span className="feature-icon">📱</span>
+                  <h3 className="feature-title">Responsive Design</h3>
+                  <p>Flawless performance across all devices and screen sizes.</p>
+                </div>
+                <div className="feature-card">
+                  <span className="feature-icon">🔍</span>
+                  <h3 className="feature-title">SEO Optimization</h3>
+                  <p>Built with search engine visibility in mind from the ground up.</p>
+                </div>
+                <div className="feature-card">
+                  <span className="feature-icon">⚡</span>
+                  <h3 className="feature-title">Performance Focused</h3>
+                  <p>Lightning-fast load times and smooth interactions.</p>
+                </div>
+                <div className="feature-card">
+                  <span className="feature-icon">🛡️</span>
+                  <h3 className="feature-title">Security First</h3>
+                  <p>Enterprise-grade security measures to protect your data.</p>
+                </div>
+                <div className="feature-card">
+                  <span className="feature-icon">🔄</span>
+                  <h3 className="feature-title">Continuous Support</h3>
+                  <p>Ongoing maintenance and updates to keep your site current.</p>
+                </div>
+              </div>
+            </section>
 
-          {/* Process Section */}
-          <div style={{ 
-            background: "#fff", 
-            borderRadius: "10px", 
-            padding: "30px", 
-            boxShadow: "0 5px 15px rgba(0,0,0,0.05)",
-            marginBottom: "30px"
-          }}>
-            <h2 style={{ 
-              marginTop: "0", 
-              color: "#1a1a2e", 
-              fontSize: "1.8rem",
-              position: "relative",
-              paddingBottom: "15px"
-            }}>
-              <span style={{
-                position: "absolute",
-                bottom: 0,
-                left: 0,
-                width: "60px",
-                height: "4px",
-                background: "#f7941d",
-                borderRadius: "2px"
-              }}></span>
-              Our Development Process
-            </h2>
-            
-            <div style={{ 
-              display: "flex",
-              flexDirection: "column",
-              gap: "30px",
-              marginTop: "30px",
-              position: "relative"
-            }}>
-              {/* Timeline connector */}
-              <div style={{
-                position: "absolute",
-                left: "30px",
-                top: "20px",
-                bottom: "20px",
-                width: "4px",
-                background: "#f7941d",
-                borderRadius: "2px",
-                zIndex: 1
-              }}></div>
-              
-              {[
-                {
-                  title: "Discovery & Planning",
-                  desc: "We start by understanding your business goals, target audience, and project requirements.",
-                  icon: "🔍"
-                },
-                {
-                  title: "UI/UX Design",
-                  desc: "Our designers create wireframes and prototypes to visualize the user experience.",
-                  icon: "🎨"
-                },
-                {
-                  title: "Development",
-                  desc: "Our developers build your application using agile methodologies for maximum efficiency.",
-                  icon: "💻"
-                },
-                {
-                  title: "Testing & QA",
-                  desc: "Rigorous testing ensures your application performs flawlessly across all scenarios.",
-                  icon: "🧪"
-                },
-                {
-                  title: "Deployment",
-                  desc: "We handle the deployment process and ensure everything runs smoothly in production.",
-                  icon: "🚀"
-                },
-                {
-                  title: "Maintenance",
-                  desc: "Ongoing support and updates to keep your application current and secure.",
-                  icon: "🛠️"
-                }
-              ].map((step, index) => (
-                <div key={index} style={{ 
-                  display: "flex",
-                  gap: "20px",
-                  position: "relative",
-                  zIndex: 2
-                }}>
-                  <div style={{
-                    flexShrink: 0,
-                    width: "60px",
-                    height: "60px",
-                    borderRadius: "50%",
-                    background: "#1a1a2e",
-                    color: "#fff",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    fontSize: "1.5rem",
-                    boxShadow: "0 4px 8px rgba(0,0,0,0.2)"
-                  }}>
-                    {step.icon}
-                  </div>
-                  <div style={{ 
-                    background: "#f9f9f9",
-                    padding: "20px",
-                    borderRadius: "8px",
-                    flex: 1,
-                    transition: "all 0.3s ease",
-                    ":hover": {
-                      transform: "translateX(10px)",
-                      boxShadow: "0 5px 15px rgba(0,0,0,0.1)"
-                    }
-                  }}>
-                    <h3 style={{ 
-                      margin: "0 0 10px",
-                      color: "#1a1a2e",
-                      fontSize: "1.2rem"
-                    }}>{step.title}</h3>
-                    <p style={{ 
-                      margin: 0,
-                      color: "#555",
-                      lineHeight: "1.6"
-                    }}>{step.desc}</p>
+            <section className="card">
+              <h2 className="section-title">Our Technology Stack</h2>
+              <p style={{ color: '#555', lineHeight: 1.8, fontSize: '1.1rem', marginBottom: 20 }}>
+                We work with the most advanced and reliable technologies to deliver
+                exceptional results for our clients.
+              </p>
+
+              <div className="tech-stack">
+                <div className="tech-tag">
+                  <div className="tech-dot" style={{ background: '#61DAFB' }}></div>
+                  React
+                </div>
+                <div className="tech-tag">
+                  <div className="tech-dot" style={{ background: '#68A063' }}></div>
+                  Node.js
+                </div>
+                <div className="tech-tag">
+                  <div className="tech-dot" style={{ background: '#000000' }}></div>
+                  Express
+                </div>
+                <div className="tech-tag">
+                  <div className="tech-dot" style={{ background: '#47A248' }}></div>
+                  MongoDB
+                </div>
+                <div className="tech-tag">
+                  <div className="tech-dot" style={{ background: '#336791' }}></div>
+                  PostgreSQL
+                </div>
+                <div className="tech-tag">
+                  <div className="tech-dot" style={{ background: '#3178C6' }}></div>
+                  TypeScript
+                </div>
+                <div className="tech-tag">
+                  <div className="tech-dot" style={{ background: '#38B2AC' }}></div>
+                  Tailwind CSS
+                </div>
+                <div className="tech-tag">
+                  <div className="tech-dot" style={{ background: '#2496ED' }}></div>
+                  Docker
+                </div>
+                <div className="tech-tag">
+                  <div className="tech-dot" style={{ background: '#FF9900' }}></div>
+                  AWS
+                </div>
+              </div>
+            </section>
+
+            {/* Process Section */}
+            <section className="card">
+              <h2 className="section-title">Our Development Process</h2>
+
+              <div className="process-timeline">
+                <div className="timeline-connector"></div>
+
+                <div className="process-step">
+                  <div className="step-icon">🔍</div>
+                  <div className="step-content">
+                    <h3 style={{ margin: '0 0 10px', color: '#764ba2', fontSize: '1.2rem' }}>Discovery & Planning</h3>
+                    <p style={{ margin: 0, color: '#555', lineHeight: 1.6 }}>We start by understanding your business goals, target audience, and project requirements.</p>
                   </div>
                 </div>
-              ))}
-            </div>
-          </div>
 
-          {/* CTA Section */}
-          <div style={{ 
-            background: "linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)", 
-            borderRadius: "10px", 
-            padding: "40px", 
-            textAlign: "center",
-            color: "#fff",
-            marginBottom: "30px"
-          }}>
-            <h2 style={{ 
-              margin: "0 0 20px",
-              fontSize: "2rem"
-            }}>Ready to Build Your Web Application?</h2>
-            <p style={{ 
-              margin: "0 auto 30px",
-              fontSize: "1.1rem",
-              maxWidth: "700px",
-              lineHeight: "1.6",
-              opacity: 0.9
-            }}>
-              Let's discuss how we can help you achieve your business goals with a custom web solution.
-            </p>
-            <Link to="/contact" style={{
-              textDecoration: "none",
-              background: "#f7941d",
-              color: "#fff",
-              padding: "15px 40px",
-              borderRadius: "50px",
-              fontWeight: "600",
-              fontSize: "1.1rem",
-              display: "inline-block",
-              transition: "all 0.3s ease",
-              boxShadow: "0 4px 15px rgba(247, 148, 29, 0.3)",
-              ":hover": {
-                transform: "translateY(-3px)",
-                boxShadow: "0 6px 20px rgba(247, 148, 29, 0.4)",
-                background: "#ffa733"
-              }
-            }}>Get a Free Consultation</Link>
-          </div>
-        </div>
-
-        {/* Right Sidebar */}
-        <div style={{ flex: "1", minWidth: "300px" }}>
-          {/* Categories Section */}
-          <div style={{ background: "#fff", borderRadius: "10px", padding: "25px", boxShadow: "0 5px 15px rgba(0,0,0,0.05)", marginBottom: "30px" }}>
-                      <h3 style={{ color: "#1a1a2e", marginTop: "0", marginBottom: "20px", fontSize: "1.3rem", position: "relative", paddingBottom: "10px" }}>
-                        <span style={{ position: "absolute", bottom: 0, left: 0, width: "40px", height: "3px", background: "#f7941d", borderRadius: "2px" }}></span>
-                        Our Services
-                      </h3>
-                      <ul style={{ listStyle: "none", padding: "0", margin: "0", display: "flex", flexDirection: "column", gap: "10px" }}>
-                        {[
-                          { name: "Web Development", path: "/web", icon: "🌐" },
-                          { name: "Mobile App Development", path: "/mobile", icon: "📱" },
-                          { name: "Cloud Solutions", path: "/cloud", icon: "☁️" },
-                          { name: "IOT Services", path: "/IoT", icon: "🔄" },
-                          { name: "Data Analytics", path: "/data", icon: "📊" },
-                          { name: "API Development", path: "/api", icon: "🔌" },
-                          { name: "Digital Marketing", path: "/digital", icon: "📢" },
-                          { name: "Corporate Training", path: "/training", icon: "🎓" }
-                        ].map((category, index) => (
-                          <li key={index}>
-                            <Link to={category.path} style={{ textDecoration: "none", color: "#555", display: "flex", alignItems: "center", gap: "10px", padding: "12px 15px", borderRadius: "8px", background: "#f9f9f9", transition: "all 0.3s ease" }}
-                              onMouseEnter={e => { e.currentTarget.style.background = "#1a1a2e"; e.currentTarget.style.color = "#fff"; e.currentTarget.style.transform = "translateX(5px)"; }}
-                              onMouseLeave={e => { e.currentTarget.style.background = "#f9f9f9"; e.currentTarget.style.color = "#555"; e.currentTarget.style.transform = "translateX(0px)"; }}>
-                              <span style={{ fontSize: "1.2rem" }}>{category.icon}</span>
-                              {category.name}
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-
-          {/* Help Section */}
-          <div style={{ 
-            background: "#fff", 
-            borderRadius: "10px", 
-            padding: "25px", 
-            boxShadow: "0 5px 15px rgba(0,0,0,0.05)",
-            marginBottom: "30px",
-            border: "2px solid #f7941d",
-            textAlign: "center"
-          }}>
-            <div style={{
-              width: "70px",
-              height: "70px",
-              background: "#f7941d",
-              borderRadius: "50%",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              margin: "0 auto 20px",
-              fontSize: "1.8rem",
-              color: "#fff"
-            }}>💬</div>
-            <h3 style={{ 
-              color: "#1a1a2e", 
-              marginTop: "0",
-              marginBottom: "15px"
-            }}>Need Help?</h3>
-            <p style={{ 
-              margin: "0 0 20px",
-              color: "#555",
-              lineHeight: "1.6"
-            }}>
-              Our team is ready to answer your questions and discuss your project requirements.
-            </p>
-            <div style={{ 
-              display: "flex", 
-              flexDirection: "column",
-              gap: "15px"
-            }}>
-              <a href="tel:+13147327749" style={{
-                textDecoration: "none",
-                background: "#1a1a2e",
-                color: "#fff",
-                padding: "12px",
-                borderRadius: "8px",
-                fontWeight: "600",
-                transition: "all 0.3s ease",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: "8px",
-                ":hover": {
-                  background: "#f7941d",
-                  transform: "translateY(-3px)"
-                }
-              }}>
-                <span>📞</span> +1-314-732-7749
-              </a>
-              <a href="mailto:support@kgktechnologies.com" style={{ textDecoration: "none", background: "#f9f9f9", color: "#1a1a2e", padding: "12px", borderRadius: "8px", fontWeight: "600", transition: "all 0.3s ease", display: "flex", alignItems: "center", justifyContent: "center", gap: "8px" }} onMouseEnter={e => { e.currentTarget.style.background = "#1a1a2e"; e.currentTarget.style.color = "#fff"; e.currentTarget.style.transform = "translateY(-3px)"; }} onMouseLeave={e => { e.currentTarget.style.background = "#f9f9f9"; e.currentTarget.style.color = "#1a1a2e"; e.currentTarget.style.transform = "translateY(0)"; }}>
-                <span>✉️</span> Email Us
-              </a>
-
-              <a href="https://wa.me/13147327749" target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none", background: "#25D366", color: "#fff", padding: "12px", borderRadius: "8px", fontWeight: "600", transition: "all 0.3s ease", display: "flex", alignItems: "center", justifyContent: "center", gap: "8px" }} onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-3px)"; e.currentTarget.style.boxShadow = "0 4px 8px rgba(37, 211, 102, 0.3)"; }} onMouseLeave={e => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "none"; }}>
-                <span><i className="fa-brands fa-whatsapp"></i></span> WhatsApp
-              </a>
-
-            </div>
-          </div>
-
-          {/* Testimonials */}
-          <div style={{ 
-            background: "#fff", 
-            borderRadius: "10px", 
-            padding: "25px", 
-            boxShadow: "0 5px 15px rgba(0,0,0,0.05)"
-          }}>
-            <h3 style={{ 
-              color: "#1a1a2e", 
-              marginTop: "0",
-              marginBottom: "20px",
-              fontSize: "1.3rem",
-              position: "relative",
-              paddingBottom: "10px"
-            }}>
-              <span style={{
-                position: "absolute",
-                bottom: 0,
-                left: 0,
-                width: "40px",
-                height: "3px",
-                background: "#f7941d",
-                borderRadius: "2px"
-              }}></span>
-              Client Testimonials
-            </h3>
-            <div style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: "20px"
-            }}>
-              {[
-                {
-                  quote: "GK Technology transformed our online presence with a stunning website that perfectly represents our brand.",
-                  author: "Sarah Johnson",
-                  role: "CEO, Bright Solutions"
-                },
-                {
-                  quote: "The team delivered our e-commerce platform ahead of schedule with exceptional quality.",
-                  author: "Michael Chen",
-                  role: "Director, Urban Styles"
-                },
-                {
-                  quote: "Their attention to detail and technical expertise exceeded our expectations.",
-                  author: "David Wilson",
-                  role: "CTO, TechNova"
-                }
-              ].map((testimonial, index) => (
-                <div key={index} style={{ 
-                  background: "#f9f9f9",
-                  padding: "20px",
-                  borderRadius: "8px",
-                  position: "relative",
-                  transition: "all 0.3s ease",
-                  ":hover": {
-                    transform: "translateY(-5px)",
-                    boxShadow: "0 5px 15px rgba(0,0,0,0.1)"
-                  }
-                }}>
-                  <div style={{
-                    position: "absolute",
-                    top: "15px",
-                    left: "15px",
-                    fontSize: "2.5rem",
-                    color: "rgba(247, 148, 29, 0.2)",
-                    lineHeight: 1
-                  }}>"</div>
-                  <p style={{ 
-                    margin: "15px 0 0",
-                    fontStyle: "italic",
-                    color: "#555",
-                    lineHeight: "1.6"
-                  }}>{testimonial.quote}</p>
-                  <div style={{ 
-                    marginTop: "15px",
-                    borderTop: "1px solid #eee",
-                    paddingTop: "15px"
-                  }}>
-                    <p style={{ 
-                      margin: "0",
-                      fontWeight: "600",
-                      color: "#1a1a2e"
-                    }}>{testimonial.author}</p>
-                    <p style={{ 
-                      margin: "5px 0 0",
-                      fontSize: "0.9rem",
-                      color: "#777"
-                    }}>{testimonial.role}</p>
+                <div className="process-step">
+                  <div className="step-icon">🎨</div>
+                  <div className="step-content">
+                    <h3 style={{ margin: '0 0 10px', color: '#764ba2', fontSize: '1.2rem' }}>UI/UX Design</h3>
+                    <p style={{ margin: 0, color: '#555', lineHeight: 1.6 }}>Our designers create wireframes and prototypes to visualize the user experience.</p>
                   </div>
                 </div>
-              ))}
-            </div>
-          </div>
+
+                <div className="process-step">
+                  <div className="step-icon">💻</div>
+                  <div className="step-content">
+                    <h3 style={{ margin: '0 0 10px', color: '#764ba2', fontSize: '1.2rem' }}>Development</h3>
+                    <p style={{ margin: 0, color: '#555', lineHeight: 1.6 }}>Our developers build your application using agile methodologies for maximum efficiency.</p>
+                  </div>
+                </div>
+
+                <div className="process-step">
+                  <div className="step-icon">🧪</div>
+                  <div className="step-content">
+                    <h3 style={{ margin: '0 0 10px', color: '#764ba2', fontSize: '1.2rem' }}>Testing & QA</h3>
+                    <p style={{ margin: 0, color: '#555', lineHeight: 1.6 }}>Rigorous testing ensures your application performs flawlessly across all scenarios.</p>
+                  </div>
+                </div>
+
+                <div className="process-step">
+                  <div className="step-icon">🚀</div>
+                  <div className="step-content">
+                    <h3 style={{ margin: '0 0 10px', color: '#764ba2', fontSize: '1.2rem' }}>Deployment</h3>
+                    <p style={{ margin: 0, color: '#555', lineHeight: 1.6 }}>We handle the deployment process and ensure everything runs smoothly in production.</p>
+                  </div>
+                </div>
+
+                <div className="process-step">
+                  <div className="step-icon">🛠️</div>
+                  <div className="step-content">
+                    <h3 style={{ margin: '0 0 10px', color: '#764ba2', fontSize: '1.2rem' }}>Maintenance</h3>
+                    <p style={{ margin: 0, color: '#555', lineHeight: 1.6 }}>Ongoing support and updates to keep your application current and secure.</p>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </main>
         </div>
       </div>
-    </div>
+    </>
   );
 };
-
 export default Web;
+// ...end of file...
