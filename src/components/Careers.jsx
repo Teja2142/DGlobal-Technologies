@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 
 const Careers = () => {
   const [formData, setFormData] = useState({
@@ -29,24 +30,31 @@ const Careers = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const validationError = validateForm();
-    if (validationError) {
-      setError(validationError);
-      return;
-    }
-
     setIsLoading(true);
     setError('');
 
     try {
       const formDataToSend = new FormData();
-      
+
+      // Mapping formData keys to backend expected field names
+      const backendFieldMap = {
+        fullName: 'full_name',
+        email: 'email',
+        phone: 'phone',
+        linkedIn: 'linkedin',
+        position: 'role',
+        workAuth: 'work_auth_status',
+        location: 'preferred_location',
+        availability: 'availability',
+        comments: 'comments'
+      };
+
       Object.keys(formData).forEach(key => {
         if (key !== 'resume' && formData[key]) {
-          formDataToSend.append(key, formData[key]);
+          formDataToSend.append(backendFieldMap[key], formData[key]);
         }
       });
-      
+
       if (formData.resume) {
         formDataToSend.append('resume', formData.resume);
       }

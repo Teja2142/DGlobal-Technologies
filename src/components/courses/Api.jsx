@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Api = () => {
+
   const primaryColor = "#764ba2";
   const secondaryColor = "#1a1a2e";
   const accentColor = "#ffa733";
@@ -73,6 +74,48 @@ const Api = () => {
   };
 
   return (
+    <>
+        <style>{`
+             .value-card {
+          background: rgba(255, 255, 255, 0.9);
+          backdrop-filter: blur(20px);
+          border: 1px solid rgba(255, 255, 255, 0.3);
+          border-radius: 20px;
+          padding: 40px 30px;
+          text-align: center;
+          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+          position: relative;
+          overflow: hidden;
+        }
+        
+        .value-card:hover {
+          transform: translateY(-15px) scale(1.02);
+          box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2);
+          background: rgba(255, 255, 255, 0.95);
+        }
+        
+        .value-card::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+          transition: left 0.5s ease;
+        }
+        
+        .value-card:hover::before {
+          left: 100%;
+        }
+        
+        
+        @keyframes bounce {
+          0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+          40% { transform: translateY(-10px); }
+          60% { transform: translateY(-5px); }
+        }
+        `}</style>
     <div style={{ 
       fontFamily: "'Poppins', Arial, sans-serif", 
       padding: 0, 
@@ -209,7 +252,7 @@ const Api = () => {
                   desc: "Seamless connections with popular platforms and services."
                 }
               ].map((feature, index) => (
-                <div key={index} style={{ 
+                <div key={index} className="value-card" style={{ 
                   background: "#f9f9f9",
                   padding: "25px",
                   borderRadius: "8px",
@@ -798,6 +841,7 @@ const Api = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 
