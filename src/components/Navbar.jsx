@@ -115,7 +115,7 @@ const Navbar = () => {
           display: flex;
           height: 50px;
           position: relative;
-          background: linear-gradient(135deg, #764ba2 0%, #764ba2 100%);
+          background: white;
           overflow: hidden;
         }
         
@@ -137,12 +137,12 @@ const Navbar = () => {
         
         .contact-section {
           width: 60%;
-          background: linear-gradient(135deg, #764ba2 100%);
+          background: linear-gradient(135deg);
           display: flex;
           align-items: center;
           padding-left: 5%;
           font-weight: 600;
-          color: white;
+          color: black;
           clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
           gap: 20px;
           font-size: 13px;
@@ -152,7 +152,7 @@ const Navbar = () => {
         }
         
         .contact-section:hover {
-          background: linear-gradient(135deg, #764ba2 100%);
+          
         }
         
         .contact-section span {

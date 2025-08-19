@@ -4,11 +4,20 @@ import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-
 import { Link } from "react-router-dom";
-import slide1 from "../assets/slide1.png";
-import slide2 from "../assets/slide2.png";
-import slide3 from "../assets/slide3.png";
+
+// Mock images for demo
+const slide1 = "https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=800&h=400&fit=crop";
+const slide2 = "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&h=400&fit=crop";
+const slide3 = "https://images.unsplash.com/photo-1486312338219-ce68e2c6b7bb?w=800&h=400&fit=crop";
+const bg="https://images.unsplash.com/photo-1675434301763-594b4d0c5819?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE1fHx8ZW58MHx8fHx8";
+
+const Healthcare = "https://media.istockphoto.com/id/842465448/photo/indian-new-five-hundred-rupees-bills-and-stethoscope.webp?a=1&b=1&s=612x612&w=0&k=20&c=EbFoy72dpnHETf_WReuKhgKAQ-Tu-bJmZFXCEK27YRw=";
+const Finance = "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&h=300&fit=crop";
+const retail = "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=500&h=300&fit=crop";
+const energy = "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=500&h=300&fit=crop";
+const manufacturing = "https://images.unsplash.com/photo-1610891015188-5369212db097?q=80&w=2129&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
+const logistics = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=500&h=300&fit=crop";
 
 const Home = () => {
   const [expanded, setExpanded] = useState(false);
@@ -20,620 +29,502 @@ const Home = () => {
     setTimeout(() => setAnimate(true), 900);
   }, []);
 
-  const gradientBg = "linear-gradient(135deg, #667eea 0%, #764ba2 100%)";
-  const themeColor = "#6366f1";
-
   return (
     <>
-      {/* Hero Slider */}
-      <div style={styles.sliderContainer}>
-        <Swiper
-          modules={[Navigation, Pagination, Autoplay]}
-          slidesPerView={1}
-          navigation
-          pagination={{ clickable: true }}
-          autoplay={{ delay: 4000, disableOnInteraction: false }}
-          loop={true}
-          style={{ width: "100%", height: "100vh" }}
-        >
-          {[slide1, slide2, slide3].map((slide, idx) => (
-            <SwiperSlide key={idx}>
-              <div style={styles.slideWrapper}>
-                <img src={slide} alt={`Slide ${idx + 1}`} style={styles.slideImage} />
-                <div style={styles.overlay} />
-                <div style={styles.slideText}>
-                  <h2 style={styles.heroHeading}>
-                    Welcome to{" "}
-                    <span style={styles.heroHighlight}>DGlobal Technology</span>
-                  </h2>
-                  <p style={styles.heroSubtext}>
-                    Transforming businesses through innovative technology solutions
-                  </p>
-                  <Link to="/about" style={styles.heroBtn}>
-                    Discover More
-                  </Link>
-                </div>
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
+      <style jsx>{`
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
+        * {
+          font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+
+        .hero-banner {
+          background-image: var(--bg-url);
+          background-repeat: no-repeat;  /* prevents tiling */
+          background-size: cover;       /* makes image cover the whole area */
+          background-position: center;  /* centers the image */
+          position: relative;
+          overflow: hidden;
+          min-height: 100vh;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: white;
+          text-align: center;
+        }
+
+        .hero-banner::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="a" cx="50%" cy="50%" r="50%"><stop offset="0%" style="stop-color:%23ffffff;stop-opacity:0.1"/><stop offset="100%" style="stop-color:%23ffffff;stop-opacity:0"/></radialGradient></defs><circle cx="200" cy="300" r="100" fill="url(%23a)"/><circle cx="800" cy="200" r="150" fill="url(%23a)"/><circle cx="600" cy="700" r="80" fill="url(%23a)"/></svg>');
+          opacity: 0.3;
+          animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-20px); }
+        }
+
+        .hero-heading {
+          font-size: clamp(2.5rem, 5vw, 4rem);
+          font-weight: 800;
+          letter-spacing: -0.02em;
+          line-height: 1.1;
+          margin-bottom: 1.5rem;
+          opacity: 0;
+          transform: translateY(30px);
+          animation: slideUp 1s ease-out 0.5s forwards;
+        }
+
+        @keyframes slideUp {
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        .section {
+          padding: 80px 20px;
+          position: relative;
+        }
+
+        .container {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 20px;
+        }
+
+        .value-proposition-section {
+          background: linear-gradient(145deg, #f8fafc 0%, #e2e8f0 100%);
+          position: relative;
+        }
+
+        .value-proposition-section::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 1px;
+          background: linear-gradient(90deg, transparent, #667eea, transparent);
+        }
+
+        .section-heading {
+          text-align: center;
+          font-size: clamp(2rem, 3.5vw, 2.5rem);
+          font-weight: 700;
+          margin-bottom: 3rem;
+          color: #1a202c;
+          position: relative;
+        }
+
+        .section-heading::after {
+          content: '';
+          position: absolute;
+          bottom: -10px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 60px;
+          height: 3px;
+          background: linear-gradient(90deg, #667eea, #764ba2);
+          border-radius: 2px;
+        }
+
+        .grid {
+          display: grid;
+          gap: 2rem;
+          grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        }
+
+        .card {
+          background: rgba(255, 255, 255, 0.9);
+          backdrop-filter: blur(10px);
+          border-radius: 20px;
+          padding: 2.5rem 2rem;
+          box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+          transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+          position: relative;
+          overflow: hidden;
+          border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .card::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 4px;
+          background: linear-gradient(90deg, #667eea, #764ba2);
+          transform: scaleX(0);
+          transition: transform 0.4s ease;
+        }
+
+        .card:hover::before {
+          transform: scaleX(1);
+        }
+
+        .card:hover {
+          transform: translateY(-10px);
+          box-shadow: 0 20px 60px rgba(102, 126, 234, 0.2);
+        }
+
+        .card h3 {
+          font-size: 1.5rem;
+          font-weight: 600;
+          margin-bottom: 1rem;
+          color: #2d3748;
+        }
+
+        .card p {
+          font-size: 1rem;
+          line-height: 1.6;
+          color: #4a5568;
+        }
+
+        .key-metrics-section {
+          background: linear-gradient(135deg, #ffffff 0%, #f7fafc 100%);
+        }
+
+        .metric-card {
+          background: linear-gradient(145deg, #e2e8f0 0%, #cbd5e0 100%);
+          border-radius: 20px;
+          padding: 2.5rem 2rem;
+          text-align: center;
+          transition: all 0.4s ease;
+          position: relative;
+          overflow: hidden;
+          border: 1px solid #e2e8f0;
+        }
+
+        .metric-card::before {
+          content: '';
+          position: absolute;
+          top: -50%;
+          left: -50%;
+          width: 200%;
+          height: 200%;
+          background: linear-gradient(45deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+          transform: rotate(45deg) translateX(-100%);
+          transition: transform 0.6s ease;
+        }
+
+        .metric-card:hover::before {
+          transform: rotate(45deg) translateX(100%);
+        }
+
+        .metric-card:hover {
+          transform: scale(1.05);
+          box-shadow: 0 15px 50px rgba(102, 126, 234, 0.15);
+        }
+
+        .metric-card h3 {
+          font-size: 1.5rem;
+          font-weight: 700;
+          margin-bottom: 1rem;
+          color: #667eea;
+        }
+
+        .industries-section {
+          background: linear-gradient(145deg, #f8fafc 0%, #e2e8f0 100%);
+          position: relative;
+        }
+
+        .swiper-slide-content {
+          text-align: center;
+          padding: 2rem;
+        }
+
+        .industry-image {
+          width: 100%;
+          max-width: 500px;
+          height: 300px;
+          object-fit: cover;
+          border-radius: 20px;
+          box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+          margin-bottom: 1.5rem;
+          transition: transform 0.4s ease;
+        }
+
+        .industry-image:hover {
+          transform: scale(1.05);
+        }
+
+        .industry-title {
+          font-size: 1.8rem;
+          font-weight: 600;
+          margin-bottom: 1rem;
+          color: #2d3748;
+        }
+
+        .industry-description {
+          font-size: 1rem;
+          line-height: 1.6;
+          color: #4a5568;
+          max-width: 600px;
+          margin: 0 auto;
+        }
+
+        .testimonials-section {
+          background: linear-gradient(135deg, #ffffff 0%, #f7fafc 100%);
+        }
+
+        .testimonial-card {
+          background: linear-gradient(145deg, #e2e8f0 0%, #cbd5e0 100%);
+          border-radius: 20px;
+          padding: 2rem;
+          text-align: center;
+          transition: all 0.4s ease;
+          position: relative;
+          font-style: italic;
+          font-size: 1rem;
+          line-height: 1.6;
+          color: #2d3748;
+        }
+
+        .testimonial-card::before {
+          content: '"';
+          position: absolute;
+          top: -10px;
+          left: 20px;
+          font-size: 4rem;
+          color: #667eea;
+          opacity: 0.3;
+          font-family: Georgia, serif;
+        }
+
+        .testimonial-card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 15px 40px rgba(102, 126, 234, 0.15);
+        }
+
+        .cta-section {
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          text-align: center;
+          position: relative;
+          overflow: hidden;
+        }
+
+        .cta-section::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="b" cx="50%" cy="50%" r="50%"><stop offset="0%" style="stop-color:%23ffffff;stop-opacity:0.05"/><stop offset="100%" style="stop-color:%23ffffff;stop-opacity:0"/></radialGradient></defs><circle cx="100" cy="100" r="50" fill="url(%23b)"/><circle cx="900" cy="200" r="80" fill="url(%23b)"/><circle cx="300" cy="800" r="60" fill="url(%23b)"/><circle cx="700" cy="900" r="70" fill="url(%23b)"/></svg>');
+          opacity: 0.5;
+        }
+
+        .cta-buttons {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 1rem;
+          justify-content: center;
+          position: relative;
+          z-index: 1;
+        }
+
+        .cta-button {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          background: rgba(255, 255, 255, 0.95);
+          backdrop-filter: blur(10px);
+          color: #2d3748;
+          padding: 1rem 2rem;
+          border-radius: 50px;
+          text-decoration: none;
+          font-size: 1.1rem;
+          font-weight: 500;
+          transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+          border: 2px solid rgba(255, 255, 255, 0.3);
+          min-width: 220px;
+        }
+
+        .cta-button:hover {
+          background: rgba(255, 255, 255, 1);
+          transform: translateY(-3px);
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+          border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .swiper-button-next,
+        .swiper-button-prev {
+          color: #667eea !important;
+        }
+
+        .swiper-pagination-bullet-active {
+          background: #667eea !important;
+        }
+
+        @media (max-width: 768px) {
+          .grid {
+            grid-template-columns: 1fr;
+          }
+          
+          .cta-buttons {
+            flex-direction: column;
+            align-items: center;
+          }
+          
+          .cta-button {
+            width: 100%;
+            max-width: 300px;
+          }
+        }
+      `}</style>
+
+      {/* Hero Banner */}
+      <div className="hero-banner" style={{ "--bg-url": `url(${bg})` }}>
+        <div className="container">
+          <h1 className="hero-heading">Consulting Delivered. Projects Executed.</h1>
+        </div>
       </div>
 
-      {/* Mission Section */}
-      <section style={styles.missionSection}>
-        <div style={styles.container}>
-          <div style={styles.flexContainer}>
-            <div style={styles.imageWrap}>
-              <div style={styles.imageContainer}>
-                <img
-                  src="https://www.shutterstock.com/image-photo/ai-big-data-business-analytics-600nw-2462546293.jpg"
-                  alt="Tech Illustration"
-                  style={styles.missionImage}
-                />
-                <div style={styles.imageOverlay}></div>
-              </div>
+      {/* Value Proposition Blocks */}
+      <section className="section value-proposition-section">
+        <div className="container">
+          <h2 className="section-heading">Powering Business Growth with Expertise & Innovation</h2>
+          <div className="grid">
+            <div className="card">
+              <h3>Hire C2C Consultants</h3>
+              <p>Connect with top-tier, pre-vetted consultants to drive your projects forward with expertise and efficiency. Whether you need short-term specialists or long-term partners, we help you find professionals who deliver results, meet deadlines, and align with your business goals.</p>
             </div>
-            <div style={styles.textContent}>
-              <div style={styles.sectionBadge}>Our Mission</div>
-              <h2 style={styles.sectionHeading}>
-                Empowering Innovation with{" "}
-                <span style={styles.headingHighlight}>DGLOBAL Technology</span>
-              </h2>
-              <p style={styles.paragraph}>
-                We're working behind the scenes to build something extraordinary. D-GLOBAL 
-                Technologies is preparing to launch its full digital presence — delivering 
-                cutting-edge solutions and global talent, everywhere.
-                {expanded && (
-                  <span style={styles.expandedText}>
-                    <br /><br />
-                    We deliver digital transformation through cutting-edge software and AI. 
-                    Our goal is to enable startups and enterprises to reach new heights with 
-                    scalable, secure, and cost-effective solutions.
-                    <br /><br />
-                    <strong style={styles.strongText}>
-                      Stay tuned as we redefine innovation, one line of code at a time.
-                    </strong>
-                  </span>
-                )}
-              </p>
-              <button onClick={toggleReadMore} style={styles.modernBtn}>
-                {expanded ? "Show Less" : "Learn More"}
-              </button>
+            <div className="card">
+              <h3>Outsource Your Projects</h3>
+              <p>Let us manage your project execution from start to finish with precision, expertise, and a commitment to excellence. We ensure timely delivery, cost efficiency, and high-quality results—so you can focus on growing your business while we take care of the rest.</p>
+            </div>
+            <div className="card">
+              <h3>Join Our Team</h3>
+              <p>Be part of a dynamic and innovative team where your ideas are valued, your skills are sharpened, and your career can thrive. Together, we create solutions that make an impact.</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Contact Banner */}
-      <section style={styles.contactBanner}>
-        <div style={styles.container}>
-          <div style={styles.bannerContent}>
-            <div style={styles.bannerText}>
-              <h2 style={styles.bannerHeading}>Let's Build Something Amazing Together</h2>
-              <p style={styles.bannerSubtext}>
-                Ready to transform your business? Get in touch with our experts today.
-              </p>
+      {/* Key Metrics Section */}
+      <section className="section key-metrics-section">
+        <div className="container">
+          <h2 className="section-heading">Key Metrics</h2>
+          <div className="grid">
+            <div className="metric-card">
+              <h3>50+ Projects Delivered</h3>
+              <p>Our track record speaks for itself — over 50 successful projects completed across diverse industries, from IT infrastructure to cutting-edge software solutions. Each delivery reflects our commitment to quality, innovation, and meeting deadlines without compromise.</p>
             </div>
-            <div style={styles.contactDetails}>
-              <div style={styles.contactInfo}>
-                <div style={styles.contactItem}>
-                  <span style={styles.contactIcon}>📞</span>
-                  <div>
-                    <p style={styles.contactText}>+1-314-732-7749</p>
-                    <p style={styles.contactText}>+1-314-354-0634</p>
-                  </div>
-                </div>
-                <div style={styles.contactItem}>
-                  <span style={styles.contactIcon}>✉️</span>
-                  <p style={styles.contactText}>hr@dglobaltech.com</p>
-                </div>
-              </div>
-              <a href="https://wa.me/13147327749" target="_blank" rel="noopener noreferrer">
-                <button style={styles.whatsappBtn}>
-                  <span style={styles.whatsappIcon}>💬</span>
-                  WhatsApp
-                </button>
-              </a>
+            <div className="metric-card">
+              <h3>35+ Active Consultants</h3>
+              <p>With over 35 active consultants, we bring deep expertise, diverse perspectives, and agile problem-solving to every client engagement. Our team spans multiple industries and specialties, enabling us to address complex challenges with innovative, tailored solutions.</p>
+            </div>
+            <div className="metric-card">
+              <h3>20+ Clients Across the U.S.</h3>
+              <p>Serving 20+ clients across the U.S., we partner with organizations of all sizes and industries to deliver tailored solutions that address unique challenges. Our nationwide reach allows us to share best practices, leverage diverse market insights, and deliver measurable results wherever our clients operate.</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Services Grid */}
-      <section style={styles.servicesSection}>
-        <div style={styles.container}>
-          <div style={styles.sectionHeader}>
-            <div style={styles.sectionBadge}>What We Do</div>
-            <h2 style={styles.sectionHeading}>
-              Our <span style={styles.headingHighlight}>Services</span>
-            </h2>
-            <p style={styles.sectionSubtext}>
-              Comprehensive technology solutions tailored to your business needs
-            </p>
+      {/* Industries Carousel */}
+      <section className="section industries-section">
+        <div className="container">
+          <h2 className="section-heading">Industries We Serve</h2>
+          <Swiper
+            modules={[Navigation, Pagination, Autoplay]}
+            spaceBetween={50}
+            slidesPerView={1}
+            navigation
+            pagination={{ clickable: true }}
+            autoplay={{ delay: 4000, disableOnInteraction: false }}
+            loop={true}
+          >
+            <SwiperSlide>
+              <div className="swiper-slide-content">
+                <img className="industry-image" src={Healthcare} alt="Healthcare" />
+                <h3 className="industry-title">Healthcare & Life Sciences</h3>
+                <p className="industry-description">We deliver secure, compliant, and innovative IT solutions that enhance patient care, optimize operations, and drive digital transformation for healthcare and life sciences organizations.</p>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="swiper-slide-content">
+                <img className="industry-image" src={Finance} alt="Finance" />
+                <h3 className="industry-title">Finance & Banking</h3>
+                <p className="industry-description">We provide robust, secure, and scalable financial technology solutions that enable banks and financial institutions to innovate while maintaining compliance and security standards.</p>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="swiper-slide-content">
+                <img className="industry-image" src={retail} alt="Retail" />
+                <h3 className="industry-title">Retail & eCommerce</h3>
+                <p className="industry-description">We help retailers and eCommerce brands boost customer experience, streamline operations, and drive sales with scalable digital solutions, from omnichannel platforms to data-driven insights.</p>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="swiper-slide-content">
+                <img className="industry-image" src={energy} alt="Energy" />
+                <h3 className="industry-title">Energy</h3>
+                <p className="industry-description">We enable energy and utilities companies to modernize operations, improve efficiency, and meet sustainability goals through advanced IT solutions, smart data management, and automation.</p>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="swiper-slide-content">
+                <img className="industry-image" src={manufacturing} alt="Manufacturing" />
+                <h3 className="industry-title">Manufacturing</h3>
+                <p className="industry-description">We help manufacturers enhance productivity, streamline supply chains, and adopt smart technologies with tailored IT solutions, from ERP integration to IoT-driven automation.</p>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="swiper-slide-content">
+                <img className="industry-image" src={logistics} alt="Logistics" />
+                <h3 className="industry-title">Logistics & Supply Chain</h3>
+                <p className="industry-description">We optimize logistics and supply chain operations with intelligent IT solutions that improve visibility, reduce costs, and enable real-time tracking from production to delivery.</p>
+              </div>
+            </SwiperSlide>
+          </Swiper>
+        </div>
+      </section>
+
+      {/* Client Testimonials */}
+      <section className="section testimonials-section">
+        <div className="container">
+          <h2 className="section-heading">What Our Clients Say</h2>
+          <div className="grid">
+            <div className="testimonial-card">
+              Exceptional service with unwavering support — the team was responsive, professional, and always went the extra mile to ensure everything ran smoothly from start to finish!
+              <br /><strong>— Chaitanya</strong>
+            </div>
+            <div className="testimonial-card">
+              They not only delivered the project on time but also went above and beyond our expectations, providing exceptional quality and attention to detail every step of the way!
+              <br /><strong>— Naveen Teja</strong>
+            </div>
+            <div className="testimonial-card">
+              I highly recommend their consulting services — their expertise, professionalism, and commitment to delivering results made a real difference to our project's success.
+              <br /><strong>— Bharathi</strong>
+            </div>
           </div>
-          
-          <div style={styles.servicesGrid}>
-            {[
-              { 
-                img: "https://fuestech.com/wp-content/uploads/2024/07/KT-CC-10.jpg", 
-                title: "Mobile Development", 
-                link: "/Mobile",
-                desc: "Native & cross-platform apps"
-              },
-              { 
-                img: "https://www.techfunnel.com/wp-content/uploads/2021/10/web-application.png", 
-                title: "Web Applications", 
-                link: "/Web",
-                desc: "Modern, responsive web solutions"
-              },
-              { 
-                img: "https://media.excellentwebworld.com/wp-content/uploads/2022/03/17091451/best-api-development-services.webp", 
-                title: "API Services", 
-                link: "/Api",
-                desc: "Scalable backend architecture"
-              },
-              { 
-                img: "https://blog.1byte.com/wp-content/uploads/2023/04/overview-4-1024x683.jpg", 
-                title: "Cloud Infrastructure", 
-                link: "/Cloud",
-                desc: "Secure cloud deployment"
-              },
-              { 
-                img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfCuL1Lm8-i23sX4lGnDgmV6SE3JA1VquVOA&s", 
-                title: "IoT Solutions", 
-                link: "/IoT",
-                desc: "Connected device ecosystems"
-              },
-              { 
-                img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRl905190f3d3rw6d_uA5wKInZMfLMSAhIvfg&s", 
-                title: "Data Analytics", 
-                link: "/Data",
-                desc: "Insights-driven decisions"
-              },
-              { 
-                img: "https://www.macrohype.com/wp-content/uploads/2024/08/Digital-Marketing.png", 
-                title: "Digital Marketing", 
-                link: "/digital",
-                desc: "Growth-focused strategies"
-              },
-              { 
-                img: "https://www.adaptiveus.com/hubfs/AI%20Analysis.jpg", 
-                title: "Corporate Training", 
-                link: "/training",
-                desc: "Skill development programs"
-              },
-            ].map((service, idx) => (
-              <Link key={idx} to={service.link} style={styles.cardLink}>
-                <div style={styles.serviceCard}>
-                  <div style={styles.cardImageContainer}>
-                    <img src={service.img} alt={service.title} style={styles.cardImage} />
-                    <div style={styles.cardOverlay}></div>
-                  </div>
-                  <div style={styles.cardContent}>
-                    <h3 style={styles.cardTitle}>{service.title}</h3>
-                    <p style={styles.cardDesc}>{service.desc}</p>
-                    <div style={styles.cardArrow}>→</div>
-                  </div>
-                </div>
-              </Link>
-            ))}
+        </div>
+      </section>
+
+      {/* CTA Buttons */}
+      <section className="section cta-section">
+        <div className="container">
+          <div className="cta-buttons">
+            <Link to="/consultant-request" className="cta-button">Request a Consultant Interest Form</Link>
+            <Link to="/job-upload" className="cta-button">Job Description Upload</Link>
+            <Link to="/hiring-request" className="cta-button">Request a Hiring Interest Form</Link>
+            <Link to="/resume-upload" className="cta-button">Resume Upload</Link>
           </div>
         </div>
       </section>
     </>
   );
 };
-
-const styles = {
-  // Container
-  container: {
-    maxWidth: "1200px",
-    margin: "0 auto",
-    padding: "0 20px",
-  },
-
-  // Hero Slider Styles
-  sliderContainer: {
-    position: "relative",
-    height: "100vh",
-    overflow: "hidden",
-  },
-  slideWrapper: {
-    position: "relative",
-    height: "100vh",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  slideImage: {
-    position: "absolute",
-    top: "0",
-    left: "0",
-    width: "100%",
-    height: "100%",
-    objectFit: "cover",
-    filter: "brightness(0.7)",
-  },
-  overlay: {
-    position: "absolute",
-    top: 0,
-    left: 0,
-    width: "100%",
-    height: "100%",
-    background: "linear-gradient(135deg, rgba(99, 102, 241, 0.8) 0%, rgba(139, 92, 246, 0.6) 100%)",
-    zIndex: 1,
-  },
-  slideText: {
-    position: "relative",
-    zIndex: 2,
-    textAlign: "center",
-    color: "white",
-    maxWidth: "800px",
-    padding: "0 20px",
-  },
-  heroHeading: {
-    fontSize: "clamp(2.5rem, 5vw, 4rem)",
-    fontWeight: "800",
-    marginBottom: "20px",
-    lineHeight: "1.2",
-    textShadow: "2px 2px 4px rgba(0,0,0,0.3)",
-  },
-  heroHighlight: {
-    background: "linear-gradient(135deg, #fbbf24, #f59e0b)",
-    WebkitBackgroundClip: "text",
-    WebkitTextFillColor: "transparent",
-    backgroundClip: "text",
-  },
-  heroSubtext: {
-    fontSize: "1.25rem",
-    marginBottom: "30px",
-    opacity: "0.95",
-    fontWeight: "300",
-  },
-  heroBtn: {
-    display: "inline-block",
-    backgroundColor: "#ffffff",
-    color: "#1f2937",
-    padding: "16px 32px",
-    fontWeight: "600",
-    borderRadius: "50px",
-    textDecoration: "none",
-    fontSize: "1.1rem",
-    transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
-    boxShadow: "0 10px 25px rgba(0,0,0,0.2)",
-    transform: "translateY(0)",
-    ":hover": {
-      transform: "translateY(-2px)",
-      boxShadow: "0 15px 30px rgba(0,0,0,0.3)",
-    }
-  },
-
-  // Mission Section
-  missionSection: {
-    padding: "100px 0",
-    background: "linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)",
-  },
-  flexContainer: {
-    display: "flex",
-    flexWrap: "wrap",
-    gap: "60px",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  imageWrap: {
-    flex: "1 1 45%",
-    minWidth: "300px",
-  },
-  imageContainer: {
-    position: "relative",
-    borderRadius: "20px",
-    overflow: "hidden",
-    boxShadow: "0 25px 50px rgba(0,0,0,0.15)",
-  },
-  missionImage: {
-    width: "100%",
-    height: "400px",
-    objectFit: "cover",
-    transition: "transform 0.3s ease",
-  },
-  imageOverlay: {
-    position: "absolute",
-    top: "0",
-    left: "0",
-    right: "0",
-    bottom: "0",
-    background: "linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%)",
-  },
-  textContent: {
-    flex: "1 1 45%",
-    minWidth: "300px",
-  },
-  sectionBadge: {
-    display: "inline-block",
-    backgroundColor: "#6366f1",
-    color: "white",
-    padding: "8px 20px",
-    borderRadius: "25px",
-    fontSize: "0.875rem",
-    fontWeight: "600",
-    marginBottom: "20px",
-    textTransform: "uppercase",
-    letterSpacing: "0.5px",
-  },
-  sectionHeading: {
-    fontSize: "clamp(2rem, 4vw, 2.75rem)",
-    fontWeight: "800",
-    color: "#1f2937",
-    marginBottom: "24px",
-    lineHeight: "1.2",
-  },
-  headingHighlight: {
-    background: "linear-gradient(135deg, #6366f1, #8b5cf6)",
-    WebkitBackgroundClip: "text",
-    WebkitTextFillColor: "transparent",
-    backgroundClip: "text",
-  },
-  paragraph: {
-    fontSize: "1.125rem",
-    color: "#4b5563",
-    lineHeight: "1.7",
-    marginBottom: "30px",
-  },
-  expandedText: {
-    animation: "fadeIn 0.5s ease-in-out",
-  },
-  strongText: {
-    color: "#6366f1",
-    fontWeight: "700",
-  },
-  modernBtn: {
-    backgroundColor: "#1f2937",
-    color: "#ffffff",
-    padding: "14px 28px",
-    border: "none",
-    borderRadius: "50px",
-    fontWeight: "600",
-    fontSize: "1rem",
-    cursor: "pointer",
-    transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
-    boxShadow: "0 4px 15px rgba(31, 41, 55, 0.2)",
-    transform: "translateY(0)",
-  },
-
-  // Contact Banner
-  contactBanner: {
-    padding: "80px 0",
-    background: "linear-gradient(135deg, #1f2937 0%, #111827 100%)",
-    color: "white",
-    position: "relative",
-    overflow: "hidden",
-  },
-  bannerContent: {
-    display: "flex",
-    flexWrap: "wrap",
-    justifyContent: "space-between",
-    alignItems: "center",
-    gap: "40px",
-  },
-  bannerText: {
-    flex: "1 1 400px",
-  },
-  bannerHeading: {
-    fontSize: "clamp(1.75rem, 3vw, 2.5rem)",
-    fontWeight: "700",
-    marginBottom: "16px",
-    lineHeight: "1.3",
-  },
-  bannerSubtext: {
-    fontSize: "1.125rem",
-    opacity: "0.9",
-    fontWeight: "300",
-    marginBottom: "0",
-  },
-  contactDetails: {
-    flex: "1 1 300px",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "flex-end",
-    gap: "24px",
-  },
-  contactInfo: {
-    display: "flex",
-    flexDirection: "column",
-    gap: "16px",
-  },
-  contactItem: {
-    display: "flex",
-    alignItems: "center",
-    gap: "12px",
-  },
-  contactIcon: {
-    fontSize: "1.25rem",
-    width: "24px",
-    textAlign: "center",
-  },
-  contactText: {
-    fontSize: "1rem",
-    margin: "0",
-    opacity: "0.9",
-  },
-  whatsappBtn: {
-    backgroundColor: "#25d366",
-    color: "white",
-    padding: "14px 24px",
-    border: "none",
-    borderRadius: "50px",
-    fontWeight: "600",
-    fontSize: "1rem",
-    cursor: "pointer",
-    display: "flex",
-    alignItems: "center",
-    gap: "8px",
-    transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
-    boxShadow: "0 4px 15px rgba(37, 211, 102, 0.3)",
-    transform: "translateY(0)",
-  },
-  whatsappIcon: {
-    fontSize: "1.125rem",
-  },
-
-  // Services Section
-  servicesSection: {
-    padding: "100px 0",
-    background: "linear-gradient(135deg, #ffffff 0%, #f8fafc 100%)",
-  },
-  sectionHeader: {
-    textAlign: "center",
-    marginBottom: "80px",
-  },
-  sectionSubtext: {
-    fontSize: "1.125rem",
-    color: "#6b7280",
-    maxWidth: "600px",
-    margin: "0 auto",
-    lineHeight: "1.6",
-  },
-  servicesGrid: {
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-    gap: "32px",
-  },
-  cardLink: {
-    textDecoration: "none",
-    color: "inherit",
-  },
-  serviceCard: {
-    backgroundColor: "#ffffff",
-    borderRadius: "20px",
-    overflow: "hidden",
-    boxShadow: "0 10px 25px rgba(0,0,0,0.08)",
-    transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
-    cursor: "pointer",
-    border: "1px solid #e5e7eb",
-    height: "100%",
-    display: "flex",
-    flexDirection: "column",
-    ":hover": {
-      transform: "translateY(-8px)",
-      boxShadow: "0 25px 50px rgba(0,0,0,0.15)",
-    }
-  },
-  cardImageContainer: {
-    position: "relative",
-    height: "200px",
-    overflow: "hidden",
-  },
-  cardImage: {
-    width: "100%",
-    height: "100%",
-    objectFit: "cover",
-    transition: "transform 0.3s ease",
-  },
-  cardOverlay: {
-    position: "absolute",
-    top: "0",
-    left: "0",
-    right: "0",
-    bottom: "0",
-    background: "linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%)",
-    opacity: "0",
-    transition: "opacity 0.3s ease",
-  },
-  cardContent: {
-    padding: "24px",
-    flex: "1",
-    display: "flex",
-    flexDirection: "column",
-    position: "relative",
-  },
-  cardTitle: {
-    fontSize: "1.25rem",
-    fontWeight: "700",
-    color: "#1f2937",
-    marginBottom: "8px",
-  },
-  cardDesc: {
-    fontSize: "0.975rem",
-    color: "#6b7280",
-    lineHeight: "1.5",
-    flex: "1",
-    margin: "0",
-  },
-  cardArrow: {
-    position: "absolute",
-    top: "24px",
-    right: "24px",
-    fontSize: "1.25rem",
-    color: "#6366f1",
-    fontWeight: "700",
-    opacity: "0",
-    transform: "translateX(-10px)",
-    transition: "all 0.3s ease",
-  },
-
-  // Responsive adjustments
-  "@media (max-width: 768px)": {
-    flexContainer: {
-      flexDirection: "column",
-      textAlign: "center",
-    },
-    bannerContent: {
-      flexDirection: "column",
-      textAlign: "center",
-    },
-    contactDetails: {
-      alignItems: "center",
-    },
-    servicesGrid: {
-      gridTemplateColumns: "1fr",
-    },
-  },
-};
-
-// Add hover effects via CSS-in-JS simulation
-const addHoverStyles = () => {
-  const style = document.createElement('style');
-  style.textContent = `
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    
-    .service-card:hover .card-image {
-      transform: scale(1.05);
-    }
-    
-    .service-card:hover .card-overlay {
-      opacity: 1;
-    }
-    
-    .service-card:hover .card-arrow {
-      opacity: 1;
-      transform: translateX(0);
-    }
-    
-    .modern-btn:hover {
-      background-color: #6366f1;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(99, 102, 241, 0.3);
-    }
-    
-    .whatsapp-btn:hover {
-      background-color: #20ba5a;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
-    }
-    
-    .mission-image:hover {
-      transform: scale(1.02);
-    }
-  `;
-  document.head.appendChild(style);
-};
-
-// Call this when component mounts
-if (typeof document !== 'undefined') {
-  addHoverStyles();
-}
 
 export default Home;

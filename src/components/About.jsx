@@ -1,737 +1,729 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from "react";
+import {
+  FaBullseye,
+  FaLightbulb,
+  FaHandshake,
+  FaUsers,
+  FaAward,
+  FaProjectDiagram,
+  FaRocket,
+  FaRegClock,
+} from "react-icons/fa";
 
 const About = () => {
-  const [isVisible, setIsVisible] = useState({});
-  const observerRef = useRef();
-
-  const values = [
-    { title: 'Client Success:', text: 'Your growth defines ours.' },
-    { title: 'Innovation:', text: 'We stay on top of trends so you stay ahead of the competition.' },
-    { title: 'Transparency:', text: 'Open communication, honest pricing, and measurable impact.' },
-    { title: 'Community Focus:', text: 'Proudly supporting the small businesses that power St. Louis.' },
-    { title: 'Excellence:', text: 'Every detail matters — from code to content.' },
+  const timelineEvents = [
+    { year: "2018", title: "Founded", text: "D-Global Tech started with a vision to deliver agile, high-quality IT solutions." },
+    { year: "2020", title: "Expanded Services", text: "Introduced dual-track model: consultant placement & in-house delivery." },
+    { year: "2023", title: "Nationwide Reach", text: "Serving clients across the U.S. with a growing team of experts." },
+    { year: "2025", title: "Future Focus", text: "Driving innovation, compliance excellence, and unmatched service." },
   ];
-
-  const processSteps = [
-    { num: 1, title: "Discover", desc: "We dive deep into your business, goals, and challenges.", color: "#667eea" },
-    { num: 2, title: "Strategize", desc: "We design a tailored plan to grow your online presence.", color: "#764ba2" },
-    { num: 3, title: "Create", desc: "We build websites, apps, and campaigns that work for you.", color: "#f093fb" },
-    { num: 4, title: "Launch & Support", desc: "We go live and stay with you every step of the way.", color: "#f5576c" },
-    { num: 5, title: "Optimize", desc: "We analyze, tweak, and grow as your business evolves.", color: "#4facfe" }
-  ];
-
-  useEffect(() => {
-    observerRef.current = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsVisible(prev => ({
-              ...prev,
-              [entry.target.dataset.id]: true
-            }));
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    const elements = document.querySelectorAll('[data-id]');
-    elements.forEach(el => observerRef.current.observe(el));
-
-    return () => {
-      if (observerRef.current) {
-        observerRef.current.disconnect();
-      }
-    };
-  }, []);
-
-  const FloatingShapes = () => (
-    <div className="floating-shapes">
-      {[...Array(8)].map((_, i) => (
-        <div
-          key={i}
-          className="floating-shape"
-          style={{
-            left: `${Math.random() * 100}%`,
-            animationDelay: `${Math.random() * 20}s`,
-            animationDuration: `${20 + Math.random() * 10}s`
-          }}
-        />
-      ))}
-    </div>
-  );
 
   return (
-    <>
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
-        
-        * {
-          box-sizing: border-box;
-        }
-        
-        .about-container {
+    <div className="about-page">
+      <style jsx>{`
+        .about-page {
           font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-          color: #1a202c;
-          line-height: 1.6;
+          line-height: 1.7;
+          color: #2d3748;
           overflow-x: hidden;
         }
-        
-        .floating-shapes {
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          pointer-events: none;
-          z-index: 0;
-        }
-        
-        .floating-shape {
-          position: absolute;
-          width: 60px;
-          height: 60px;
-          background: linear-gradient(45deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
-          border-radius: 50%;
-          animation: floatShape infinite linear;
-          filter: blur(1px);
-        }
-        
-        @keyframes floatShape {
-          0% {
-            transform: translateY(100vh) rotate(0deg) scale(0);
-            opacity: 0;
-          }
-          10% {
-            opacity: 1;
-            transform: translateY(90vh) rotate(36deg) scale(1);
-          }
-          90% {
-            opacity: 1;
-            transform: translateY(-10vh) rotate(324deg) scale(1);
-          }
-          100% {
-            transform: translateY(-20vh) rotate(360deg) scale(0);
-            opacity: 0;
-          }
-        }
-        
-        .hero-section {
+
+        .section {
+          padding: 80px 24px;
           position: relative;
-          min-height: 70vh;
-          background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #667eea 100%);
-          background-size: 400% 400%;
-          animation: gradientShift 8s ease-in-out infinite;
-          display: flex;
-          align-items: center;
-          justify-content: center;
+        }
+
+        .section-title {
+          font-size: clamp(28px, 5vw, 48px);
+          font-weight: 700;
           text-align: center;
-          color: white;
-          overflow: hidden;
+          margin-bottom: 60px;
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          position: relative;
+        }
+
+        .section-title::after {
+          content: '';
+          position: absolute;
+          bottom: -12px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 80px;
+          height: 4px;
+          background: linear-gradient(90deg, #667eea, #764ba2);
+          border-radius: 2px;
+        }
+
+        /* Timeline Styles */
+        .timeline-container {
+          position: relative;
+          max-width: 1000px;
+          margin: 0 auto;
+          padding: 0 20px;
+        }
+
+        .timeline-line {
+          position: absolute;
+          top: 0;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 4px;
+          height: 100%;
+          background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+          border-radius: 2px;
           z-index: 1;
         }
-        
-        @keyframes gradientShift {
-          0%, 100% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
+
+        .timeline-item {
+          padding: 30px 0;
+          position: relative;
+          width: 50%;
+          opacity: 0;
+          animation: slideInUp 0.8s ease forwards;
         }
-        
-        .hero-overlay {
+
+        .timeline-item:nth-child(2) { animation-delay: 0.2s; }
+        .timeline-item:nth-child(3) { animation-delay: 0.4s; }
+        .timeline-item:nth-child(4) { animation-delay: 0.6s; }
+        .timeline-item:nth-child(5) { animation-delay: 0.8s; }
+
+        .timeline-item.left {
+          left: 0;
+          padding-right: 40px;
+          text-align: right;
+        }
+
+        .timeline-item.right {
+          left: 50%;
+          padding-left: 40px;
+        }
+
+        .timeline-content {
+          background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 100%);
+          backdrop-filter: blur(10px);
+          padding: 30px;
+          border-radius: 20px;
+          box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+          border: 1px solid rgba(255,255,255,0.2);
+          transition: all 0.4s ease;
+          position: relative;
+          overflow: hidden;
+        }
+
+        .timeline-content::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 3px;
+          background: linear-gradient(90deg, #667eea, #764ba2);
+        }
+
+        .timeline-content:hover {
+          transform: translateY(-8px);
+          box-shadow: 0 30px 80px rgba(0,0,0,0.15);
+        }
+
+        .timeline-circle {
+          position: absolute;
+          top: 40px;
+          width: 24px;
+          height: 24px;
+          background: linear-gradient(135deg, #667eea, #764ba2);
+          border-radius: 50%;
+          z-index: 2;
+          box-shadow: 0 0 0 6px rgba(255,255,255,1), 0 0 20px rgba(102, 126, 234, 0.3);
+          animation: pulse 2s infinite;
+        }
+
+        .timeline-item.left .timeline-circle {
+          right: -12px;
+        }
+
+        .timeline-item.right .timeline-circle {
+          left: -12px;
+        }
+
+        .timeline-heading {
+          font-size: 24px;
+          font-weight: 700;
+          margin-bottom: 12px;
+          color: #1a202c;
+        }
+
+        .timeline-text {
+          color: #4a5568;
+          font-size: 16px;
+        }
+
+        /* Mission Vision Values Grid */
+        .mvv-section {
+          background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+          position: relative;
+          overflow: hidden;
+        }
+
+        .mvv-section::before {
+          content: '';
           position: absolute;
           top: 0;
           left: 0;
           right: 0;
           bottom: 0;
-          background: rgba(0, 0, 0, 0.3);
-          z-index: 1;
-        }
-        
-        .hero-content {
-          position: relative;
-          z-index: 2;
-          max-width: 900px;
-          padding: 0 2rem;
-          animation: heroFadeIn 1.5s ease-out;
-        }
-        
-        @keyframes heroFadeIn {
-          from {
-            opacity: 0;
-            transform: translateY(60px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        
-        .hero-title {
-          font-size: clamp(2.5rem, 6vw, 4.5rem);
-          font-weight: 900;
-          margin-bottom: 1.5rem;
-          text-shadow: 2px 4px 20px rgba(0, 0, 0, 0.3);
-          animation: titlePulse 3s ease-in-out infinite;
-        }
-        
-        @keyframes titlePulse {
-          0%, 100% { text-shadow: 2px 4px 20px rgba(0, 0, 0, 0.3); }
-          50% { text-shadow: 2px 4px 30px rgba(255, 255, 255, 0.5); }
-        }
-        
-        .hero-subtitle {
-          font-size: clamp(1.1rem, 3vw, 1.4rem);
-          font-weight: 400;
-          opacity: 0.95;
-          max-width: 700px;
-          margin: 0 auto;
-          animation: subtitleSlide 1.5s ease-out 0.5s both;
-        }
-        
-        @keyframes subtitleSlide {
-          from {
-            opacity: 0;
-            transform: translateX(-50px);
-          }
-          to {
-            opacity: 0.95;
-            transform: translateX(0);
-          }
-        }
-        
-        .content-wrapper {
-          position: relative;
-          z-index: 1;
-          max-width: 1200px;
-          margin: 0 auto;
-          padding: 0 2rem;
-        }
-        
-        .section {
-          padding: 5rem 0;
-          position: relative;
-        }
-        
-        .section-title {
-          font-size: clamp(2rem, 4vw, 3rem);
-          font-weight: 800;
-          text-align: center;
-          margin-bottom: 3rem;
-          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-        }
-        
-        .who-we-are {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 4rem;
-          align-items: center;
-          margin-bottom: 4rem;
-        }
-        
-        .who-we-are-content {
-          animation: slideInLeft 1s ease-out;
-        }
-        
-        .who-we-are-image {
-          animation: slideInRight 1s ease-out;
-          position: relative;
-        }
-        
-        .who-we-are-image::before {
-          content: '';
-          position: absolute;
-          top: -20px;
-          left: -20px;
-          right: 20px;
-          bottom: 20px;
-          background: linear-gradient(135deg, #667eea, #764ba2);
-          border-radius: 20px;
-          z-index: -1;
+          background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%23e2e8f0" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
           opacity: 0.3;
         }
-        
-        .who-we-are-image img {
-          width: 100%;
-          border-radius: 16px;
-          box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-          transition: transform 0.4s ease;
+
+        .mvv-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+          gap: 40px;
+          text-align: center;
+          max-width: 1200px;
+          margin: 0 auto;
+          position: relative;
+          z-index: 1;
         }
-        
-        .who-we-are-image img:hover {
-          transform: scale(1.05) rotate(2deg);
-        }
-        
-        @keyframes slideInLeft {
-          from {
-            opacity: 0;
-            transform: translateX(-80px);
-          }
-          to {
-            opacity: 1;
-            transform: translateX(0);
-          }
-        }
-        
-        @keyframes slideInRight {
-          from {
-            opacity: 0;
-            transform: translateX(80px);
-          }
-          to {
-            opacity: 1;
-            transform: translateX(0);
-          }
-        }
-        
-        .mission-vision {
-          background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+
+        .mvv-card {
+          background: rgba(255,255,255,0.9);
+          backdrop-filter: blur(10px);
+          padding: 40px 30px;
           border-radius: 24px;
-          padding: 4rem 2rem;
-          margin: 4rem 0;
+          box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+          border: 1px solid rgba(255,255,255,0.3);
+          transition: all 0.4s ease;
           position: relative;
           overflow: hidden;
         }
-        
-        .mission-vision::before {
+
+        .mvv-card::before {
           content: '';
           position: absolute;
           top: 0;
           left: 0;
           right: 0;
-          height: 4px;
-          background: linear-gradient(90deg, #667eea, #764ba2, #667eea);
-          background-size: 200% 100%;
-          animation: gradientSlide 3s ease-in-out infinite;
+          bottom: 0;
+          background: linear-gradient(135deg, transparent 0%, rgba(102, 126, 234, 0.03) 100%);
+          opacity: 0;
+          transition: opacity 0.4s ease;
         }
-        
-        @keyframes gradientSlide {
-          0%, 100% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
+
+        .mvv-card:hover::before {
+          opacity: 1;
         }
-        
-        .mission-vision-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-          gap: 3rem;
+
+        .mvv-card:hover {
+          transform: translateY(-12px);
+          box-shadow: 0 40px 100px rgba(0,0,0,0.15);
         }
-        
-        .mission-card, .vision-card {
-          background: white;
-          padding: 3rem;
-          border-radius: 20px;
-          box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+        .mvv-icon {
+          font-size: 64px;
+          margin-bottom: 24px;
+          display: block;
+          transition: transform 0.4s ease;
+        }
+
+        .mvv-card:hover .mvv-icon {
+          transform: scale(1.1) rotateY(15deg);
+        }
+
+        .mvv-card h3 {
+          font-size: 24px;
+          font-weight: 700;
+          margin-bottom: 16px;
+          color: #1a202c;
+        }
+
+        .mvv-text {
+          color: #4a5568;
+          font-size: 16px;
+        }
+
+        /* Philosophy Section */
+        .philosophy-section {
+          background: url('https://images.unsplash.com/photo-1513759565286-20e9c5fad06b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bGVhZGVyc2hpcHxlbnwwfHwwfHx8MA%3D%3D');
+          background-size: cover;
+          background-position: center;
+          background-attachment: fixed;
+          color: white;
+          text-align: center;
           position: relative;
           overflow: hidden;
         }
-        
-        .mission-card::before, .vision-card::before {
+
+        .philosophy-section::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: rgba(0, 0, 0, 0.4);
+          z-index: 0;
+        }
+
+        .philosophy-content {
+          max-width: 800px;
+          margin: 0 auto;
+          padding: 40px;
+          position: relative;
+          z-index: 1;
+        }
+
+        .philosophy-content .section-title {
+          color: white;
+          -webkit-text-fill-color: white;
+        }
+
+        .philosophy-content .section-title::after {
+          background: rgba(255,255,255,0.3);
+        }
+
+        .philosophy-text {
+          font-size: 20px;
+          line-height: 1.8;
+          opacity: 0.95;
+        }
+
+        /* Differentiators Section */
+        .diff-section {
+          background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+        }
+
+        .diff-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+          gap: 30px;
+          max-width: 1200px;
+          margin: 0 auto;
+        }
+
+        .diff-item {
+          display: flex;
+          align-items: flex-start;
+          gap: 20px;
+          background: rgba(255,255,255,0.8);
+          padding: 30px;
+          border-radius: 20px;
+          box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+          transition: all 0.4s ease;
+          border: 1px solid rgba(255,255,255,0.5);
+        }
+
+        .diff-item:hover {
+          transform: translateY(-6px);
+          box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+          background: rgba(255,255,255,0.95);
+        }
+
+        .diff-icon {
+          font-size: 40px;
+          flex-shrink: 0;
+          transition: transform 0.4s ease;
+        }
+
+        .diff-item:hover .diff-icon {
+          transform: scale(1.1);
+        }
+
+        .diff-text {
+          color: #4a5568;
+          font-size: 16px;
+        }
+
+        /* About Intro Section */
+        .about-intro-section {
+          background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+        }
+
+        .about-intro-container {
+          max-width: 1200px;
+          margin: 0 auto;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 60px;
+          align-items: center;
+        }
+
+        .about-image-wrapper {
+          position: relative;
+          overflow: hidden;
+          border-radius: 24px;
+          box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+          transition: transform 0.4s ease;
+        }
+
+        .about-image-wrapper:hover {
+          transform: scale(1.02);
+        }
+
+        .about-image-wrapper::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+          z-index: 1;
+          opacity: 0;
+          transition: opacity 0.4s ease;
+        }
+
+        .about-image-wrapper:hover::before {
+          opacity: 1;
+        }
+
+        .about-image {
+          width: 100%;
+          height: 400px;
+          object-fit: cover;
+          display: block;
+          transition: transform 0.4s ease;
+        }
+
+        .about-image-wrapper:hover .about-image {
+          transform: scale(1.05);
+        }
+
+        .about-content {
+          padding: 20px 0;
+        }
+
+        .about-text {
+          font-size: 18px;
+          line-height: 1.8;
+          color: #4a5568;
+          margin-bottom: 24px;
+          text-align: justify;
+          position: relative;
+          opacity: 0;
+          animation: slideInRight 0.8s ease forwards;
+        }
+
+        .about-text:nth-child(1) { animation-delay: 0.2s; }
+        .about-text:nth-child(2) { animation-delay: 0.4s; }
+        .about-text:nth-child(3) { animation-delay: 0.6s; }
+
+        .about-text:first-child {
+          font-size: 20px;
+          font-weight: 500;
+          color: #2d3748;
+        }
+
+        .about-text:first-child::before {
+          content: '';
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 4px;
+          height: 100%;
+          background: linear-gradient(180deg, #667eea, #764ba2);
+          border-radius: 2px;
+          margin-right: 20px;
+          left: -20px;
+        }
+
+        /* Responsive Design for About Section */
+        @media (max-width: 968px) {
+          .about-intro-container {
+            grid-template-columns: 1fr;
+            gap: 40px;
+            text-align: center;
+          }
+
+          .about-text {
+            text-align: left;
+          }
+
+          .about-image {
+            height: 300px;
+          }
+        }
+
+        @keyframes slideInRight {
+          from {
+            opacity: 0;
+            transform: translateX(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+        .cta-section {
+          background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+          color: white;
+          text-align: center;
+          position: relative;
+          overflow: hidden;
+        }
+
+        .cta-section::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: radial-gradient(circle at 50% 50%, rgba(102, 126, 234, 0.1) 0%, transparent 70%);
+        }
+
+        .cta-content {
+          position: relative;
+          z-index: 1;
+        }
+
+        .cta-title {
+          font-size: clamp(24px, 4vw, 36px);
+          font-weight: 700;
+          margin-bottom: 20px;
+        }
+
+        .cta-text {
+          font-size: 18px;
+          margin-bottom: 40px;
+          opacity: 0.9;
+        }
+
+        .cta-button {
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          color: white;
+          padding: 16px 40px;
+          border-radius: 50px;
+          font-weight: 600;
+          border: none;
+          cursor: pointer;
+          font-size: 16px;
+          transition: all 0.4s ease;
+          box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+          position: relative;
+          overflow: hidden;
+        }
+
+        .cta-button::before {
           content: '';
           position: absolute;
           top: 0;
           left: -100%;
           width: 100%;
           height: 100%;
-          background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
-          transition: left 0.6s ease;
+          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+          transition: left 0.6s;
         }
-        
-        .mission-card:hover, .vision-card:hover {
-          transform: translateY(-10px);
-          box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
-        }
-        
-        .mission-card:hover::before, .vision-card:hover::before {
+
+        .cta-button:hover::before {
           left: 100%;
         }
-        
-        .difference-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-          gap: 2rem;
-          margin-top: 3rem;
-        }
-        
-        .difference-card {
-          background: white;
-          padding: 2.5rem 2rem;
-          border-radius: 20px;
-          box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-          text-align: center;
-          position: relative;
-          overflow: hidden;
-          border: 1px solid rgba(102, 126, 234, 0.1);
-        }
-        
-        .difference-card:hover {
-          transform: translateY(-15px) scale(1.02);
-          box-shadow: 0 20px 50px rgba(102, 126, 234, 0.2);
-          border-color: #667eea;
-        }
-        
-        .difference-icon {
-          width: 60px;
-          height: 60px;
-          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          margin: 0 auto 1.5rem;
-          transition: all 0.4s ease;
-        }
-        
-        .difference-card:hover .difference-icon {
-          transform: scale(1.1) rotate(10deg);
-          box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
-        }
-        
-        .values-list {
-          max-width: 800px;
-          margin: 0 auto;
-          list-style: none;
-          padding: 0;
-        }
-        
-        .value-item {
-          background: white;
-          margin-bottom: 1.5rem;
-          padding: 2rem;
-          border-radius: 16px;
-          box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-          transition: all 0.4s ease;
-          border-left: 4px solid transparent;
-          opacity: 0;
-          transform: translateX(50px);
-          animation: valueSlideIn 0.6s ease-out forwards;
-        }
-        
-        .value-item:nth-child(1) { animation-delay: 0.1s; border-left-color: #667eea; }
-        .value-item:nth-child(2) { animation-delay: 0.2s; border-left-color: #764ba2; }
-        .value-item:nth-child(3) { animation-delay: 0.3s; border-left-color: #f093fb; }
-        .value-item:nth-child(4) { animation-delay: 0.4s; border-left-color: #f5576c; }
-        .value-item:nth-child(5) { animation-delay: 0.5s; border-left-color: #4facfe; }
-        
-        @keyframes valueSlideIn {
-          to {
-            opacity: 1;
-            transform: translateX(0);
-          }
-        }
-        
-        .value-item:hover {
-          transform: translateX(10px);
-          box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-        }
-        
-        .process-section {
-          background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-          border-radius: 24px;
-          padding: 4rem 2rem;
-          margin: 4rem 0;
-          position: relative;
-        }
-        
-        .process-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-          gap: 2rem;
-          position: relative;
-          z-index: 2;
-        }
-        
-        .process-step {
-          text-align: center;
-          position: relative;
-          background: white;
-          padding: 2rem 1.5rem;
-          border-radius: 16px;
-          box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-          transition: all 0.4s ease;
-          animation: processStepIn 0.8s ease-out forwards;
-          opacity: 0;
-          transform: translateY(30px);
-        }
-        
-        .process-step:nth-child(1) { animation-delay: 0.1s; }
-        .process-step:nth-child(2) { animation-delay: 0.2s; }
-        .process-step:nth-child(3) { animation-delay: 0.3s; }
-        .process-step:nth-child(4) { animation-delay: 0.4s; }
-        .process-step:nth-child(5) { animation-delay: 0.5s; }
-        
-        @keyframes processStepIn {
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        
-        .process-step:hover {
-          transform: translateY(-10px);
-          box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-        }
-        
-        .process-number {
-          width: 60px;
-          height: 60px;
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          margin: 0 auto 1.5rem;
-          color: white;
-          font-weight: 800;
-          font-size: 1.5rem;
-          position: relative;
-          z-index: 3;
-          transition: all 0.4s ease;
-        }
-        
-        .process-step:hover .process-number {
-          transform: scale(1.2);
-          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-        
-        .cta-section {
-          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-          border-radius: 24px;
-          padding: 4rem 2rem;
-          text-align: center;
-          color: white;
-          margin: 4rem 0;
-          position: relative;
-          overflow: hidden;
-          animation: ctaGlow 3s ease-in-out infinite alternate;
-        }
-        
-        @keyframes ctaGlow {
-          from { box-shadow: 0 20px 60px rgba(102, 126, 234, 0.3); }
-          to { box-shadow: 0 30px 80px rgba(102, 126, 234, 0.5); }
-        }
-        
-        .cta-section::before {
-          content: '';
-          position: absolute;
-          top: -50%;
-          left: -50%;
-          width: 200%;
-          height: 200%;
-          background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-          animation: shimmer 4s infinite;
-          pointer-events: none;
-        }
-        
-        @keyframes shimmer {
-          0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
-          100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
-        }
-        
-        .cta-button {
-          background: white;
-          color: #667eea;
-          border: none;
-          padding: 1rem 2.5rem;
-          font-size: 1.1rem;
-          font-weight: 600;
-          border-radius: 50px;
-          cursor: pointer;
-          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-          box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-          position: relative;
-          z-index: 2;
-        }
-        
+
         .cta-button:hover {
           transform: translateY(-3px);
-          box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-          background: #f8fafc;
+          box-shadow: 0 20px 50px rgba(102, 126, 234, 0.4);
         }
-        
-        .animate-in {
-          animation: fadeInUp 1s ease-out forwards;
-        }
-        
-        @keyframes fadeInUp {
+
+        /* Animations */
+        @keyframes slideInUp {
           from {
             opacity: 0;
-            transform: translateY(40px);
+            transform: translateY(30px);
           }
           to {
             opacity: 1;
             transform: translateY(0);
           }
         }
-        
+
+        @keyframes pulse {
+          0%, 100% {
+            transform: scale(1);
+          }
+          50% {
+            transform: scale(1.1);
+          }
+        }
+
+        /* Responsive Design */
         @media (max-width: 768px) {
-          .who-we-are {
-            grid-template-columns: 1fr;
-            gap: 2rem;
+          .timeline-line {
+            left: 30px;
           }
-          
-          .mission-vision-grid {
-            grid-template-columns: 1fr;
-            gap: 2rem;
+
+          .timeline-item {
+            width: 100%;
+            left: 0 !important;
+            padding-left: 80px !important;
+            padding-right: 20px !important;
+            text-align: left !important;
           }
-          
-          .difference-grid {
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
+
+          .timeline-circle {
+            left: 18px !important;
+            right: auto !important;
           }
-          
-          .process-grid {
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-          }
-          
+
           .section {
-            padding: 3rem 0;
+            padding: 60px 20px;
           }
-          
-          .mission-vision, .process-section, .cta-section {
-            padding: 2rem 1rem;
+
+          .mvv-grid,
+          .diff-grid {
+            grid-template-columns: 1fr;
+            gap: 30px;
+          }
+
+          .diff-item {
+            flex-direction: column;
+            text-align: center;
+            gap: 15px;
           }
         }
       `}</style>
 
-      <div className="about-container">
-        <FloatingShapes />
-        
-        {/* Hero Section */}
-        <div className="hero-section">
-          <div className="hero-overlay"></div>
-          <div className="hero-content">
-            <h1 className="hero-title">About DGlobal Technology</h1>
-            <p className="hero-subtitle">
-              Empowering small and medium businesses with innovative, practical, and scalable digital solutions designed to help them thrive in today's increasingly connected world.
+      {/* About Section */}
+      <section className="section about-intro-section">
+        <div className="about-intro-container">
+          <div className="about-image-wrapper">
+            <img 
+              src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8dGVhbSUyMHdvcmt8ZW58MHx8MHx8fDA%3D" 
+              alt="team"
+              className="about-image"
+            />
+          </div>
+          <div className="about-content">
+            <p className="about-text">
+              D-Global Tech is a forward-thinking, full-cycle IT solutions provider specializing in contract staffing and end-to-end project delivery. With a uniquely agile and quality-first approach, we connect enterprises with top-tier consultants under C2C and W2 models, while also executing complete technology projects through our in-house delivery teams.
+            </p>
+            <p className="about-text">
+              Our expertise spans ERP solutions, full-stack development, quality assurance, cloud transformation, data engineering, and beyond, serving diverse industries including healthcare, finance, retail, manufacturing, and logistics. By combining deep technical screening with rapid deployment, we ensure that clients get the right talent and solutions—faster, smarter, and better.
             </p>
           </div>
         </div>
+      </section>
 
-        <div className="content-wrapper">
-          {/* Who We Are Section */}
-          <div className="section" data-id="who-we-are">
-            <div className={`who-we-are ${isVisible['who-we-are'] ? 'animate-in' : ''}`}>
-              <div className="who-we-are-content">
-                <h2 style={{ fontSize: '2.5rem', fontWeight: '700', marginBottom: '2rem', background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-                  Who We Are
-                </h2>
-                <p style={{ fontSize: '1.1rem', marginBottom: '1.5rem', color: '#4a5568' }}>
-                  At DGlobal Technologies, we don't just build digital solutions — we build digital momentum. Rooted in India, we focus on transforming small and medium enterprises into future-ready brands by crafting smart, scalable, and impactful digital experiences.
-                </p>
-                <p style={{ fontSize: '1.1rem', color: '#4a5568' }}>
-                  Whether you're a family-owned store, a fast-growing startup, or a long-standing neighborhood brand, we bring your vision to life through custom websites, mobile applications, and results-driven digital marketing strategies.
-                </p>
-              </div>
-              <div className="who-we-are-image">
-                <div style={{ width: '100%', height: '400px', background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', borderRadius: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontSize: '1.2rem', fontWeight: '600' }}>
-                  DGlobal Team Image
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Mission and Vision */}
-          <div className="mission-vision" data-id="mission-vision">
-            <div className={`mission-vision-grid ${isVisible['mission-vision'] ? 'animate-in' : ''}`}>
-              <div className="mission-card">
-                <h3 style={{ fontSize: '2rem', fontWeight: '700', marginBottom: '1.5rem', background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-                  Our Mission
+      {/* Company Journey */}
+      <section className="section">
+        <h2 className="section-title">Our Journey</h2>
+        <div className="timeline-container">
+          <div className="timeline-line"></div>
+          {timelineEvents.map((event, index) => (
+            <div
+              key={index}
+              className={`timeline-item ${index % 2 === 0 ? 'left' : 'right'}`}
+            >
+              <div className="timeline-circle"></div>
+              <div className="timeline-content">
+                <h3 className="timeline-heading">
+                  {event.year} - {event.title}
                 </h3>
-                <p style={{ fontSize: '1.1rem', color: '#4a5568', lineHeight: '1.7' }}>
-                  At DGlobal Technologies, we simplify digital transformation by delivering affordable, high-quality, and tailored digital solutions. Our mission is to be the trusted technology partner for ambitious entrepreneurs and growing enterprises.
-                </p>
-              </div>
-              <div className="vision-card">
-                <h3 style={{ fontSize: '2rem', fontWeight: '700', marginBottom: '1.5rem', background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-                  Why We Exist
-                </h3>
-                <p style={{ fontSize: '1.1rem', color: '#4a5568', lineHeight: '1.7' }}>
-                  DGlobal Technologies was founded with a clear vision: countless ambitious businesses were falling behind simply because they lacked the technical expertise to embrace digital transformation. We set out to change that.
-                </p>
+                <p className="timeline-text">{event.text}</p>
               </div>
             </div>
-          </div>
+          ))}
+        </div>
+      </section>
 
-          {/* What Makes Us Different */}
-          <div className="section" data-id="difference">
-            <h2 className="section-title">What Makes Us Different</h2>
-            <div className={`difference-grid ${isVisible['difference'] ? 'animate-in' : ''}`}>
-              {[
-                { title: 'Local Understanding', desc: 'We know what St. Louis businesses need because we are one.', icon: '🎯' },
-                { title: 'Client-First Culture', desc: 'We don\'t offer one-size-fits-all packages. We listen, strategize, and build around your unique needs.', icon: '❤️' },
-                { title: 'Transparent Process', desc: 'No jargon, no hidden fees — just clear communication and dependable service.', icon: '🔍' },
-                { title: 'Real Results', desc: 'We don\'t just build digital products; we help drive real growth.', icon: '📈' }
-              ].map((item, index) => (
-                <div key={index} className="difference-card">
-                  <div className="difference-icon">
-                    <span style={{ fontSize: '1.8rem' }}>{item.icon}</span>
-                  </div>
-                  <h4 style={{ fontSize: '1.4rem', fontWeight: '600', marginBottom: '1rem', color: '#2d3748' }}>
-                    {item.title}
-                  </h4>
-                  <p style={{ color: '#4a5568', lineHeight: '1.6' }}>
-                    {item.desc}
-                  </p>
-                </div>
-              ))}
-            </div>
+      {/* Mission, Vision, Values */}
+      <section className="section mvv-section">
+        <h2 className="section-title">Our Foundation</h2>
+        <div className="mvv-grid">
+          <div className="mvv-card">
+            <FaBullseye className="mvv-icon" style={{ color: "#667eea" }} />
+            <h3>Our Mission</h3>
+            <p className="mvv-text">
+              Deliver transformative IT solutions that empower businesses to
+              thrive in the digital age.
+            </p>
           </div>
-
-          {/* Core Values */}
-          <div className="section" data-id="values">
-            <h2 className="section-title">Our Core Values</h2>
-            <ul className={`values-list ${isVisible['values'] ? 'animate-in' : ''}`}>
-              {values.map((val, i) => (
-                <li key={i} className="value-item">
-                  <strong style={{ color: '#2d3748', fontSize: '1.1rem' }}>{val.title}</strong>{' '}
-                  <span style={{ color: '#4a5568' }}>{val.text}</span>
-                </li>
-              ))}
-            </ul>
+          <div className="mvv-card">
+            <FaLightbulb className="mvv-icon" style={{ color: "#f6ad55" }} />
+            <h3>Our Vision</h3>
+            <p className="mvv-text">
+              To be the trusted partner for innovative, reliable, and agile
+              technology services worldwide.
+            </p>
           </div>
-
-          {/* Our Process */}
-          <div className="section" data-id="process">
-            <h2 className="section-title">Our Process</h2>
-            <div className="process-section">
-              <div className={`process-grid ${isVisible['process'] ? 'animate-in' : ''}`}>
-                {processSteps.map((step, index) => (
-                  <div key={step.num} className="process-step">
-                    <div className="process-number" style={{ background: step.color }}>
-                      {step.num}
-                    </div>
-                    <h5 style={{ fontSize: '1.3rem', marginBottom: '1rem', color: '#2d3748', fontWeight: '600' }}>
-                      {step.title}
-                    </h5>
-                    <p style={{ color: '#4a5568', lineHeight: '1.6' }}>
-                      {step.desc}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* CTA Section */}
-          <div className="cta-section" data-id="cta">
-            <div className={isVisible['cta'] ? 'animate-in' : ''}>
-              <h2 style={{ fontSize: '2.5rem', fontWeight: '700', marginBottom: '1rem' }}>
-                Ready to take your business online?
-              </h2>
-              <p style={{ fontSize: '1.3rem', marginBottom: '2rem', opacity: '0.9' }}>
-                Let's build something powerful together.
-              </p>
-              <button className="cta-button">
-                Book a free consultation today
-              </button>
-            </div>
+          <div className="mvv-card">
+            <FaHandshake className="mvv-icon" style={{ color: "#48bb78" }} />
+            <h3>Our Values</h3>
+            <p className="mvv-text">
+              Integrity, innovation, collaboration, and customer-first
+              commitment guide everything we do.
+            </p>
           </div>
         </div>
-      </div>
-    </>
+      </section>
+
+      {/* Leadership Philosophy */}
+      <section className="section philosophy-section">
+        <div className="philosophy-content">
+          <h2 className="section-title">Leadership Philosophy</h2>
+          <p className="philosophy-text">
+            Our leadership believes in empowering teams, fostering innovation, and
+            maintaining a client-centric approach. We lead by example, building an
+            inclusive culture that values collaboration, growth, and excellence in
+            every engagement.
+          </p>
+        </div>
+      </section>
+
+      {/* Differentiators */}
+      <section className="section diff-section">
+        <h2 className="section-title">What Makes Us Different</h2>
+        <div className="diff-grid">
+          <div className="diff-item">
+            <FaProjectDiagram className="diff-icon" style={{ color: "#667eea" }} />
+            <p className="diff-text">
+              Dual-track services — consultant placement (C2C) & in-house
+              project delivery for maximum flexibility.
+            </p>
+          </div>
+          <div className="diff-item">
+            <FaRegClock className="diff-icon" style={{ color: "#805ad5" }} />
+            <p className="diff-text">
+              Proactive compliance & streamlined onboarding for fast, secure
+              project starts.
+            </p>
+          </div>
+          <div className="diff-item">
+            <FaAward className="diff-icon" style={{ color: "#f6ad55" }} />
+            <p className="diff-text">
+              Deep technical screening and vetting ensures top-tier, job-ready
+              talent every time.
+            </p>
+          </div>
+          <div className="diff-item">
+            <FaUsers className="diff-icon" style={{ color: "#48bb78" }} />
+            <p className="diff-text">
+              White-glove client service with dedicated account management and
+              long-term partnership focus.
+            </p>
+          </div>
+        </div>
+      </section>
+
+
+      {/* Call to Action */}
+      <section className="section cta-section">
+        <div className="cta-content">
+          <h2 className="cta-title">
+            Let's Build Something Great Together
+          </h2>
+          <p className="cta-text">
+            Partner with D-Global Tech for agile, quality-first technology
+            solutions that drive real business results.
+          </p>
+          <button className="cta-button">
+            Start Your Project
+          </button>
+        </div>
+      </section>
+    </div>
   );
 };
 

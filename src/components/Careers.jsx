@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
 
 const Careers = () => {
   const [formData, setFormData] = useState({
@@ -18,6 +17,18 @@ const Careers = () => {
   const [submitted, setSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
+  const [filter, setFilter] = useState('All');
+
+  // Sample jobs for demo
+  const jobs = [
+    { title: 'Full Stack Developer', category: 'Tech', location: 'Remote', type: 'Full-time' },
+    { title: 'Cloud Engineer', category: 'Tech', location: 'On-site', type: 'Full-time' },
+    { title: 'Healthcare Data Analyst', category: 'Healthcare', location: 'Hybrid', type: 'Contract' },
+    { title: 'Financial Systems Consultant', category: 'Finance', location: 'Remote', type: 'Full-time' },
+    { title: 'UI/UX Designer', category: 'Tech', location: 'Remote', type: 'Contract' }
+  ];
+
+  const filteredJobs = filter === 'All' ? jobs : jobs.filter(job => job.category === filter);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -36,7 +47,6 @@ const Careers = () => {
     try {
       const formDataToSend = new FormData();
 
-      // Mapping formData keys to backend expected field names
       const backendFieldMap = {
         fullName: 'full_name',
         email: 'email',
@@ -77,34 +87,16 @@ const Careers = () => {
     }
   };
 
-
-  const validateForm = () => {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  const phoneRegex = /^[0-9]{10}$/;
-
-  if (!formData.fullName.trim()) return "Full name is required.";
-  if (!emailRegex.test(formData.email)) return "Invalid email format.";
-  if (!phoneRegex.test(formData.phone)) return "Phone number must be 10 digits.";
-  if (!formData.position.trim()) return "Position is required.";
-  if (!formData.workAuth) return "Work authorization is required.";
-  if (!formData.location) return "Preferred location is required.";
-  if (!formData.availability.trim()) return "Availability is required.";
-  if (!formData.resume) return "Resume is required.";
-
-  return null; // valid
-};
-
-
   const FloatingParticles = () => (
     <div className="floating-particles">
-      {[...Array(15)].map((_, i) => (
+      {[...Array(20)].map((_, i) => (
         <div
           key={i}
           className="particle"
           style={{
             left: `${Math.random() * 100}%`,
-            animationDelay: `${Math.random() * 15}s`,
-            animationDuration: `${15 + Math.random() * 10}s`
+            animationDelay: `${Math.random() * 20}s`,
+            animationDuration: `${20 + Math.random() * 15}s`
           }}
         />
       ))}
@@ -115,752 +107,665 @@ const Careers = () => {
     <>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-        
+
         * {
+          margin: 0;
+          padding: 0;
           box-sizing: border-box;
         }
-        
+
         .careers-container {
-          font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          font-family: 'Inter', sans-serif;
           min-height: 100vh;
+          background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 25%, #f1f5f9 50%, #e5e7eb 75%, #f9fafb 100%);
+          background-size: 400% 400%;
+          animation: gradientShift 15s ease infinite;
           position: relative;
           overflow-x: hidden;
         }
-        
+
+        @keyframes gradientShift {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+
         .floating-particles {
           position: absolute;
-          top: 0;
-          left: 0;
           width: 100%;
           height: 100%;
           pointer-events: none;
           z-index: 1;
         }
-        
+
         .particle {
           position: absolute;
           width: 4px;
           height: 4px;
-          background: rgba(255, 255, 255, 0.3);
+          background: rgba(99, 102, 241, 0.4);
           border-radius: 50%;
-          animation: float infinite linear;
+          animation: float linear infinite;
+          box-shadow: 0 0 10px rgba(99, 102, 241, 0.2);
         }
-        
+
         @keyframes float {
           0% {
             transform: translateY(100vh) rotate(0deg);
-            opacity: 0;
-          }
-          10% {
-            opacity: 1;
-          }
-          90% {
             opacity: 1;
           }
           100% {
-            transform: translateY(-10vh) rotate(360deg);
+            transform: translateY(-100px) rotate(360deg);
             opacity: 0;
           }
         }
-        
+
         .content-wrapper {
           position: relative;
           z-index: 2;
           max-width: 1200px;
           margin: 0 auto;
-          padding: 2rem;
+          padding: 0 20px;
         }
-        
+
         .alert-banner {
-          background: linear-gradient(135deg, rgba(255, 107, 107, 0.95) 0%, rgba(255, 142, 83, 0.95) 100%);
-          backdrop-filter: blur(10px);
-          border: 1px solid rgba(255, 255, 255, 0.2);
-          border-radius: 20px;
-          padding: 24px 32px;
-          margin-bottom: 40px;
+          background: linear-gradient(135deg, #3b82f6, #1d4ed8);
           color: white;
-          font-size: 1.1rem;
-          font-weight: 500;
+          padding: 16px 24px;
+          margin: 20px 0;
+          border-radius: 16px;
+          font-weight: 600;
           text-align: center;
-          box-shadow: 0 8px 32px rgba(255, 107, 107, 0.3);
+          box-shadow: 0 8px 32px rgba(59, 130, 246, 0.3);
+          backdrop-filter: blur(10px);
           animation: slideInDown 0.8s ease-out;
         }
-        
+
         @keyframes slideInDown {
           from {
-            transform: translateY(-100px);
             opacity: 0;
+            transform: translateY(-30px);
           }
           to {
-            transform: translateY(0);
             opacity: 1;
+            transform: translateY(0);
           }
         }
-        
+
         .hero-section {
-          background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 100%);
-          backdrop-filter: blur(20px);
-          border: 1px solid rgba(255, 255, 255, 0.2);
-          border-radius: 24px;
-          padding: 80px 40px;
           text-align: center;
-          margin-bottom: 60px;
-          box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+          padding: 80px 0;
           animation: fadeInUp 1s ease-out;
-          position: relative;
-          overflow: hidden;
         }
-        
-        .hero-section::before {
-          content: '';
-          position: absolute;
-          top: -50%;
-          left: -50%;
-          width: 200%;
-          height: 200%;
-          background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-          animation: shimmer 3s infinite;
-          pointer-events: none;
-        }
-        
-        @keyframes shimmer {
-          0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
-          100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
-        }
-        
+
         @keyframes fadeInUp {
           from {
-            transform: translateY(60px);
             opacity: 0;
+            transform: translateY(50px);
           }
           to {
-            transform: translateY(0);
             opacity: 1;
+            transform: translateY(0);
           }
         }
-        
+
         .hero-title {
           font-size: clamp(2.5rem, 5vw, 4rem);
           font-weight: 800;
           margin-bottom: 24px;
-          color: white;
-          text-shadow: 2px 4px 20px rgba(0, 0, 0, 0.3);
-          animation: titleGlow 2s ease-in-out infinite alternate;
-          position: relative;
-          z-index: 2;
-        }
-        
-        @keyframes titleGlow {
-          from { text-shadow: 2px 4px 20px rgba(0, 0, 0, 0.3); }
-          to { text-shadow: 2px 4px 30px rgba(255, 255, 255, 0.4); }
-        }
-        
-        .hero-subtitle {
-          font-size: 1.3rem;
-          color: rgba(255, 255, 255, 0.9);
-          max-width: 700px;
-          margin: 0 auto;
-          line-height: 1.7;
-          font-weight: 400;
-          position: relative;
-          z-index: 2;
-        }
-        
-        .form-container {
-          background: rgba(255, 255, 255, 0.95);
-          backdrop-filter: blur(20px);
-          border: 1px solid rgba(255, 255, 255, 0.3);
-          border-radius: 24px;
-          padding: 50px;
-          box-shadow: 0 25px 80px rgba(0, 0, 0, 0.15);
-          animation: slideInUp 0.8s ease-out 0.3s both;
-          position: relative;
-          overflow: hidden;
-        }
-        
-        .form-container::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          height: 4px;
-          background: linear-gradient(90deg, #667eea, #764ba2, #667eea);
-          background-size: 200% 100%;
-          animation: gradientSlide 3s ease-in-out infinite;
-        }
-        
-        @keyframes gradientSlide {
-          0%, 100% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-        }
-        
-        @keyframes slideInUp {
-          from {
-            transform: translateY(80px);
-            opacity: 0;
-          }
-          to {
-            transform: translateY(0);
-            opacity: 1;
-          }
-        }
-        
-        .form-title {
-          font-size: 2.5rem;
-          font-weight: 700;
-          margin-bottom: 40px;
-          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          background: linear-gradient(135deg, #1f2937, #374151);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
-          background-clip: text;
+          text-shadow: 0 4px 20px rgba(0,0,0,0.1);
+          letter-spacing: -0.02em;
         }
-        
-        .form-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-          gap: 24px;
-          margin-bottom: 24px;
+
+        .hero-subtitle {
+          font-size: 1.25rem;
+          color: #6b7280;
+          max-width: 600px;
+          margin: 0 auto;
+          line-height: 1.6;
+          font-weight: 400;
         }
-        
-        .form-group {
-          position: relative;
-        }
-        
-        .form-label {
-          display: block;
-          margin-bottom: 8px;
-          font-weight: 600;
-          color: #374151;
-          font-size: 0.95rem;
-          transition: color 0.3s ease;
-        }
-        
-        .form-input, .form-select, .form-textarea {
-          width: 100%;
-          padding: 16px 20px;
-          border: 2px solid #e5e7eb;
-          border-radius: 12px;
-          font-size: 16px;
-          font-family: inherit;
-          background: rgba(255, 255, 255, 0.8);
-          backdrop-filter: blur(10px);
-          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-          position: relative;
-        }
-        
-        .form-input:focus, .form-select:focus, .form-textarea:focus {
-          outline: none;
-          border-color: #667eea;
-          box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
-          transform: translateY(-2px);
-          background: white;
-        }
-        
-        .form-input:hover, .form-select:hover, .form-textarea:hover {
-          border-color: #d1d5db;
-          transform: translateY(-1px);
-        }
-        
-        .form-textarea {
-          resize: vertical;
-          min-height: 120px;
-        }
-        
-        .file-input {
-          width: 100%;
-          padding: 20px;
-          border: 2px dashed #d1d5db;
-          border-radius: 12px;
-          background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
-          font-size: 16px;
-          cursor: pointer;
-          transition: all 0.3s ease;
-          text-align: center;
-          position: relative;
-          overflow: hidden;
-        }
-        
-        .file-input:hover {
-          border-color: #667eea;
-          background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
-          transform: translateY(-2px);
-        }
-        
-        .submit-button {
-          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-          color: white;
-          border: none;
-          padding: 18px 40px;
-          font-size: 1.1rem;
-          font-weight: 600;
-          border-radius: 12px;
-          cursor: pointer;
-          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-          width: 100%;
-          max-width: 320px;
-          margin: 30px auto 0;
-          display: block;
-          position: relative;
-          overflow: hidden;
-          box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
-        }
-        
-        .submit-button:hover:not(:disabled) {
-          transform: translateY(-3px);
-          box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
-        }
-        
-        .submit-button:active {
-          transform: translateY(-1px);
-        }
-        
-        .submit-button:disabled {
-          background: #d1d5db;
-          cursor: not-allowed;
-          transform: none;
-          box-shadow: none;
-        }
-        
-        .success-container {
-          background: rgba(255, 255, 255, 0.95);
-          backdrop-filter: blur(20px);
-          border: 1px solid rgba(255, 255, 255, 0.3);
-          border-radius: 24px;
-          padding: 60px 40px;
-          text-align: center;
-          box-shadow: 0 25px 80px rgba(0, 0, 0, 0.15);
-          animation: successBounce 0.8s ease-out;
-        }
-        
-        @keyframes successBounce {
-          0% { transform: scale(0.3) rotate(-10deg); opacity: 0; }
-          50% { transform: scale(1.1) rotate(5deg); }
-          100% { transform: scale(1) rotate(0deg); opacity: 1; }
-        }
-        
-        .success-icon {
-          width: 100px;
-          height: 100px;
-          margin: 0 auto 30px;
-          background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-          0%, 100% { transform: scale(1); }
-          50% { transform: scale(1.1); }
-        }
-        
+
         .values-section {
-          margin-top: 80px;
-          text-align: center;
-          animation: fadeInUp 1s ease-out 0.6s both;
+          margin: 80px 0;
+          padding: 60px 40px;
+          background: rgba(255, 255, 255, 0.9);
+          backdrop-filter: blur(20px);
+          border-radius: 32px;
+          border: 1px solid rgba(226, 232, 240, 0.8);
+          box-shadow: 0 24px 60px rgba(0,0,0,0.08);
+          animation: slideInUp 0.8s ease-out 0.2s both;
         }
-        
+
+        @keyframes slideInUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
         .values-title {
-          font-size: 2.8rem;
+          font-size: 2.5rem;
           font-weight: 700;
-          margin-bottom: 60px;
-          color: white;
-          text-shadow: 2px 4px 20px rgba(0, 0, 0, 0.3);
+          text-align: center;
+          margin-bottom: 50px;
+          background: linear-gradient(135deg, #1f2937, #374151);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          letter-spacing: -0.01em;
         }
-        
+
         .values-grid {
           display: grid;
           grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
           gap: 32px;
         }
-        
+
         .value-card {
-          background: rgba(255, 255, 255, 0.9);
-          backdrop-filter: blur(20px);
-          border: 1px solid rgba(255, 255, 255, 0.3);
-          border-radius: 20px;
-          padding: 40px 30px;
+          background: rgba(255, 255, 255, 0.95);
+          padding: 40px 32px;
+          border-radius: 24px;
           text-align: center;
-          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+          backdrop-filter: blur(10px);
+          border: 1px solid rgba(226, 232, 240, 0.5);
+          box-shadow: 0 8px 32px rgba(0,0,0,0.06);
+          transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
           position: relative;
           overflow: hidden;
         }
-        
-        .value-card:hover {
-          transform: translateY(-15px) scale(1.02);
-          box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2);
-          background: rgba(255, 255, 255, 0.95);
-        }
-        
+
         .value-card::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: linear-gradient(135deg, rgba(99, 102, 241, 0.05), rgba(139, 92, 246, 0.05));
+          opacity: 0;
+          transition: opacity 0.3s ease;
+        }
+
+        .value-card:hover {
+          transform: translateY(-8px);
+          box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+        }
+
+        .value-card:hover::before {
+          opacity: 1;
+        }
+
+        .value-icon {
+          font-size: 3rem;
+          margin-bottom: 20px;
+          display: block;
+          filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+        }
+
+        .value-title {
+          font-size: 1.25rem;
+          font-weight: 600;
+          margin-bottom: 16px;
+          color: #1f2937;
+        }
+
+        .value-description {
+          color: #6b7280;
+          line-height: 1.6;
+          font-weight: 400;
+        }
+
+        .jobs-section {
+          margin: 80px 0;
+          padding: 60px 40px;
+          background: rgba(255, 255, 255, 0.95);
+          border-radius: 32px;
+          box-shadow: 0 24px 60px rgba(0,0,0,0.1);
+          animation: slideInUp 0.8s ease-out 0.4s both;
+        }
+
+        .jobs-title {
+          font-size: 2.5rem;
+          font-weight: 700;
+          margin-bottom: 40px;
+          text-align: center;
+          background: linear-gradient(135deg, #667eea, #764ba2);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          letter-spacing: -0.01em;
+        }
+
+        .filter-buttons {
+          display: flex;
+          justify-content: center;
+          flex-wrap: wrap;
+          gap: 12px;
+          margin-bottom: 40px;
+        }
+
+        .filter-buttons button {
+          padding: 12px 24px;
+          border-radius: 50px;
+          border: none;
+          cursor: pointer;
+          background: #f3f4f6;
+          color: #6b7280;
+          font-weight: 500;
+          font-size: 0.95rem;
+          transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+          position: relative;
+          overflow: hidden;
+        }
+
+        .filter-buttons button::before {
           content: '';
           position: absolute;
           top: 0;
           left: -100%;
           width: 100%;
           height: 100%;
-          background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
-          transition: left 0.5s ease;
+          background: linear-gradient(135deg, #667eea, #764ba2);
+          transition: left 0.3s ease;
         }
-        
-        .value-card:hover::before {
-          left: 100%;
+
+        .filter-buttons button:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 8px 25px rgba(0,0,0,0.1);
         }
-        
-        .value-icon {
-          font-size: 3.5rem;
-          margin-bottom: 24px;
-          display: block;
-          animation: bounce 2s infinite;
+
+        .filter-buttons button.active {
+          background: linear-gradient(135deg, #667eea, #764ba2);
+          color: white;
+          box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
         }
-        
-        @keyframes bounce {
-          0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-          40% { transform: translateY(-10px); }
-          60% { transform: translateY(-5px); }
+
+        .job-card {
+          background: white;
+          border-radius: 20px;
+          padding: 32px;
+          margin-bottom: 20px;
+          box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+          border: 1px solid rgba(0,0,0,0.05);
+          transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+          position: relative;
+          overflow: hidden;
         }
-        
-        .value-title {
-          font-size: 1.6rem;
+
+        .job-card::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 4px;
+          height: 100%;
+          background: linear-gradient(135deg, #667eea, #764ba2);
+          transform: scaleY(0);
+          transition: transform 0.3s ease;
+        }
+
+        .job-card:hover {
+          transform: translateY(-4px);
+          box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+        }
+
+        .job-card:hover::before {
+          transform: scaleY(1);
+        }
+
+        .job-card h3 {
+          font-size: 1.25rem;
           font-weight: 600;
-          margin-bottom: 16px;
-          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          margin-bottom: 8px;
+          color: #1f2937;
+        }
+
+        .job-card p {
+          color: #6b7280;
+          margin-bottom: 4px;
+          font-weight: 500;
+        }
+
+        .job-card small {
+          color: #9ca3af;
+          font-size: 0.875rem;
+        }
+
+        .immigration-section {
+          margin: 80px 0;
+          text-align: center;
+          animation: slideInUp 0.8s ease-out 0.6s both;
+        }
+
+        .immigration-section p {
+          font-size: 1.125rem;
+          line-height: 1.7;
+          color: #4b5563;
+          font-weight: 400;
+        }
+
+        .form-container {
+          margin: 80px 0;
+          padding: 60px 40px;
+          background: rgba(255, 255, 255, 0.95);
+          border-radius: 32px;
+          box-shadow: 0 24px 60px rgba(0,0,0,0.1);
+          animation: slideInUp 0.8s ease-out 0.8s both;
+        }
+
+        .form-title {
+          font-size: 2.5rem;
+          font-weight: 700;
+          text-align: center;
+          margin-bottom: 40px;
+          background: linear-gradient(135deg, #667eea, #764ba2);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
-          background-clip: text;
+          letter-spacing: -0.01em;
         }
-        
-        .value-description {
-          line-height: 1.7;
-          color: #6b7280;
-          font-size: 1rem;
-        }
-        
+
         .error-banner {
-          background: linear-gradient(135deg, rgba(239, 68, 68, 0.9) 0%, rgba(220, 38, 38, 0.9) 100%);
-          backdrop-filter: blur(10px);
+          background: linear-gradient(135deg, #ef4444, #dc2626);
           color: white;
-          border: 1px solid rgba(255, 255, 255, 0.2);
-          border-radius: 12px;
           padding: 16px 24px;
-          margin-bottom: 24px;
+          margin-bottom: 32px;
+          border-radius: 12px;
           font-weight: 500;
           text-align: center;
-          animation: shake 0.5s ease-in-out;
         }
-        
-        @keyframes shake {
-          0%, 100% { transform: translateX(0); }
-          25% { transform: translateX(-5px); }
-          75% { transform: translateX(5px); }
+
+        .form-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+          gap: 24px;
+          margin-bottom: 24px;
         }
-        
+
+        .form-group {
+          display: flex;
+          flex-direction: column;
+        }
+
+        .form-label {
+          font-weight: 600;
+          margin-bottom: 8px;
+          color: #374151;
+          font-size: 0.95rem;
+        }
+
+        .form-input, .form-select, .form-textarea {
+          padding: 16px 20px;
+          border: 2px solid #e5e7eb;
+          border-radius: 12px;
+          font-size: 1rem;
+          transition: all 0.3s ease;
+          background: white;
+          font-family: 'Inter', sans-serif;
+        }
+
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
+          outline: none;
+          border-color: #667eea;
+          box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .form-textarea {
+          min-height: 120px;
+          resize: vertical;
+        }
+
+        .file-input {
+          padding: 16px;
+          border: 2px dashed #d1d5db;
+          border-radius: 12px;
+          transition: all 0.3s ease;
+          cursor: pointer;
+          background: #fafafa;
+        }
+
+        .file-input:hover {
+          border-color: #667eea;
+          background: #f8faff;
+        }
+
+        .submit-button {
+          width: 100%;
+          padding: 18px 32px;
+          background: linear-gradient(135deg, #667eea, #764ba2);
+          color: white;
+          border: none;
+          border-radius: 12px;
+          font-size: 1.1rem;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+          margin-top: 32px;
+          position: relative;
+          overflow: hidden;
+        }
+
+        .submit-button::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+          transition: left 0.5s ease;
+        }
+
+        .submit-button:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 12px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        .submit-button:hover::before {
+          left: 100%;
+        }
+
+        .submit-button:disabled {
+          opacity: 0.7;
+          cursor: not-allowed;
+          transform: none;
+          box-shadow: none;
+        }
+
         .spinner {
-          width: 24px;
-          height: 24px;
-          border: 3px solid rgba(255, 255, 255, 0.3);
-          border-top: 3px solid white;
+          width: 20px;
+          height: 20px;
+          border: 2px solid rgba(255,255,255,0.3);
+          border-top: 2px solid white;
           border-radius: 50%;
           animation: spin 1s linear infinite;
         }
-        
+
         @keyframes spin {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
         }
-        
+
+        .success-container {
+          text-align: center;
+          padding: 80px 40px;
+          background: rgba(255, 255, 255, 0.95);
+          border-radius: 32px;
+          margin: 80px 0;
+          box-shadow: 0 24px 60px rgba(0,0,0,0.1);
+          animation: zoomIn 0.6s ease-out;
+        }
+
+        @keyframes zoomIn {
+          from {
+            opacity: 0;
+            transform: scale(0.9);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+
+        .success-icon {
+          font-size: 4rem;
+          color: #10b981;
+          margin-bottom: 24px;
+          display: inline-block;
+          animation: bounce 1s ease-in-out;
+        }
+
+        @keyframes bounce {
+          0%, 20%, 50%, 80%, 100% {
+            transform: translateY(0);
+          }
+          40% {
+            transform: translateY(-20px);
+          }
+          60% {
+            transform: translateY(-10px);
+          }
+        }
+
+        .success-container h2 {
+          font-size: 2rem;
+          font-weight: 700;
+          margin-bottom: 16px;
+          color: #1f2937;
+        }
+
+        .success-container p {
+          font-size: 1.125rem;
+          color: #6b7280;
+          margin-bottom: 32px;
+        }
+
+        .testimonials-section {
+          margin: 80px 0;
+          text-align: center;
+          animation: slideInUp 0.8s ease-out 1s both;
+        }
+
+        .testimonials-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+          gap: 32px;
+          margin-top: 50px;
+        }
+
+        .testimonial-card {
+          background: rgba(255, 255, 255, 0.95);
+          padding: 40px 32px;
+          border-radius: 24px;
+          backdrop-filter: blur(20px);
+          border: 1px solid rgba(226, 232, 240, 0.5);
+          box-shadow: 0 8px 32px rgba(0,0,0,0.06);
+          transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+          position: relative;
+        }
+
+        .testimonial-card::before {
+          content: '"';
+          position: absolute;
+          top: 16px;
+          left: 24px;
+          font-size: 4rem;
+          color: rgba(99, 102, 241, 0.2);
+          font-family: serif;
+          line-height: 1;
+        }
+
+        .testimonial-card:hover {
+          transform: translateY(-8px);
+          box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+        }
+
+        .testimonial-card p {
+          color: #4b5563;
+          font-size: 1.1rem;
+          line-height: 1.6;
+          margin-bottom: 24px;
+          font-style: italic;
+          position: relative;
+          z-index: 1;
+        }
+
+        .testimonial-card strong {
+          color: #1f2937;
+          font-weight: 600;
+          font-size: 1rem;
+        }
+
         @media (max-width: 768px) {
           .content-wrapper {
-            padding: 1rem;
+            padding: 0 16px;
           }
           
           .hero-section {
-            padding: 60px 30px;
-            margin-bottom: 40px;
+            padding: 60px 0;
           }
           
-          .form-container {
-            padding: 30px 20px;
+          .values-section, .jobs-section, .form-container {
+            padding: 40px 24px;
+            margin: 60px 0;
           }
           
           .form-grid {
             grid-template-columns: 1fr;
-            gap: 20px;
           }
           
-          .values-section {
-            margin-top: 60px;
+          .filter-buttons {
+            justify-content: flex-start;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .hero-title {
+            font-size: 2rem;
           }
           
-          .values-grid {
-            gap: 24px;
+          .values-title, .jobs-title, .form-title {
+            font-size: 1.8rem;
+          }
+          
+          .values-section, .jobs-section, .form-container {
+            padding: 32px 20px;
           }
         }
       `}</style>
 
       <div className="careers-container">
         <FloatingParticles />
-        
+
         <div className="content-wrapper">
-          {/* Alert Banner */}
+          {/* Alert */}
           <div className="alert-banner">
-            <span style={{ marginRight: '12px', fontSize: '1.2rem' }}>⚠️</span>
-            <strong>Important Notice:</strong> We currently have no open positions, but we welcome your interest! Submit your details and we'll contact you when opportunities arise.
+            ⚠️ <strong>Important Notice:</strong> We currently have limited openings — but we welcome your interest!
           </div>
 
-          {/* Hero Section */}
+          {/* Hero */}
           <div className="hero-section">
-            <h1 className="hero-title">Future Opportunities at DGlobal Technologies</h1>
-            <p className="hero-subtitle">
-              We're always seeking exceptional talent to join our innovative team. While we may not be actively hiring, we believe in building relationships with outstanding professionals like you.
-            </p>
+            <h1 className="hero-title">Future Opportunities at D-Global Tech</h1>
+            <p className="hero-subtitle">We're always looking for talented people. Submit your profile, and we'll reach out when a matching role opens.</p>
           </div>
 
-          {/* Form or Success Message */}
-          {!submitted ? (
-            <div className="form-container">
-              <h2 className="form-title">Express Your Interest</h2>
-              
-              {error && (
-                <div className="error-banner">
-                  {error}
-                </div>
-              )}
-              
-              <form onSubmit={handleSubmit}>
-                <div className="form-grid">
-                  <div className="form-group">
-                    <label className="form-label">Full Name *</label>
-                    <input
-                      type="text"
-                      name="fullName"
-                      value={formData.fullName}
-                      onChange={handleChange}
-                      required
-                      className="form-input"
-                      placeholder="Enter your full name"
-                    />
-                  </div>
-                  
-                  <div className="form-group">
-                    <label className="form-label">Email Address *</label>
-                    <input
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      className="form-input"
-                      placeholder="your.email@example.com"
-                    />
-                  </div>
-                </div>
-                
-                <div className="form-grid">
-                  <div className="form-group">
-                    <label className="form-label">Phone Number *</label>
-                    <input
-                      type="tel"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      required
-                      className="form-input"
-                      placeholder="+1 (555) 123-4567"
-                    />
-                  </div>
-                  
-                  <div className="form-group">
-                    <label className="form-label">LinkedIn Profile</label>
-                    <input
-                      type="url"
-                      name="linkedIn"
-                      value={formData.linkedIn}
-                      onChange={handleChange}
-                      className="form-input"
-                      placeholder="https://linkedin.com/in/yourprofile"
-                    />
-                  </div>
-                </div>
-                
-                <div className="form-grid">
-                  <div className="form-group">
-                    <label className="form-label">Position/Role Interested In *</label>
-                    <input
-                      type="text"
-                      name="position"
-                      value={formData.position}
-                      onChange={handleChange}
-                      required
-                      className="form-input"
-                      placeholder="e.g., Software Engineer, Product Manager"
-                    />
-                  </div>
-                  
-                  <div className="form-group">
-                    <label className="form-label">Work Authorization Status *</label>
-                    <select
-                      name="workAuth"
-                      value={formData.workAuth}
-                      onChange={handleChange}
-                      required
-                      className="form-select"
-                    >
-                      <option value="">Select your status...</option>
-                      <option value="OPT">OPT</option>
-                      <option value="CPT">CPT</option>
-                      <option value="H1B">H1B</option>
-                      <option value="Green Card">Green Card</option>
-                      <option value="US Citizen">US Citizen</option>
-                      <option value="Other">Other</option>
-                    </select>
-                  </div>
-                </div>
-                
-                <div className="form-grid">
-                  <div className="form-group">
-                    <label className="form-label">Preferred Work Location *</label>
-                    <select
-                      name="location"
-                      value={formData.location}
-                      onChange={handleChange}
-                      required
-                      className="form-select"
-                    >
-                      <option value="">Select preference...</option>
-                      <option value="Remote">Remote</option>
-                      <option value="On-site">On-site</option>
-                      <option value="Hybrid">Hybrid</option>
-                      <option value="Flexible">Flexible</option>
-                    </select>
-                  </div>
-                  
-                  <div className="form-group">
-                    <label className="form-label">Availability to Start *</label>
-                    <input
-                      type="text"
-                      name="availability"
-                      value={formData.availability}
-                      onChange={handleChange}
-                      required
-                      className="form-input"
-                      placeholder="e.g., Immediately, 2 weeks notice"
-                    />
-                  </div>
-                </div>
-                
-                <div className="form-group" style={{ marginBottom: '24px' }}>
-                  <label className="form-label">Resume Upload *</label>
-                  <input
-                    type="file"
-                    name="resume"
-                    onChange={handleFileChange}
-                    required
-                    accept=".pdf,.doc,.docx"
-                    className="file-input"
-                  />
-                </div>
-                
-                <div className="form-group" style={{ marginBottom: '32px' }}>
-                  <label className="form-label">Additional Comments</label>
-                  <textarea
-                    name="comments"
-                    value={formData.comments}
-                    onChange={handleChange}
-                    className="form-textarea"
-                    placeholder="Tell us more about yourself, your interests, or anything else you'd like us to know..."
-                  />
-                </div>
-                
-                <button
-                  type="submit"
-                  disabled={isLoading}
-                  className="submit-button"
-                >
-                  {isLoading ? (
-                    <div className="spinner" />
-                  ) : (
-                    'Submit Your Interest'
-                  )}
-                </button>
-              </form>
-            </div>
-          ) : (
-            <div className="success-container">
-              <div className="success-icon">
-                <svg
-                  width="50"
-                  height="50"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="white"
-                  strokeWidth="3"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                  <polyline points="22 4 12 14.01 9 11.01" />
-                </svg>
-              </div>
-              <h2 style={{ fontSize: '2.5rem', marginBottom: '24px', background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-                Thank You!
-              </h2>
-              <p style={{ fontSize: '1.2rem', lineHeight: '1.7', maxWidth: '600px', margin: '0 auto 40px', color: '#6b7280' }}>
-                Your interest has been successfully submitted! We've received your information and will reach out when opportunities that match your profile become available.
-              </p>
-              <button
-                onClick={() => {
-                  setSubmitted(false);
-                  setFormData({
-                    fullName: '',
-                    email: '',
-                    phone: '',
-                    linkedIn: '',
-                    position: '',
-                    workAuth: '',
-                    location: '',
-                    availability: '',
-                    comments: '',
-                    resume: null
-                  });
-                }}
-                className="submit-button"
-                style={{ background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)' }}
-              >
-                Submit Another Response
-              </button>
-            </div>
-          )}
-
-          {/* Values Section */}
+          {/* Why join */}
           <div className="values-section">
-            <h2 className="values-title">Why Choose DGlobal Technologies?</h2>
-            
+            <h2 className="values-title">Why Join D-Global Tech?</h2>
             <div className="values-grid">
               {[
-                {
-                  icon: '🚀',
-                  title: 'Innovation at Scale',
-                  description: 'Work on groundbreaking projects that push the boundaries of technology and create meaningful impact in the digital world.'
-                },
-                {
-                  icon: '🌍',
-                  title: 'Global Reach',
-                  description: 'Your contributions will reach millions of users worldwide, making a real difference in how people interact with technology.'
-                },
-                {
-                  icon: '👥',
-                  title: 'Collaborative Excellence',
-                  description: 'Join a diverse team of passionate professionals who value knowledge sharing, mentorship, and collective growth.'
-                },
-                {
-                  icon: '📈',
-                  title: 'Unlimited Growth',
-                  description: 'Experience continuous learning opportunities, career advancement paths, and the support to achieve your professional goals.'
-                }
+                { icon: '🚀', title: 'Innovation at Scale', description: 'Work on cutting-edge tech that impacts millions.' },
+                { icon: '🌍', title: 'Global Reach', description: 'Collaborate with teams and clients worldwide.' },
+                { icon: '👥', title: 'Collaborative Excellence', description: 'A culture of mentorship and teamwork.' },
+                { icon: '📈', title: 'Unlimited Growth', description: 'Learning, career advancement, and support.' }
               ].map((item, index) => (
                 <div key={index} className="value-card">
                   <span className="value-icon">{item.icon}</span>
@@ -868,6 +773,178 @@ const Careers = () => {
                   <p className="value-description">{item.description}</p>
                 </div>
               ))}
+            </div>
+          </div>
+
+          {/* Jobs Section */}
+          <div className="jobs-section">
+            <h2 className="jobs-title">Available Roles</h2>
+            <div className="filter-buttons">
+              {['All', 'Tech', 'Healthcare', 'Finance'].map(cat => (
+                <button
+                  key={cat}
+                  className={filter === cat ? 'active' : ''}
+                  onClick={() => setFilter(cat)}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
+            {filteredJobs.map((job, idx) => (
+              <div key={idx} className="job-card">
+                <h3>{job.title}</h3>
+                <p>{job.location} • {job.type}</p>
+                <small>Category: {job.category}</small>
+              </div>
+            ))}
+          </div>
+
+          {/* Immigration Support */}
+          <div className="immigration-section">
+            <h2 className="values-title">Immigration & Green Card Support</h2>
+            <p style={{ maxWidth: '700px', margin: '0 auto' }}>
+              At D-Global Tech, we actively support talented professionals with work visas, OPT/CPT, H-1B, and Green Card processing. Our HR team works closely with you to ensure a smooth process.
+            </p>
+          </div>
+
+          {/* Form */}
+          {!submitted ? (
+            <div className="form-container">
+              <h2 className="form-title">Submit Your Resume</h2>
+              {error && <div className="error-banner">{error}</div>}
+              <form onSubmit={handleSubmit}>
+                {/* Full Name & Email */}
+                <div className="form-grid">
+                  <div className="form-group">
+                    <label className="form-label">Full Name *</label>
+                    <input type="text" name="fullName" value={formData.fullName} onChange={handleChange} required className="form-input" />
+                  </div>
+                  <div className="form-group">
+                    <label className="form-label">Email *</label>
+                    <input type="email" name="email" value={formData.email} onChange={handleChange} required className="form-input" />
+                  </div>
+                </div>
+                {/* Phone & LinkedIn */}
+                <div className="form-grid">
+                  <div className="form-group">
+                    <label className="form-label">Phone *</label>
+                    <input type="tel" name="phone" value={formData.phone} onChange={handleChange} required className="form-input" />
+                  </div>
+                  <div className="form-group">
+                    <label className="form-label">LinkedIn</label>
+                    <input type="url" name="linkedIn" value={formData.linkedIn} onChange={handleChange} className="form-input" />
+                  </div>
+                </div>
+                {/* Position & Work Auth */}
+                <div className="form-grid">
+                  <div className="form-group">
+                    <label className="form-label">Position *</label>
+                    <input type="text" name="position" value={formData.position} onChange={handleChange} required className="form-input" />
+                  </div>
+                  <div className="form-group">
+                    <label className="form-label">Work Authorization *</label>
+                    <select name="workAuth" value={formData.workAuth} onChange={handleChange} required className="form-select">
+                      <option value="">Select...</option>
+                      <option>OPT</option>
+                      <option>CPT</option>
+                      <option>H1B</option>
+                      <option>Green Card</option>
+                      <option>US Citizen</option>
+                      <option>Other</option>
+                    </select>
+                  </div>
+                </div>
+                {/* Location & Availability */}
+                <div className="form-grid">
+                  <div className="form-group">
+                    <label className="form-label">Preferred Location *</label>
+                    <select name="location" value={formData.location} onChange={handleChange} required className="form-select">
+                      <option value="">Select...</option>
+                      <option>Remote</option>
+                      <option>On-site</option>
+                      <option>Hybrid</option>
+                      <option>Flexible</option>
+                    </select>
+                  </div>
+                  <div className="form-group">
+                    <label className="form-label">Availability *</label>
+                    <input type="text" name="availability" value={formData.availability} onChange={handleChange} required className="form-input" />
+                  </div>
+                </div>
+                {/* Resume */}
+                <div className="form-group">
+                  <label className="form-label">Resume *</label>
+                  <input type="file" name="resume" onChange={handleFileChange} required accept=".pdf,.doc,.docx" className="file-input" />
+                </div>
+                {/* Comments */}
+                <div className="form-group">
+                  <label className="form-label">Comments</label>
+                  <textarea name="comments" value={formData.comments} onChange={handleChange} className="form-textarea" placeholder="Tell us about yourself, your experience, or any specific interests..." />
+                </div>
+                {/* Submit */}
+                <button type="submit" disabled={isLoading} className="submit-button">
+                  {isLoading ? <div className="spinner" /> : 'Submit Application'}
+                </button>
+              </form>
+            </div>
+          ) : (
+            <div className="success-container">
+              <div className="success-icon">✔</div>
+              <h2>Thank You!</h2>
+              <p>We've received your application and will be in touch when we have a matching opportunity.</p>
+              <button onClick={() => { setSubmitted(false); setFormData({ fullName: '', email: '', phone: '', linkedIn: '', position: '', workAuth: '', location: '', availability: '', comments: '', resume: null }); }} className="submit-button">Submit Another Application</button>
+            </div>
+          )}
+
+          {/* Testimonials */}
+          <div className="testimonials-section">
+            <h2 className="values-title">What Our Team Says</h2>
+            <div className="testimonials-grid">
+              {[
+                { name: 'Amit S.', role: 'Senior Developer', feedback: 'D-Global Tech sponsored my H-1B and gave me challenging projects that accelerated my career growth. The mentorship here is exceptional.' },
+                { name: 'Sophia R.', role: 'Data Analyst', feedback: 'Amazing work-life balance with global exposure. The team is incredibly supportive and the projects are cutting-edge.' },
+                { name: 'John D.', role: 'Cloud Engineer', feedback: 'From OPT to Green Card, D-Global was with me at every step. They truly invest in their people\'s long-term success.' }
+              ].map((t, i) => (
+                <div key={i} className="testimonial-card">
+                  <p>{t.feedback}</p>
+                  <strong>— {t.name}</strong>
+                  <div style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.9rem', marginTop: '4px' }}>{t.role}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Footer Section */}
+          <div style={{ 
+            textAlign: 'center', 
+            padding: '60px 0', 
+            borderTop: '1px solid rgba(226, 232, 240, 0.8)', 
+            marginTop: '80px',
+            animation: 'fadeIn 1s ease-out 1.2s both'
+          }}>
+            <h3 style={{ 
+              color: '#1f2937', 
+              fontSize: '1.5rem', 
+              marginBottom: '16px', 
+              fontWeight: '600' 
+            }}>Ready to Shape the Future?</h3>
+            <p style={{ 
+              color: '#6b7280', 
+              fontSize: '1.1rem', 
+              maxWidth: '500px', 
+              margin: '0 auto 32px' 
+            }}>
+              Join our innovative team and be part of technology solutions that make a difference.
+            </p>
+            <div style={{
+              display: 'flex',
+              justifyContent: 'center',
+              gap: '24px',
+              flexWrap: 'wrap',
+              alignItems: 'center'
+            }}>
+              <span style={{ color: '#9ca3af', fontSize: '0.95rem' }}>📧 hr@dglobaltech.com+</span>
+              <span style={{ color: '#9ca3af', fontSize: '0.95rem' }}>📞 +1 (555) 123-4567</span>
             </div>
           </div>
         </div>
