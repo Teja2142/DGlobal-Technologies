@@ -42,24 +42,28 @@ const Home = () => {
       alt: "Retail",
       title: "Retail & eCommerce",
       description: "We help retailers and eCommerce brands boost customer experience, streamline operations, and drive sales with scalable digital solutions, from omnichannel platforms to data-driven insights.",
+      destination: "/retail",
     },
     {
       image: energy,
       alt: "Energy",
       title: "Energy",
       description: "We enable energy and utilities companies to modernize operations, improve efficiency, and meet sustainability goals through advanced IT solutions, smart data management, and automation.",
+      destination: "/energy",
     },
     {
       image: manufacturing,
       alt: "Manufacturing",
       title: "Manufacturing",
       description: "We help manufacturers enhance productivity, streamline supply chains, and adopt smart technologies with tailored IT solutions, from ERP integration to IoT-driven automation.",
+      destination: "/manufacturing",
     },
     {
       image: logistics,
       alt: "Logistics",
       title: "Logistics & Supply Chain",
       description: "We optimize logistics and supply chain operations with intelligent IT solutions that improve visibility, reduce costs, and enable real-time tracking from production to delivery.",
+      destination: "/logistics",
     }
   ];
 
@@ -972,7 +976,7 @@ const Home = () => {
         <div className="container">
           <h2 className="section-heading" style={{ color: 'white' }}>Ready to Get Started?</h2>
           <div className="cta-buttons">
-            <a href="#" className="cta-button">Request a Consultant Interest Form</a>
+            <a href="/consultantform" className="cta-button">Request a Consultant Interest Form</a>
             <a href="#" className="cta-button">Job Description Upload</a>
             <a href="#" className="cta-button">Request a Hiring Interest Form</a>
             <a href="#" className="cta-button">Resume Upload</a>

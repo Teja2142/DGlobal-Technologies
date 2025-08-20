@@ -28,6 +28,8 @@ import LogisticsSupplyChain from './components/industries/LogisticsSupplyChain';
 import ContractStaffing from './components/ContractStaffing';
 import ProjectDelivery from './components/ProjectDelivery';
 
+import ConsultantInterestForm from './components/ConsultantInterestForm';
+
 function App() {
   
 
@@ -57,6 +59,8 @@ function App() {
         <Route path='/energy' element={<Energy/>}/>
         <Route path='/manufacturing' element={<Manufacturing/>}/>
         <Route path='/logistics' element={<LogisticsSupplyChain/>}/>
+
+        <Route path='/consultantform' element={<ConsultantInterestForm/>}/>
         
       </Routes>
 
