@@ -13,10 +13,9 @@ import cloud from "../assets/ServicesImages/cloudmigration.jpeg";
 import qaprocess from "../assets/ServicesImages/qatestautomation.jpeg";
 import dataservices from "../assets/ServicesImages/etlprocess.png";
 import modernization from "../assets/ServicesImages/applicationmodernization.jpeg";
-import TechLogosMarquee from "./TechLogosMarquee";
 import CloudTechMarquee from "./CloudTechMarquee";
 
-const Services = () => {
+const ProjectDelivery = () => {
   return (
     <div>
       <style>{`
@@ -565,68 +564,6 @@ const Services = () => {
             <h1>Our Services</h1>
             <p>Innovative IT solutions tailored to accelerate your business growth and digital transformation</p>
           </div>
-
-          {/* Contract Staffing Section */}
-          <div className="service-section">
-            <h2>Contract Staffing (C2C / W2)</h2>
-            <ul className="service-list five-items">
-              <li className="service-card">
-                <img src={Erp} alt="ERP"/>
-                <span>ERP (Oracle, SAP)</span>
-              </li>
-              <li className="service-card">
-                <img src={fullstack} alt="Full Stack"/>
-                <span>Full-Stack / App Dev</span>
-              </li>
-              <li className="service-card">
-                <img src={Qa} alt="QA"/>
-                <span>QA / Automation</span>
-              </li>
-              <li className="service-card">
-                <img src={Etl} alt="ETL"/>
-                <span>ETL / Data Engineering</span>
-              </li>
-              <li className="service-card">
-                <img src={salesforce} alt="Salesforce"/>
-                <span>Salesforce / CRM</span>
-              </li>
-            </ul>
-
-            <div className="sub-section overview">
-              <div className="overview-text">
-                <h3>Overview</h3>
-                <p>
-                  We connect businesses with highly skilled professionals across diverse technologies. Our staffing services ensure flexibility, expertise, and scalability for your project. With a focus on quality and agility, we help organizations accelerate growth while reducing hiring complexities.
-                </p>
-              </div>
-              <img src={c2c} alt="C2C overview" className="overview-image"/>
-            </div>
-
-            <div className="sub-section">
-              <h3>Engagement Types</h3>
-              <ul>
-                <li>Onsite Collaboration</li>
-                <li>Hybrid Work Models</li>
-                <li>Remote Excellence</li>
-              </ul>
-            </div>
-
-            <div className="sub-section">
-              <h3>Tech Stacks</h3>
-              <div className="tech-stack-section">
-                <TechLogosMarquee/>
-              </div>
-            </div>
-
-            <div className="sub-section">
-              <h3>Industry Use Cases</h3>
-              <p>
-                Supporting Fortune 500 companies, startups, and mid-sized enterprises across 
-                finance, healthcare, retail, and technology sectors with expert consultants who drive innovation and deliver measurable results.
-              </p>
-            </div>
-          </div>
-
           {/* Project Delivery Section */}
           <div className="service-section">
             <h2>Project Delivery (In-House)</h2>
@@ -694,4 +631,4 @@ const Services = () => {
   );
 };
 
-export default Services;
+export default ProjectDelivery;

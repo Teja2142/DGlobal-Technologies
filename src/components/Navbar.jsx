@@ -14,8 +14,8 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
 
   const dropdownItems = [
-    { path: "/services", name: "Contract Staffing", icon: <Users size={22} color="#0073e6" /> },
-    { path: "/services", name: "Project Delivery", icon: <PackageCheck size={22} color="#28a745" /> },
+    { path: "/contractstaffing", name: "Contract Staffing", icon: <Users size={22} color="#0073e6" /> },
+    { path: "/projectdelivery", name: "Project Delivery", icon: <PackageCheck size={22} color="#28a745" /> },
   ];
 
   const socialLinks = [

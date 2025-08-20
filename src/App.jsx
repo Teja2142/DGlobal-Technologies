@@ -3,7 +3,6 @@ import React from 'react'
 import './App.css'
 
 import Home from './components/Home'
-import Services from "./components/Services";
 import Careers from './components/Careers'
 import About from './components/About'
 import Contact from './components/Contact'
@@ -26,6 +25,8 @@ import RetailECommerce from './components/industries/RetailECommerce';
 import Energy from './components/industries/Energy';
 import Manufacturing from './components/industries/Manufacturing';
 import LogisticsSupplyChain from './components/industries/LogisticsSupplyChain';
+import ContractStaffing from './components/ContractStaffing';
+import ProjectDelivery from './components/ProjectDelivery';
 
 function App() {
   
@@ -35,7 +36,8 @@ function App() {
       <Navbar/>
       <Routes>
         <Route path='/' element={<Home/>}/>
-        <Route path="/services" element={<Services />} />
+        <Route path="/contractstaffing" element={<ContractStaffing />} />
+        <Route path="/projectdelivery" element={<ProjectDelivery />} />
         <Route path='/careers' element={<Careers/>}/>
         <Route path='/about' element={<About/>}/>
         <Route path='/contact' element={<Contact/>}/>
