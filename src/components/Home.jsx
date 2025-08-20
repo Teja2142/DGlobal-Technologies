@@ -1,53 +1,94 @@
 import React, { useEffect, useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Autoplay } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-import { Link } from "react-router-dom";
 
-// Mock images for demo
-const slide1 = "https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=800&h=400&fit=crop";
-const slide2 = "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&h=400&fit=crop";
-const slide3 = "https://images.unsplash.com/photo-1486312338219-ce68e2c6b7bb?w=800&h=400&fit=crop";
-const bg="https://images.unsplash.com/photo-1675434301763-594b4d0c5819?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE1fHx8ZW58MHx8fHx8";
+// Mock data for demonstration
+const activeconsultants = "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&h=300&fit=crop";
+const Projectdelivery = "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=300&fit=crop";
+const usclients = "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&h=300&fit=crop";
+const hirec2c = "https://images.unsplash.com/photo-1556761175-b413da4baf72?w=400&h=300&fit=crop";
+const outsource = "https://images.unsplash.com/photo-1553484771-371a605b060b?w=400&h=300&fit=crop";
+const joinourteam = "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=400&h=300&fit=crop";
 
-const Healthcare = "https://media.istockphoto.com/id/842465448/photo/indian-new-five-hundred-rupees-bills-and-stethoscope.webp?a=1&b=1&s=612x612&w=0&k=20&c=EbFoy72dpnHETf_WReuKhgKAQ-Tu-bJmZFXCEK27YRw=";
+const bg = "https://images.unsplash.com/photo-1675434301763-594b4d0c5819?w=1920&h=1080&fit=crop";
+const Healthcare = "https://images.unsplash.com/photo-1584982751601-97dcc096659c?w=500&h=300&fit=crop";
 const Finance = "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&h=300&fit=crop";
 const retail = "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=500&h=300&fit=crop";
 const energy = "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=500&h=300&fit=crop";
-const manufacturing = "https://images.unsplash.com/photo-1610891015188-5369212db097?q=80&w=2129&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
+const manufacturing = "https://images.unsplash.com/photo-1610891015188-5369212db097?w=500&h=300&fit=crop";
 const logistics = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=500&h=300&fit=crop";
 
 const Home = () => {
-  const [expanded, setExpanded] = useState(false);
-  const [animate, setAnimate] = useState(false);
-
-  const toggleReadMore = () => setExpanded(!expanded);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  
+  const industries = [
+    {
+      image: Healthcare,
+      alt: "Healthcare",
+      title: "Healthcare & Life Sciences",
+      description: "We deliver secure, compliant, and innovative IT solutions that enhance patient care, optimize operations, and drive digital transformation for healthcare and life sciences organizations.",
+    },
+    {
+      image: Finance,
+      alt: "Finance",
+      title: "Finance & Banking",
+      description: "We provide robust, secure, and scalable financial technology solutions that enable banks and financial institutions to innovate while maintaining compliance and security standards.",
+    },
+    {
+      image: retail,
+      alt: "Retail",
+      title: "Retail & eCommerce",
+      description: "We help retailers and eCommerce brands boost customer experience, streamline operations, and drive sales with scalable digital solutions, from omnichannel platforms to data-driven insights.",
+    },
+    {
+      image: energy,
+      alt: "Energy",
+      title: "Energy",
+      description: "We enable energy and utilities companies to modernize operations, improve efficiency, and meet sustainability goals through advanced IT solutions, smart data management, and automation.",
+    },
+    {
+      image: manufacturing,
+      alt: "Manufacturing",
+      title: "Manufacturing",
+      description: "We help manufacturers enhance productivity, streamline supply chains, and adopt smart technologies with tailored IT solutions, from ERP integration to IoT-driven automation.",
+    },
+    {
+      image: logistics,
+      alt: "Logistics",
+      title: "Logistics & Supply Chain",
+      description: "We optimize logistics and supply chain operations with intelligent IT solutions that improve visibility, reduce costs, and enable real-time tracking from production to delivery.",
+    }
+  ];
 
   useEffect(() => {
-    setTimeout(() => setAnimate(true), 900);
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % industries.length);
+    }, 4000);
+    return () => clearInterval(interval);
   }, []);
 
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % industries.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + industries.length) % industries.length);
+  };
+
   return (
-    <>
+    <div className="min-h-screen bg-white">
       <style jsx>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
         
         * {
-          font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-          margin: 0;
-          padding: 0;
-          box-sizing: border-box;
+          font-family: 'Inter', sans-serif;
         }
 
         .hero-banner {
-          background-image: var(--bg-url);
-          background-repeat: no-repeat;  /* prevents tiling */
-          background-size: cover;       /* makes image cover the whole area */
-          background-position: center;  /* centers the image */
+          background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${bg});
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-position: center;
+          background-attachment: fixed;
           position: relative;
-          overflow: hidden;
           min-height: 100vh;
           display: flex;
           align-items: center;
@@ -56,21 +97,11 @@ const Home = () => {
           text-align: center;
         }
 
-        .hero-banner::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="a" cx="50%" cy="50%" r="50%"><stop offset="0%" style="stop-color:%23ffffff;stop-opacity:0.1"/><stop offset="100%" style="stop-color:%23ffffff;stop-opacity:0"/></radialGradient></defs><circle cx="200" cy="300" r="100" fill="url(%23a)"/><circle cx="800" cy="200" r="150" fill="url(%23a)"/><circle cx="600" cy="700" r="80" fill="url(%23a)"/></svg>');
-          opacity: 0.3;
-          animation: float 6s ease-in-out infinite;
-        }
-
-        @keyframes float {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-20px); }
+        .hero-content {
+          position: relative;
+          z-index: 2;
+          max-width: 800px;
+          padding: 2rem;
         }
 
         .hero-heading {
@@ -79,12 +110,19 @@ const Home = () => {
           letter-spacing: -0.02em;
           line-height: 1.1;
           margin-bottom: 1.5rem;
-          opacity: 0;
-          transform: translateY(30px);
-          animation: slideUp 1s ease-out 0.5s forwards;
+          text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+          animation: slideUp 1s ease-out 0.5s both;
+          background: linear-gradient(45deg, #ffffff, #e2e8f0);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
         }
 
         @keyframes slideUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
           to {
             opacity: 1;
             transform: translateY(0);
@@ -92,29 +130,12 @@ const Home = () => {
         }
 
         .section {
-          padding: 80px 20px;
-          position: relative;
+          padding: 5rem 1.25rem;
         }
 
         .container {
           max-width: 1200px;
           margin: 0 auto;
-          padding: 0 20px;
-        }
-
-        .value-proposition-section {
-          background: linear-gradient(145deg, #f8fafc 0%, #e2e8f0 100%);
-          position: relative;
-        }
-
-        .value-proposition-section::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          height: 1px;
-          background: linear-gradient(90deg, transparent, #667eea, transparent);
         }
 
         .section-heading {
@@ -138,176 +159,372 @@ const Home = () => {
           border-radius: 2px;
         }
 
-        .grid {
-          display: grid;
-          gap: 2rem;
-          grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-        }
-
-        .card {
-          background: rgba(255, 255, 255, 0.9);
-          backdrop-filter: blur(10px);
+        .value-card {
+          background: white;
           border-radius: 20px;
-          padding: 2.5rem 2rem;
-          box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-          transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-          position: relative;
           overflow: hidden;
-          border: 1px solid rgba(255, 255, 255, 0.2);
+          box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+          position: relative;
+          height: 450px;
+          cursor: pointer;
+          border: 1px solid rgba(226, 232, 240, 0.5);
         }
 
-        .card::before {
-          content: '';
+        .value-card:hover {
+          transform: translateY(-15px) scale(1.02);
+          box-shadow: 0 25px 70px rgba(102, 126, 234, 0.25);
+        }
+
+        .card-image-wrapper {
+          position: relative;
+          width: 100%;
+          height: 300px;
+          overflow: hidden;
+        }
+
+        .card-image {
+          width: 100%;
+          height: 300px;
+          object-fit: cover;
+          transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .value-card:hover .card-image {
+          transform: scale(1.1);
+        }
+
+        .card-overlay {
           position: absolute;
           top: 0;
           left: 0;
           right: 0;
-          height: 4px;
-          background: linear-gradient(90deg, #667eea, #764ba2);
-          transform: scaleX(0);
-          transition: transform 0.4s ease;
+          bottom: 0;
+          background: linear-gradient(
+            135deg,
+            rgba(102, 126, 234, 0.95) 0%,
+            rgba(118, 75, 162, 0.95) 100%
+          );
+          color: white;
+          padding: 2rem;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+          opacity: 0;
+          visibility: hidden;
+          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+          backdrop-filter: blur(5px);
         }
 
-        .card:hover::before {
-          transform: scaleX(1);
+        .value-card:hover .card-overlay {
+          opacity: 1;
+          visibility: visible;
         }
 
-        .card:hover {
-          transform: translateY(-10px);
-          box-shadow: 0 20px 60px rgba(102, 126, 234, 0.2);
-        }
-
-        .card h3 {
+        .card-title {
           font-size: 1.5rem;
           font-weight: 600;
           margin-bottom: 1rem;
-          color: #2d3748;
+          color: white;
+          text-align: center;
+          position: absolute;
+          bottom: 2rem;
+          left: 0;
+          right: 0;
+          padding: 0 2rem;
+          transition: all 0.4s ease;
+          background: rgba(0, 0, 0, 0.7);
+          backdrop-filter: blur(10px);
+          padding: 1rem 2rem;
+          margin: 0;
         }
 
-        .card p {
+        .value-card:hover .card-title {
+          opacity: 0;
+          visibility: hidden;
+        }
+
+        .card-desc {
           font-size: 1rem;
           line-height: 1.6;
-          color: #4a5568;
-        }
-
-        .key-metrics-section {
-          background: linear-gradient(135deg, #ffffff 0%, #f7fafc 100%);
+          color: white;
+          text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
         }
 
         .metric-card {
-          background: linear-gradient(145deg, #e2e8f0 0%, #cbd5e0 100%);
-          border-radius: 20px;
-          padding: 2.5rem 2rem;
-          text-align: center;
-          transition: all 0.4s ease;
+          background: linear-gradient(145deg, #f7fafc 0%, #edf2f7 100%);
+          border-radius: 25px;
+          padding: 2.5rem;
+          display: flex;
+          align-items: center;
+          gap: 2.5rem;
+          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+          border: 1px solid rgba(226, 232, 240, 0.6);
+          box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
           position: relative;
           overflow: hidden;
-          border: 1px solid #e2e8f0;
         }
 
         .metric-card::before {
           content: '';
           position: absolute;
-          top: -50%;
-          left: -50%;
-          width: 200%;
-          height: 200%;
-          background: linear-gradient(45deg, transparent, rgba(102, 126, 234, 0.1), transparent);
-          transform: rotate(45deg) translateX(-100%);
-          transition: transform 0.6s ease;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(102, 126, 234, 0.1),
+            transparent
+          );
+          transition: left 0.5s ease;
         }
 
         .metric-card:hover::before {
-          transform: rotate(45deg) translateX(100%);
+          left: 100%;
         }
 
         .metric-card:hover {
-          transform: scale(1.05);
-          box-shadow: 0 15px 50px rgba(102, 126, 234, 0.15);
+          transform: scale(1.02);
+          box-shadow: 0 20px 60px rgba(102, 126, 234, 0.15);
+          border-color: rgba(102, 126, 234, 0.3);
         }
 
-        .metric-card h3 {
-          font-size: 1.5rem;
+        .metric-content {
+          flex: 1;
+          z-index: 2;
+        }
+
+        .metric-title {
+          font-size: 1.6rem;
           font-weight: 700;
           margin-bottom: 1rem;
           color: #667eea;
-        }
-
-        .industries-section {
-          background: linear-gradient(145deg, #f8fafc 0%, #e2e8f0 100%);
           position: relative;
         }
 
-        .swiper-slide-content {
-          text-align: center;
-          padding: 2rem;
+        .metric-description {
+          color: #4a5568;
+          line-height: 1.7;
+          font-size: 1rem;
         }
 
-        .industry-image {
+        .metric-image {
+          width: 220px;
+          height: 220px;
+          object-fit: cover;
+          border-radius: 20px;
+          box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+          z-index: 2;
+        }
+
+        .metric-card:hover .metric-image {
+          transform: scale(1.08) rotate(2deg);
+          box-shadow: 0 15px 40px rgba(102, 126, 234, 0.2);
+        }
+
+        .slider-container {
+          position: relative;
+          overflow: hidden;
+          border-radius: 25px;
+          background: white;
+          box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+          border: 1px solid rgba(226, 232, 240, 0.5);
+        }
+
+        .slider-wrapper {
+          display: flex;
+          transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+          transform: translateX(-${currentSlide * 100}%);
+        }
+
+        .slide {
+          min-width: 100%;
+          padding: 3rem;
+          text-align: center;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .slide-image {
           width: 100%;
           max-width: 500px;
           height: 300px;
           object-fit: cover;
-          border-radius: 20px;
-          box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-          margin-bottom: 1.5rem;
+          border-radius: 25px;
+          box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+          margin-bottom: 2rem;
           transition: transform 0.4s ease;
         }
 
-        .industry-image:hover {
+        .slide-image:hover {
           transform: scale(1.05);
         }
 
-        .industry-title {
-          font-size: 1.8rem;
-          font-weight: 600;
+        .slide-title {
+          font-size: 1.9rem;
+          font-weight: 700;
           margin-bottom: 1rem;
           color: #2d3748;
+          background: linear-gradient(45deg, #667eea, #764ba2);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
         }
 
-        .industry-description {
-          font-size: 1rem;
-          line-height: 1.6;
+        .slide-description {
           color: #4a5568;
+          line-height: 1.7;
           max-width: 600px;
-          margin: 0 auto;
+          margin-bottom: 2rem;
+          font-size: 1rem;
         }
 
-        .testimonials-section {
-          background: linear-gradient(135deg, #ffffff 0%, #f7fafc 100%);
+        .slider-nav {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          background: rgba(255, 255, 255, 0.95);
+          border: none;
+          width: 55px;
+          height: 55px;
+          border-radius: 50%;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          z-index: 3;
+          font-size: 1.5rem;
+          color: #667eea;
+          box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .slider-nav:hover {
+          background: white;
+          box-shadow: 0 8px 30px rgba(102, 126, 234, 0.3);
+          transform: translateY(-50%) scale(1.1);
+        }
+
+        .slider-nav.prev {
+          left: 25px;
+        }
+
+        .slider-nav.next {
+          right: 25px;
+        }
+
+        .slider-indicators {
+          display: flex;
+          justify-content: center;
+          gap: 12px;
+          padding: 25px;
+        }
+
+        .indicator {
+          width: 12px;
+          height: 12px;
+          border-radius: 50%;
+          background: #cbd5e0;
+          cursor: pointer;
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          position: relative;
+        }
+
+        .indicator::after {
+          content: '';
+          position: absolute;
+          top: -4px;
+          left: -4px;
+          right: -4px;
+          bottom: -4px;
+          border-radius: 50%;
+          border: 2px solid transparent;
+          transition: all 0.3s ease;
+        }
+
+        .indicator.active {
+          background: #667eea;
+          transform: scale(1.3);
+        }
+
+        .indicator.active::after {
+          border-color: rgba(102, 126, 234, 0.3);
         }
 
         .testimonial-card {
-          background: linear-gradient(145deg, #e2e8f0 0%, #cbd5e0 100%);
-          border-radius: 20px;
-          padding: 2rem;
+          background: linear-gradient(145deg, #f7fafc 0%, #edf2f7 100%);
+          border-radius: 25px;
+          padding: 2.5rem;
           text-align: center;
-          transition: all 0.4s ease;
+          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
           position: relative;
-          font-style: italic;
-          font-size: 1rem;
-          line-height: 1.6;
-          color: #2d3748;
+          border: 1px solid rgba(226, 232, 240, 0.6);
+          box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+          overflow: hidden;
         }
 
         .testimonial-card::before {
           content: '"';
           position: absolute;
           top: -10px;
-          left: 20px;
+          left: 25px;
           font-size: 4rem;
-          color: #667eea;
-          opacity: 0.3;
+          color: rgba(102, 126, 234, 0.2);
           font-family: Georgia, serif;
+          z-index: 1;
+        }
+
+        .testimonial-card::after {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(102, 126, 234, 0.05),
+            transparent
+          );
+          transition: left 0.5s ease;
+        }
+
+        .testimonial-card:hover::after {
+          left: 100%;
         }
 
         .testimonial-card:hover {
-          transform: translateY(-5px);
-          box-shadow: 0 15px 40px rgba(102, 126, 234, 0.15);
+          transform: translateY(-8px) scale(1.02);
+          box-shadow: 0 20px 50px rgba(102, 126, 234, 0.15);
+          border-color: rgba(102, 126, 234, 0.3);
+        }
+
+        .testimonial-card p {
+          position: relative;
+          z-index: 2;
+          font-style: italic;
+          color: #4a5568;
+          line-height: 1.7;
+          margin-bottom: 1rem;
+        }
+
+        .testimonial-card strong {
+          position: relative;
+          z-index: 2;
+          color: #667eea;
+          font-weight: 600;
         }
 
         .cta-section {
           background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          color: white;
           text-align: center;
           position: relative;
           overflow: hidden;
@@ -320,210 +537,458 @@ const Home = () => {
           left: 0;
           right: 0;
           bottom: 0;
-          background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="b" cx="50%" cy="50%" r="50%"><stop offset="0%" style="stop-color:%23ffffff;stop-opacity:0.05"/><stop offset="100%" style="stop-color:%23ffffff;stop-opacity:0"/></radialGradient></defs><circle cx="100" cy="100" r="50" fill="url(%23b)"/><circle cx="900" cy="200" r="80" fill="url(%23b)"/><circle cx="300" cy="800" r="60" fill="url(%23b)"/><circle cx="700" cy="900" r="70" fill="url(%23b)"/></svg>');
-          opacity: 0.5;
+          background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
         }
 
         .cta-buttons {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 1rem;
-          justify-content: center;
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+          gap: 1.5rem;
+          margin-top: 2.5rem;
           position: relative;
-          z-index: 1;
+          z-index: 2;
         }
 
         .cta-button {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
           background: rgba(255, 255, 255, 0.95);
-          backdrop-filter: blur(10px);
           color: #2d3748;
-          padding: 1rem 2rem;
+          padding: 1.2rem 2rem;
           border-radius: 50px;
           text-decoration: none;
           font-size: 1.1rem;
-          font-weight: 500;
-          transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+          font-weight: 600;
+          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+          display: inline-block;
           border: 2px solid rgba(255, 255, 255, 0.3);
-          min-width: 220px;
+          position: relative;
+          overflow: hidden;
+        }
+
+        .cta-button::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+          transition: left 0.5s ease;
+        }
+
+        .cta-button:hover::before {
+          left: 100%;
         }
 
         .cta-button:hover {
-          background: rgba(255, 255, 255, 1);
-          transform: translateY(-3px);
-          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-          border-color: rgba(255, 255, 255, 0.5);
+          background: white;
+          transform: translateY(-5px) scale(1.02);
+          box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+          border-color: white;
         }
 
-        .swiper-button-next,
-        .swiper-button-prev {
-          color: #667eea !important;
+        .know-more-btn {
+          background: linear-gradient(45deg, #667eea, #764ba2);
+          color: white;
+          padding: 0.9rem 2.5rem;
+          border-radius: 50px;
+          text-decoration: none;
+          font-weight: 600;
+          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+          display: inline-block;
+          box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);
+          position: relative;
+          overflow: hidden;
         }
 
-        .swiper-pagination-bullet-active {
-          background: #667eea !important;
+        .know-more-btn::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+          transition: left 0.5s ease;
+        }
+
+        .know-more-btn:hover::before {
+          left: 100%;
+        }
+
+        .know-more-btn:hover {
+          transform: translateY(-3px) scale(1.05);
+          box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Mobile Responsive Styles */
+        @media (max-width: 1024px) {
+          .metric-card {
+            flex-direction: column;
+            text-align: center;
+            padding: 2rem;
+            gap: 1.5rem;
+          }
+
+          .metric-image {
+            width: 180px;
+            height: 180px;
+          }
+
+          .metric-title {
+            text-align: center;
+            margin-bottom: 0.8rem;
+          }
+
+          .metric-description {
+            text-align: center;
+          }
         }
 
         @media (max-width: 768px) {
-          .grid {
-            grid-template-columns: 1fr;
+          .section {
+            padding: 3rem 1rem;
           }
-          
+
+          .hero-banner {
+            background-attachment: scroll;
+            min-height: 80vh;
+          }
+
+          .value-card {
+            height: 420px;
+          }
+
+          .card-image-wrapper,
+          .card-image {
+            height: 280px;
+          }
+
+          .card-overlay {
+            padding: 1.5rem;
+          }
+
+          .card-title {
+            font-size: 1.3rem;
+            bottom: 1.5rem;
+            padding: 0.8rem 1.5rem;
+          }
+
+          .metric-card {
+            padding: 1.5rem;
+          }
+
+          .metric-image {
+            width: 160px;
+            height: 160px;
+          }
+
+          .slider-nav {
+            width: 45px;
+            height: 45px;
+            font-size: 1.2rem;
+          }
+
+          .slider-nav.prev {
+            left: 15px;
+          }
+
+          .slider-nav.next {
+            right: 15px;
+          }
+
+          .slide {
+            padding: 2rem 1.5rem;
+          }
+
+          .slide-image {
+            height: 250px;
+          }
+
+          .testimonial-card {
+            padding: 2rem;
+          }
+
           .cta-buttons {
-            flex-direction: column;
-            align-items: center;
+            grid-template-columns: 1fr;
+            gap: 1rem;
           }
-          
+
           .cta-button {
-            width: 100%;
-            max-width: 300px;
+            padding: 1rem 1.5rem;
+            font-size: 1rem;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .section {
+            padding: 2rem 0.75rem;
+          }
+
+          .hero-heading {
+            font-size: 2.2rem;
+            padding: 0 1rem;
+          }
+
+          .section-heading {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+          }
+
+          .value-card {
+            height: 380px;
+            margin: 0 0.5rem;
+          }
+
+          .card-image-wrapper,
+          .card-image {
+            height: 240px;
+          }
+
+          .card-overlay {
+            padding: 1rem;
+          }
+
+          .card-title {
+            font-size: 1.2rem;
+            bottom: 1rem;
+            padding: 0.6rem 1rem;
+          }
+
+          .card-desc {
+            font-size: 0.9rem;
+          }
+
+          .metric-card {
+            padding: 1.25rem;
+            margin: 0 0.5rem;
+          }
+
+          .metric-title {
+            font-size: 1.4rem;
+          }
+
+          .metric-description {
+            font-size: 0.9rem;
+          }
+
+          .metric-image {
+            width: 140px;
+            height: 140px;
+          }
+
+          .slider-nav {
+            display: none;
+          }
+
+          .slide {
+            padding: 1.5rem 1rem;
+          }
+
+          .slide-image {
+            height: 200px;
+          }
+
+          .slide-title {
+            font-size: 1.5rem;
+          }
+
+          .slide-description {
+            font-size: 0.9rem;
+          }
+
+          .testimonial-card {
+            padding: 1.5rem;
+            margin: 0 0.5rem;
+          }
+
+          .testimonial-card p {
+            font-size: 0.9rem;
+          }
+
+          .know-more-btn {
+            padding: 0.8rem 2rem;
+            font-size: 0.9rem;
+          }
+        }
+
+        @media (max-width: 320px) {
+          .hero-heading {
+            font-size: 1.9rem;
+          }
+
+          .section-heading {
+            font-size: 1.6rem;
+          }
+
+          .value-card {
+            height: 350px;
+          }
+
+          .card-image-wrapper,
+          .card-image {
+            height: 220px;
+          }
+
+          .metric-image {
+            width: 120px;
+            height: 120px;
+          }
+
+          .slide-image {
+            height: 180px;
           }
         }
       `}</style>
 
       {/* Hero Banner */}
-      <div className="hero-banner" style={{ "--bg-url": `url(${bg})` }}>
-        <div className="container">
+      <div className="hero-banner">
+        <div className="hero-content">
           <h1 className="hero-heading">Consulting Delivered. Projects Executed.</h1>
         </div>
       </div>
 
-      {/* Value Proposition Blocks */}
-      <section className="section value-proposition-section">
+      {/* Value Proposition Section */}
+      <section className="section" style={{ background: 'linear-gradient(145deg, #f8fafc 0%, #e2e8f0 100%)' }}>
         <div className="container">
           <h2 className="section-heading">Powering Business Growth with Expertise & Innovation</h2>
-          <div className="grid">
-            <div className="card">
-              <h3>Hire C2C Consultants</h3>
-              <p>Connect with top-tier, pre-vetted consultants to drive your projects forward with expertise and efficiency. Whether you need short-term specialists or long-term partners, we help you find professionals who deliver results, meet deadlines, and align with your business goals.</p>
-            </div>
-            <div className="card">
-              <h3>Outsource Your Projects</h3>
-              <p>Let us manage your project execution from start to finish with precision, expertise, and a commitment to excellence. We ensure timely delivery, cost efficiency, and high-quality results—so you can focus on growing your business while we take care of the rest.</p>
-            </div>
-            <div className="card">
-              <h3>Join Our Team</h3>
-              <p>Be part of a dynamic and innovative team where your ideas are valued, your skills are sharpened, and your career can thrive. Together, we create solutions that make an impact.</p>
-            </div>
+          <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-8">
+            {[
+              {
+                img: hirec2c,
+                title: "Hire C2C Consultants",
+                desc: "Connect with top-tier, pre-vetted consultants to drive your projects forward with expertise and efficiency. Whether you need short-term specialists or long-term partners, we help you find professionals who deliver results, meet deadlines, and align with your business goals."
+              },
+              {
+                img: outsource,
+                title: "Outsource Your Projects",
+                desc: "Let us manage your project execution from start to finish with precision, expertise, and a commitment to excellence. We ensure timely delivery, cost efficiency, and high-quality results—so you can focus on growing your business while we take care of the rest."
+              },
+              {
+                img: joinourteam,
+                title: "Join Our Team",
+                desc: "Be part of a dynamic and innovative team where your ideas are valued, your skills are sharpened, and your career can thrive. Together, we create solutions that make an impact."
+              }
+            ].map((card, i) => (
+              <div key={i} className="value-card">
+                <div className="card-image-wrapper">
+                  <img src={card.img} alt={card.title} className="card-image" />
+                  <div className="card-overlay">
+                    <h3 className="card-title" style={{ position: 'static', background: 'none', margin: '0 0 1rem 0' }}>{card.title}</h3>
+                    <p className="card-desc">{card.desc}</p>
+                  </div>
+                  <h3 className="card-title">{card.title}</h3>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Key Metrics Section */}
-      <section className="section key-metrics-section">
+      <section className="section" style={{ background: 'linear-gradient(135deg, #ffffff 0%, #f7fafc 100%)' }}>
         <div className="container">
           <h2 className="section-heading">Key Metrics</h2>
-          <div className="grid">
+          <div className="space-y-8">
             <div className="metric-card">
-              <h3>50+ Projects Delivered</h3>
-              <p>Our track record speaks for itself — over 50 successful projects completed across diverse industries, from IT infrastructure to cutting-edge software solutions. Each delivery reflects our commitment to quality, innovation, and meeting deadlines without compromise.</p>
+              <div className="metric-content">
+                <h3 className="metric-title">50+ Projects Delivered</h3>
+                <p className="metric-description">Our track record speaks for itself — over 50 successful projects completed across diverse industries, from IT infrastructure to cutting-edge software solutions. Each delivery reflects our commitment to quality, innovation, and meeting deadlines without compromise.</p>
+              </div>
+              <img src={Projectdelivery} alt="Projects Delivered" className="metric-image" />
             </div>
+
             <div className="metric-card">
-              <h3>35+ Active Consultants</h3>
-              <p>With over 35 active consultants, we bring deep expertise, diverse perspectives, and agile problem-solving to every client engagement. Our team spans multiple industries and specialties, enabling us to address complex challenges with innovative, tailored solutions.</p>
+              <div className="metric-content">
+                <h3 className="metric-title">35+ Active Consultants</h3>
+                <p className="metric-description">With over 35 active consultants, we bring deep expertise, diverse perspectives, and agile problem-solving to every client engagement. Our team spans multiple industries and specialties, enabling us to address complex challenges with innovative, tailored solutions.</p>
+              </div>
+              <img src={activeconsultants} alt="Active Consultants" className="metric-image" />
             </div>
+
             <div className="metric-card">
-              <h3>20+ Clients Across the U.S.</h3>
-              <p>Serving 20+ clients across the U.S., we partner with organizations of all sizes and industries to deliver tailored solutions that address unique challenges. Our nationwide reach allows us to share best practices, leverage diverse market insights, and deliver measurable results wherever our clients operate.</p>
+              <div className="metric-content">
+                <h3 className="metric-title">20+ Clients Across the U.S.</h3>
+                <p className="metric-description">Serving 20+ clients across the U.S., we partner with organizations of all sizes and industries to deliver tailored solutions that address unique challenges. Our nationwide reach allows us to share best practices, leverage diverse market insights, and deliver measurable results wherever our clients operate.</p>
+              </div>
+              <img src={usclients} alt="Clients across US" className="metric-image" />
             </div>
           </div>
         </div>
       </section>
 
-      {/* Industries Carousel */}
-      <section className="section industries-section">
+      {/* Industries Section */}
+      <section className="section" style={{ background: 'linear-gradient(145deg, #f8fafc 0%, #e2e8f0 100%)' }}>
         <div className="container">
           <h2 className="section-heading">Industries We Serve</h2>
-          <Swiper
-            modules={[Navigation, Pagination, Autoplay]}
-            spaceBetween={50}
-            slidesPerView={1}
-            navigation
-            pagination={{ clickable: true }}
-            autoplay={{ delay: 4000, disableOnInteraction: false }}
-            loop={true}
-          >
-            <SwiperSlide>
-              <div className="swiper-slide-content">
-                <img className="industry-image" src={Healthcare} alt="Healthcare" />
-                <h3 className="industry-title">Healthcare & Life Sciences</h3>
-                <p className="industry-description">We deliver secure, compliant, and innovative IT solutions that enhance patient care, optimize operations, and drive digital transformation for healthcare and life sciences organizations.</p>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="swiper-slide-content">
-                <img className="industry-image" src={Finance} alt="Finance" />
-                <h3 className="industry-title">Finance & Banking</h3>
-                <p className="industry-description">We provide robust, secure, and scalable financial technology solutions that enable banks and financial institutions to innovate while maintaining compliance and security standards.</p>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="swiper-slide-content">
-                <img className="industry-image" src={retail} alt="Retail" />
-                <h3 className="industry-title">Retail & eCommerce</h3>
-                <p className="industry-description">We help retailers and eCommerce brands boost customer experience, streamline operations, and drive sales with scalable digital solutions, from omnichannel platforms to data-driven insights.</p>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="swiper-slide-content">
-                <img className="industry-image" src={energy} alt="Energy" />
-                <h3 className="industry-title">Energy</h3>
-                <p className="industry-description">We enable energy and utilities companies to modernize operations, improve efficiency, and meet sustainability goals through advanced IT solutions, smart data management, and automation.</p>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="swiper-slide-content">
-                <img className="industry-image" src={manufacturing} alt="Manufacturing" />
-                <h3 className="industry-title">Manufacturing</h3>
-                <p className="industry-description">We help manufacturers enhance productivity, streamline supply chains, and adopt smart technologies with tailored IT solutions, from ERP integration to IoT-driven automation.</p>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="swiper-slide-content">
-                <img className="industry-image" src={logistics} alt="Logistics" />
-                <h3 className="industry-title">Logistics & Supply Chain</h3>
-                <p className="industry-description">We optimize logistics and supply chain operations with intelligent IT solutions that improve visibility, reduce costs, and enable real-time tracking from production to delivery.</p>
-              </div>
-            </SwiperSlide>
-          </Swiper>
+          <div className="slider-container">
+            <div className="slider-wrapper">
+              {industries.map((industry, index) => (
+                <div key={index} className="slide">
+                  <img src={industry.image} alt={industry.alt} className="slide-image" />
+                  <h3 className="slide-title">{industry.title}</h3>
+                  <p className="slide-description">{industry.description}</p>
+                  <a href="#" className="know-more-btn">Click here to know more</a>
+                </div>
+              ))}
+            </div>
+            
+            <button className="slider-nav prev" onClick={prevSlide}>
+              &#8249;
+            </button>
+            <button className="slider-nav next" onClick={nextSlide}>
+              &#8250;
+            </button>
+
+            <div className="slider-indicators">
+              {industries.map((_, index) => (
+                <div
+                  key={index}
+                  className={`indicator ${index === currentSlide ? 'active' : ''}`}
+                  onClick={() => setCurrentSlide(index)}
+                />
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Client Testimonials */}
-      <section className="section testimonials-section">
+      {/* Testimonials Section */}
+      <section className="section" style={{ background: 'linear-gradient(135deg, #ffffff 0%, #f7fafc 100%)' }}>
         <div className="container">
           <h2 className="section-heading">What Our Clients Say</h2>
-          <div className="grid">
+          <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-8">
             <div className="testimonial-card">
-              Exceptional service with unwavering support — the team was responsive, professional, and always went the extra mile to ensure everything ran smoothly from start to finish!
-              <br /><strong>— Chaitanya</strong>
+              <p>Exceptional service with unwavering support — the team was responsive, professional, and always went the extra mile to ensure everything ran smoothly from start to finish!</p>
+              <br />
+              <strong>— Chaitanya</strong>
             </div>
             <div className="testimonial-card">
-              They not only delivered the project on time but also went above and beyond our expectations, providing exceptional quality and attention to detail every step of the way!
-              <br /><strong>— Naveen Teja</strong>
+              <p>They not only delivered the project on time but also went above and beyond our expectations, providing exceptional quality and attention to detail every step of the way!</p>
+              <br />
+              <strong>— Naveen Teja</strong>
             </div>
             <div className="testimonial-card">
-              I highly recommend their consulting services — their expertise, professionalism, and commitment to delivering results made a real difference to our project's success.
-              <br /><strong>— Bharathi</strong>
+              <p>I highly recommend their consulting services — their expertise, professionalism, and commitment to delivering results made a real difference to our project's success.</p>
+              <br />
+              <strong>— Bharathi</strong>
             </div>
           </div>
         </div>
       </section>
 
-      {/* CTA Buttons */}
+      {/* CTA Section */}
       <section className="section cta-section">
         <div className="container">
+          <h2 className="section-heading" style={{ color: 'white' }}>Ready to Get Started?</h2>
           <div className="cta-buttons">
-            <Link to="/consultant-request" className="cta-button">Request a Consultant Interest Form</Link>
-            <Link to="/job-upload" className="cta-button">Job Description Upload</Link>
-            <Link to="/hiring-request" className="cta-button">Request a Hiring Interest Form</Link>
-            <Link to="/resume-upload" className="cta-button">Resume Upload</Link>
+            <a href="#" className="cta-button">Request a Consultant Interest Form</a>
+            <a href="#" className="cta-button">Job Description Upload</a>
+            <a href="#" className="cta-button">Request a Hiring Interest Form</a>
+            <a href="#" className="cta-button">Resume Upload</a>
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 };
 

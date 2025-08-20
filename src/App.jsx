@@ -20,6 +20,13 @@ import Mobile from './components/courses/Mobile';
 import Training from './components/courses/Training';
 import Web from './components/courses/Web';
 
+import Healthcare from './components/industries/Healthcare';
+import FinanceBanking from './components/industries/FinanceBanking';
+import RetailECommerce from './components/industries/RetailECommerce';
+import Energy from './components/industries/Energy';
+import Manufacturing from './components/industries/Manufacturing';
+import LogisticsSupplyChain from './components/industries/LogisticsSupplyChain';
+
 function App() {
   
 
@@ -41,6 +48,13 @@ function App() {
         <Route path='/mobile' element={<Mobile/>}/>
         <Route path='/training' element={<Training/>}/>
         <Route path='/web' element={<Web/>}/>
+
+        <Route path='/healthcare' element={<Healthcare/>}/>
+        <Route path='/finance' element={<FinanceBanking/>}/>
+        <Route path='/retail' element={<RetailECommerce/>}/>
+        <Route path='/energy' element={<Energy/>}/>
+        <Route path='/manufacturing' element={<Manufacturing/>}/>
+        <Route path='/logistics' element={<LogisticsSupplyChain/>}/>
         
       </Routes>
 

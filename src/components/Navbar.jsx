@@ -3,6 +3,7 @@ import {
   FaEnvelope, FaPhoneAlt, FaTwitter, FaFacebookF, FaLinkedinIn, 
   FaInstagram, FaYoutube, FaWhatsapp, FaTelegram, FaBars, FaTimes
 } from "react-icons/fa";
+import { Briefcase, ClipboardCheck, Users, PackageCheck} from "lucide-react";
 
 // Note: Replace Link with your router's Link component
 const Link = ({ to, children, ...props }) => <a href={to} {...props}>{children}</a>;
@@ -13,14 +14,8 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
 
   const dropdownItems = [
-    { path: "/Web", name: "Web Development", icon: "💻" },
-    { path: "/Api", name: "API Services", icon: "🔌" },
-    { path: "/Cloud", name: "Cloud Services", icon: "☁️" },
-    { path: "/Data", name: "Data Analytics", icon: "📊" },
-    { path: "/IoT", name: "IoT Solutions", icon: "🏠" },
-    { path: "/Mobile", name: "Mobile Development", icon: "📱" },
-    { path: "/Digital", name: "Digital Marketing", icon: "🔍" },
-    { path: "/Training", name: "Corporate Training", icon: "🏢" }
+    { path: "/services", name: "Contract Staffing", icon: <Users size={40} color="#0073e6" /> },
+    { path: "/services", name: "Project Delivery", icon: <PackageCheck size={40} color="#28a745" /> },
   ];
 
   const socialLinks = [
@@ -613,7 +608,9 @@ const Navbar = () => {
               <Link to="/" className="nav-link">Home</Link>
               
               {/* Services Dropdown */}
-              <div 
+              
+              
+              <Link to="/services" className="nav-link"><div 
                 className="dropdown"
                 onMouseEnter={() => setShowDropdown(true)}
                 onMouseLeave={() => setShowDropdown(false)}
@@ -629,8 +626,7 @@ const Navbar = () => {
                     ))}
                   </div>
                 )}
-              </div>
-              
+              </div></Link>
               <Link to="/Careers" className="nav-link">Careers</Link>
               <Link to="/About" className="nav-link">About Us</Link>
               <Link to="/Contact" className="nav-link">Contact Us</Link>
