@@ -45,7 +45,9 @@ const Contact = () => {
     <div className="contact-container">
       <div className="content-wrapper">
         <h1 className="main-title">Contact Us</h1>
-        <p className="subtitle">Let’s start a conversation and explore how we can work together</p>
+        <p className="subtitle">
+          Let’s start a conversation and explore how we can work together
+        </p>
 
         <div className="cards-container">
           {/* Contact Info */}
@@ -54,7 +56,11 @@ const Contact = () => {
             <div className="info-box">
               <div className="info-item">
                 <p className="label">📍 Our Location</p>
-                <p>5900 Balcones Drive #26584<br />Austin, TX, 78731, US</p>
+                <p>
+                  5900 Balcones Drive #26584
+                  <br />
+                  Austin, TX, 78731, US
+                </p>
               </div>
               <div className="info-item">
                 <p className="label">✉️ Email Us</p>
@@ -81,11 +87,15 @@ const Contact = () => {
           {/* Contact Form */}
           <div className="form-card">
             <h2 className="form-title">Send Us a Message</h2>
-            <p className="form-subtitle">We’d love to hear from you. Drop a message and we’ll reply shortly.</p>
+            <p className="form-subtitle">
+              We’d love to hear from you. Drop a message and we’ll reply shortly.
+            </p>
 
             {submitStatus && (
               <div className={`status-message ${submitStatus}`}>
-                {submitStatus === 'success' ? '✨ Message sent successfully!' : '⚠️ Failed to send message.'}
+                {submitStatus === 'success'
+                  ? '✨ Message sent successfully!'
+                  : '⚠️ Failed to send message.'}
               </div>
             )}
 
@@ -143,7 +153,11 @@ const Contact = () => {
                 />
               </div>
 
-              <button type="submit" disabled={isSubmitting} className="submit-button">
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="submit-button"
+              >
                 {isSubmitting ? 'Sending...' : '🚀 Send Message'}
               </button>
             </form>
@@ -188,12 +202,20 @@ const Contact = () => {
           gap: 2rem;
         }
 
-        .contact-info-card {
+        /* MOBILE FIX: stack vertically */
+        @media (max-width: 768px) {
+          .cards-container {
+            grid-template-columns: 1fr;
+          }
+        }
+
+        .contact-info-card,
+        .form-card {
           background: white;
           border: 1px solid #e5e7eb;
           border-radius: 16px;
           padding: 2rem;
-          box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
         }
 
         .card-title {
@@ -222,14 +244,6 @@ const Contact = () => {
           border: 1px solid #e5e7eb;
         }
 
-        .form-card {
-          background: white;
-          border: 1px solid #e5e7eb;
-          border-radius: 16px;
-          padding: 2rem;
-          box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-        }
-
         .form-title {
           font-size: 1.5rem;
           color: #111827;
@@ -251,7 +265,9 @@ const Contact = () => {
           flex-wrap: wrap;
         }
 
-        input, select, textarea {
+        input,
+        select,
+        textarea {
           width: 100%;
           padding: 0.75rem;
           border: 1px solid #d1d5db;
@@ -261,7 +277,9 @@ const Contact = () => {
           color: #111827;
         }
 
-        input:focus, select:focus, textarea:focus {
+        input:focus,
+        select:focus,
+        textarea:focus {
           outline: none;
           border-color: #2563eb;
           box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
