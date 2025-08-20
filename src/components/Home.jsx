@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import ValueProposition from "./ValueProposition";
+
 
 // Mock data for demonstration
 const activeconsultants = "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&h=300&fit=crop";
@@ -25,12 +28,14 @@ const Home = () => {
       alt: "Healthcare",
       title: "Healthcare & Life Sciences",
       description: "We deliver secure, compliant, and innovative IT solutions that enhance patient care, optimize operations, and drive digital transformation for healthcare and life sciences organizations.",
+      destination: "/healthcare",
     },
     {
       image: Finance,
       alt: "Finance",
       title: "Finance & Banking",
       description: "We provide robust, secure, and scalable financial technology solutions that enable banks and financial institutions to innovate while maintaining compliance and security standards.",
+      destination: "/finance",
     },
     {
       image: retail,
@@ -837,6 +842,24 @@ const Home = () => {
           .slide-image {
             height: 180px;
           }
+          .testimonials-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .testimonials-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .testimonials-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
         }
       `}</style>
 
@@ -848,42 +871,7 @@ const Home = () => {
       </div>
 
       {/* Value Proposition Section */}
-      <section className="section" style={{ background: 'linear-gradient(145deg, #f8fafc 0%, #e2e8f0 100%)' }}>
-        <div className="container">
-          <h2 className="section-heading">Powering Business Growth with Expertise & Innovation</h2>
-          <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-8">
-            {[
-              {
-                img: hirec2c,
-                title: "Hire C2C Consultants",
-                desc: "Connect with top-tier, pre-vetted consultants to drive your projects forward with expertise and efficiency. Whether you need short-term specialists or long-term partners, we help you find professionals who deliver results, meet deadlines, and align with your business goals."
-              },
-              {
-                img: outsource,
-                title: "Outsource Your Projects",
-                desc: "Let us manage your project execution from start to finish with precision, expertise, and a commitment to excellence. We ensure timely delivery, cost efficiency, and high-quality results—so you can focus on growing your business while we take care of the rest."
-              },
-              {
-                img: joinourteam,
-                title: "Join Our Team",
-                desc: "Be part of a dynamic and innovative team where your ideas are valued, your skills are sharpened, and your career can thrive. Together, we create solutions that make an impact."
-              }
-            ].map((card, i) => (
-              <div key={i} className="value-card">
-                <div className="card-image-wrapper">
-                  <img src={card.img} alt={card.title} className="card-image" />
-                  <div className="card-overlay">
-                    <h3 className="card-title" style={{ position: 'static', background: 'none', margin: '0 0 1rem 0' }}>{card.title}</h3>
-                    <p className="card-desc">{card.desc}</p>
-                  </div>
-                  <h3 className="card-title">{card.title}</h3>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
+    <ValueProposition/>
       {/* Key Metrics Section */}
       <section className="section" style={{ background: 'linear-gradient(135deg, #ffffff 0%, #f7fafc 100%)' }}>
         <div className="container">
@@ -927,8 +915,10 @@ const Home = () => {
                   <img src={industry.image} alt={industry.alt} className="slide-image" />
                   <h3 className="slide-title">{industry.title}</h3>
                   <p className="slide-description">{industry.description}</p>
-                  <a href="#" className="know-more-btn">Click here to know more</a>
-                </div>
+                  <a href={industry.destination} className="know-more-btn">
+                    Click here to know more
+                  </a>                
+              </div>
               ))}
             </div>
             
@@ -953,28 +943,29 @@ const Home = () => {
       </section>
 
       {/* Testimonials Section */}
-      <section className="section" style={{ background: 'linear-gradient(135deg, #ffffff 0%, #f7fafc 100%)' }}>
-        <div className="container">
-          <h2 className="section-heading">What Our Clients Say</h2>
-          <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-8">
-            <div className="testimonial-card">
-              <p>Exceptional service with unwavering support — the team was responsive, professional, and always went the extra mile to ensure everything ran smoothly from start to finish!</p>
-              <br />
-              <strong>— Chaitanya</strong>
-            </div>
-            <div className="testimonial-card">
-              <p>They not only delivered the project on time but also went above and beyond our expectations, providing exceptional quality and attention to detail every step of the way!</p>
-              <br />
-              <strong>— Naveen Teja</strong>
-            </div>
-            <div className="testimonial-card">
-              <p>I highly recommend their consulting services — their expertise, professionalism, and commitment to delivering results made a real difference to our project's success.</p>
-              <br />
-              <strong>— Bharathi</strong>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Testimonials Section */}
+{/* Testimonials Section */}
+<section className="section testimonials-section">
+  <div className="container">
+    <h2 className="section-heading">What Our Clients Say</h2>
+    <div className="testimonials-grid">
+      <div className="testimonial-card">
+        Exceptional service with unwavering support — the team was responsive, professional, and always went the extra mile to ensure everything ran smoothly from start to finish!
+        <br /><strong>— Chaitanya</strong>
+      </div>
+      <div className="testimonial-card">
+        They not only delivered the project on time but also went above and beyond our expectations, providing exceptional quality and attention to detail every step of the way!
+        <br /><strong>— Naveen Teja</strong>
+      </div>
+      <div className="testimonial-card">
+        I highly recommend their consulting services — their expertise, professionalism, and commitment to delivering results made a real difference to our project's success.
+        <br /><strong>— Bharathi</strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+
 
       {/* CTA Section */}
       <section className="section cta-section">
