@@ -358,6 +358,7 @@ const Home = () => {
           display: flex;
           flex-direction: column;
           align-items: center;
+          justify-content: center;
         }
 
         .slide-image {
@@ -464,6 +465,12 @@ const Home = () => {
 
         .indicator.active::after {
           border-color: rgba(102, 126, 234, 0.3);
+        }
+
+        .testimonials-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 2rem;
         }
 
         .testimonial-card {
@@ -629,6 +636,38 @@ const Home = () => {
           box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
         }
 
+        /* Value Proposition Grid */
+        .value-proposition-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 2rem;
+        }
+
+        .value-proposition-section {
+          text-align: center;
+        }
+
+        .value-proposition-section .container {
+          padding: 0 2rem;
+        }
+
+        .value-proposition-section .section-heading {
+          margin-bottom: 3rem;
+          max-width: 800px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        .value-proposition-section .value-card {
+          margin: 0 auto;
+          text-align: left;
+        }
+
+        .value-proposition-section .card-title,
+        .value-proposition-section .card-desc {
+          text-align: center;
+        }
+
         /* Mobile Responsive Styles */
         @media (max-width: 1024px) {
           .metric-card {
@@ -650,6 +689,20 @@ const Home = () => {
 
           .metric-description {
             text-align: center;
+          }
+
+          .testimonials-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+          }
+
+          .value-proposition-section .container {
+            padding: 0 1.5rem;
+          }
+
+          .value-proposition-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
           }
         }
 
@@ -715,6 +768,20 @@ const Home = () => {
 
           .testimonial-card {
             padding: 2rem;
+          }
+
+          .testimonials-grid {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+          }
+
+          .value-proposition-section .container {
+            padding: 0 1rem;
+          }
+
+          .value-proposition-grid {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
           }
 
           .cta-buttons {
@@ -846,24 +913,6 @@ const Home = () => {
           .slide-image {
             height: 180px;
           }
-          .testimonials-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.5rem;
-}
-
-@media (min-width: 768px) {
-  .testimonials-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 1024px) {
-  .testimonials-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
         }
       `}</style>
 
@@ -947,29 +996,25 @@ const Home = () => {
       </section>
 
       {/* Testimonials Section */}
-      {/* Testimonials Section */}
-{/* Testimonials Section */}
-<section className="section testimonials-section">
-  <div className="container">
-    <h2 className="section-heading">What Our Clients Say</h2>
-    <div className="testimonials-grid">
-      <div className="testimonial-card">
-        Exceptional service with unwavering support — the team was responsive, professional, and always went the extra mile to ensure everything ran smoothly from start to finish!
-        <br /><strong>— Chaitanya</strong>
-      </div>
-      <div className="testimonial-card">
-        They not only delivered the project on time but also went above and beyond our expectations, providing exceptional quality and attention to detail every step of the way!
-        <br /><strong>— Naveen Teja</strong>
-      </div>
-      <div className="testimonial-card">
-        I highly recommend their consulting services — their expertise, professionalism, and commitment to delivering results made a real difference to our project's success.
-        <br /><strong>— Bharathi</strong>
-      </div>
-    </div>
-  </div>
-</section>
-
-
+      <section className="section testimonials-section">
+        <div className="container">
+          <h2 className="section-heading">What Our Clients Say</h2>
+          <div className="testimonials-grid">
+            <div className="testimonial-card">
+              Exceptional service with unwavering support — the team was responsive, professional, and always went the extra mile to ensure everything ran smoothly from start to finish!
+              <br /><strong>— Chaitanya</strong>
+            </div>
+            <div className="testimonial-card">
+              They not only delivered the project on time but also went above and beyond our expectations, providing exceptional quality and attention to detail every step of the way!
+              <br /><strong>— Naveen Teja</strong>
+            </div>
+            <div className="testimonial-card">
+              I highly recommend their consulting services — their expertise, professionalism, and commitment to delivering results made a real difference to our project's success.
+              <br /><strong>— Bharathi</strong>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* CTA Section */}
       <section className="section cta-section">
