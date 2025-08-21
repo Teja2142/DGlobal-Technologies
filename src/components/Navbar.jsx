@@ -126,7 +126,7 @@ const Navbar = () => {
 
       <nav className="navbar">
         <div className="nav-container">
-          <div className="logo">MyCompany</div>
+          <div className="logo">DGlobal</div>
 
           {/* Hamburger Icon */}
           <div className="menu-icon" onClick={() => setMenuOpen(!menuOpen)}>
