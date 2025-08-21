@@ -265,7 +265,7 @@ const Home = () => {
         .metric-card {
           background: linear-gradient(145deg, #f7fafc 0%, #edf2f7 100%);
           border-radius: 25px;
-          padding: 2.5rem;
+          padding: 2rem;
           display: flex;
           align-items: center;
           gap: 2.5rem;
@@ -305,6 +305,7 @@ const Home = () => {
         .metric-content {
           flex: 1;
           z-index: 2;
+          gap: 6rem;
         }
 
         .metric-title {
@@ -319,11 +320,12 @@ const Home = () => {
           color: #4a5568;
           line-height: 1.7;
           font-size: 1rem;
+          text-align: left;
         }
 
         .metric-image {
-          width: 220px;
-          height: 220px;
+          width: 300px;
+          height: 300px;
           object-fit: cover;
           border-radius: 20px;
           box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
@@ -539,11 +541,14 @@ const Home = () => {
         }
 
         .cta-section {
-          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-          color: white;
+          background: linear-gradient(135deg, #a5b4fc 0%, #c4b5fd 100%);
+          color: #1a202c;
           text-align: center;
           position: relative;
           overflow: hidden;
+          padding: 40px 20px;
+          margin-bottom: 30px;
+          border-radius: 12px; /* optional, makes it nicer */
         }
 
         .cta-section::before {
@@ -568,16 +573,19 @@ const Home = () => {
         .cta-button {
           background: rgba(255, 255, 255, 0.95);
           color: #2d3748;
-          padding: 1.2rem 2rem;
-          border-radius: 50px;
+          padding: 1rem 1rem;
+          border-radius: 10px;
           text-decoration: none;
           font-size: 1.1rem;
           font-weight: 600;
           transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-          display: inline-block;
           border: 2px solid rgba(255, 255, 255, 0.3);
           position: relative;
           overflow: hidden;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
         }
 
         .cta-button::before {
@@ -743,7 +751,7 @@ const Home = () => {
             width: 160px;
             height: 160px;
           }
-
+          
           .slider-nav {
             width: 45px;
             height: 45px;
@@ -929,7 +937,7 @@ const Home = () => {
       <section className="section" style={{ background: 'linear-gradient(135deg, #ffffff 0%, #f7fafc 100%)' }}>
         <div className="container">
           <h2 className="section-heading">Key Metrics</h2>
-          <div className="space-y-8">
+          <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
             <div className="metric-card">
               <div className="metric-content">
                 <h3 className="metric-title">50+ Projects Delivered</h3>

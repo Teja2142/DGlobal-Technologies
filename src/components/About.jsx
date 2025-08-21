@@ -6,8 +6,8 @@ import {
   FaUsers,
   FaAward,
   FaProjectDiagram,
-  FaRocket,
   FaRegClock,
+  FaLayerGroup, FaChartLine
 } from "react-icons/fa";
 
 const About = () => {
@@ -245,7 +245,6 @@ const About = () => {
           font-size: 16px;
         }
 
-        /* Philosophy Section */
         .philosophy-section {
           background: url('https://images.unsplash.com/photo-1513759565286-20e9c5fad06b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bGVhZGVyc2hpcHxlbnwwfHwwfHx8MA%3D%3D');
           background-size: cover;
@@ -255,6 +254,11 @@ const About = () => {
           text-align: center;
           position: relative;
           overflow: hidden;
+        }
+        @media (max-width: 768px) {
+          .philosophy-section {
+            min-height: 400px;
+          }
         }
 
         .philosophy-section::before {
@@ -702,6 +706,21 @@ const About = () => {
             <p className="diff-text">
               White-glove client service with dedicated account management and
               long-term partnership focus.
+            </p>
+          </div>
+          <div className="diff-item">
+            <FaLayerGroup className="diff-icon" style={{ color: "#38b2ac" }} />
+            <p className="diff-text">
+              Scalable engagement models — adapt seamlessly from single consultant
+              staffing to full project teams as your business grows.
+            </p>
+          </div>
+
+          <div className="diff-item">
+            <FaChartLine className="diff-icon" style={{ color: "#ed64a6" }} />
+            <p className="diff-text">
+              Data-driven insights — continuous performance tracking and feedback loops
+              to ensure quality, efficiency, and measurable ROI.
             </p>
           </div>
         </div>

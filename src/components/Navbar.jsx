@@ -163,9 +163,9 @@ const Navbar = () => {
               </span>
               <div className={`dropdown ${servicesOpen ? "open" : ""}`}>
                 <Link
-                  to="/services/contract-staffing"
+                  to="/contractstaffing"
                   className={
-                    location.pathname === "/services/contract-staffing"
+                    location.pathname === "/contractstaffing"
                       ? "active"
                       : ""
                   }
@@ -174,9 +174,9 @@ const Navbar = () => {
                   Contract Staffing
                 </Link>
                 <Link
-                  to="/services/project-delivery"
+                  to="/projectdelivery"
                   className={
-                    location.pathname === "/services/project-delivery"
+                    location.pathname === "/projectdelivery"
                       ? "active"
                       : ""
                   }
@@ -205,9 +205,9 @@ const Navbar = () => {
               </span>
               <div className={`dropdown ${industriesOpen ? "open" : ""}`}>
                 <Link
-                  to="/industries/healthcare"
+                  to="/healthcare"
                   className={
-                    location.pathname === "/industries/healthcare"
+                    location.pathname === "/healthcare"
                       ? "active"
                       : ""
                   }
@@ -216,7 +216,7 @@ const Navbar = () => {
                   Healthcare
                 </Link>
                 <Link
-                  to="/industries/finance"
+                  to="/finance"
                   className={
                     location.pathname === "/industries/finance"
                       ? "active"
@@ -227,7 +227,7 @@ const Navbar = () => {
                   Finance
                 </Link>
                 <Link
-                  to="/industries/retail"
+                  to="/retail"
                   className={
                     location.pathname === "/industries/retail"
                       ? "active"
@@ -238,7 +238,7 @@ const Navbar = () => {
                   Retail
                 </Link>
                 <Link
-                  to="/industries/energy"
+                  to="/energy"
                   className={
                     location.pathname === "/industries/energy" ? "active" : ""
                   }
@@ -247,7 +247,7 @@ const Navbar = () => {
                   Energy
                 </Link>
                 <Link
-                  to="/industries/manufacturing"
+                  to="/manufacturing"
                   className={
                     location.pathname === "/industries/manufacturing"
                       ? "active"
@@ -258,7 +258,7 @@ const Navbar = () => {
                   Manufacturing
                 </Link>
                 <Link
-                  to="/industries/logistics"
+                  to="/logistics"
                   className={
                     location.pathname === "/industries/logistics" ? "active" : ""
                   }

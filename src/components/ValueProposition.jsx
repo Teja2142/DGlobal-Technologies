@@ -76,9 +76,10 @@ const ValueProposition = () => {
             opacity: 0;
             transition: opacity 0.3s ease;
             border-radius: 10px;
-            padding: 20px;
+            padding: 0;
             text-align: center;
-            line-height: 1.4;
+            line-height: 1.6;
+            flex-direction: column;
           }
 
           .image-container:hover .overlay {

@@ -222,19 +222,17 @@ const ContractStaffing = () => {
         }
 
         .service-card img {
-          width: 120px;
-          height: 120px;
-          object-fit: contain;
+          width: 200px;
+          height: 200px;
+          object-fit: cover;
           margin-bottom: 25px;
           border-radius: 16px;
-          padding: 15px;
           background: linear-gradient(145deg, #f1f5f9, #e2e8f0);
           transition: all 0.3s ease;
         }
 
         .service-card:hover img {
           transform: scale(1.15) rotate(5deg);
-          background: linear-gradient(145deg, #3b82f6, #06b6d4);
           filter: brightness(1.1) contrast(1.1);
           box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
         }
