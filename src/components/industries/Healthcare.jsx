@@ -15,18 +15,22 @@ const Healthcare = () => {
         }
 
         body {
-          font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-          background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-          color: #1e293b;
-          line-height: 1.6;
-          overflow-x: hidden;
-        }
+  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  color: #1e293b;
+  line-height: 1.6;
+  overflow-x: hidden;
+  width: 100%;   /* ✅ added */
+}
 
         .healthcare-container {
-          max-width: 1400px;
-          margin: 0 auto;
-          position: relative;
-        }
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  padding: 0; /* optional */
+}
+
 
         /* Background Elements */
         .healthcare-container::before {
