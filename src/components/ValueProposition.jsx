@@ -123,7 +123,7 @@ const ValueProposition = () => {
 
         {/* Section 2 */}
         <div className="value-item">
-          <h2 className="value-heading">Outsource Your Projects</h2>
+          <h2 className="value-heading">Outsource Projects</h2>
           <div className="image-container">
             <img src={outsourceImage} alt="Outsource Projects" />
             <div className="overlay">

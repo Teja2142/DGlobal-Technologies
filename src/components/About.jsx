@@ -7,7 +7,8 @@ import {
   FaAward,
   FaProjectDiagram,
   FaRegClock,
-  FaLayerGroup, FaChartLine
+  FaLayerGroup, 
+  FaChartLine
 } from "react-icons/fa";
 
 const About = () => {
@@ -85,20 +86,22 @@ const About = () => {
           animation: slideInUp 0.8s ease forwards;
         }
 
-        .timeline-item:nth-child(2) { animation-delay: 0.2s; }
-        .timeline-item:nth-child(3) { animation-delay: 0.4s; }
-        .timeline-item:nth-child(4) { animation-delay: 0.6s; }
-        .timeline-item:nth-child(5) { animation-delay: 0.8s; }
+        .timeline-item:nth-child(odd) { 
+          animation-delay: 0.2s; 
+        }
+        .timeline-item:nth-child(even) { 
+          animation-delay: 0.4s; 
+        }
 
         .timeline-item.left {
           left: 0;
-          padding-right: 40px;
+          padding-right: 50px;
           text-align: right;
         }
 
         .timeline-item.right {
           left: 50%;
-          padding-left: 40px;
+          padding-left: 50px;
         }
 
         .timeline-content {
@@ -130,7 +133,7 @@ const About = () => {
 
         .timeline-circle {
           position: absolute;
-          top: 40px;
+          top: 50px;
           width: 24px;
           height: 24px;
           background: linear-gradient(135deg, #667eea, #764ba2);
@@ -158,6 +161,14 @@ const About = () => {
         .timeline-text {
           color: #4a5568;
           font-size: 16px;
+          line-height: 1.6;
+        }
+
+        .timeline-year {
+          font-size: 18px;
+          font-weight: 600;
+          color: #667eea;
+          margin-bottom: 8px;
         }
 
         /* Mission Vision Values Grid */
@@ -180,7 +191,7 @@ const About = () => {
 
         .mvv-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
           gap: 40px;
           text-align: center;
           max-width: 1200px;
@@ -243,10 +254,11 @@ const About = () => {
         .mvv-text {
           color: #4a5568;
           font-size: 16px;
+          line-height: 1.6;
         }
 
         .philosophy-section {
-          background: url('https://images.unsplash.com/photo-1513759565286-20e9c5fad06b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bGVhZGVyc2hpcHxlbnwwfHwwfHx8MA%3D%3D');
+          background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1513759565286-20e9c5fad06b?w=1200&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bGVhZGVyc2hpcHxlbnwwfHwwfHx8MA%3D%3D');
           background-size: cover;
           background-position: center;
           background-attachment: fixed;
@@ -254,22 +266,9 @@ const About = () => {
           text-align: center;
           position: relative;
           overflow: hidden;
-        }
-        @media (max-width: 768px) {
-          .philosophy-section {
-            min-height: 400px;
-          }
-        }
-
-        .philosophy-section::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background: rgba(0, 0, 0, 0.4);
-          z-index: 0;
+          min-height: 500px;
+          display: flex;
+          align-items: center;
         }
 
         .philosophy-content {
@@ -278,6 +277,7 @@ const About = () => {
           padding: 40px;
           position: relative;
           z-index: 1;
+          width: 100%;
         }
 
         .philosophy-content .section-title {
@@ -330,6 +330,7 @@ const About = () => {
           font-size: 40px;
           flex-shrink: 0;
           transition: transform 0.4s ease;
+          margin-top: 5px;
         }
 
         .diff-item:hover .diff-icon {
@@ -339,6 +340,7 @@ const About = () => {
         .diff-text {
           color: #4a5568;
           font-size: 16px;
+          line-height: 1.6;
         }
 
         /* About Intro Section */
@@ -413,12 +415,12 @@ const About = () => {
 
         .about-text:nth-child(1) { animation-delay: 0.2s; }
         .about-text:nth-child(2) { animation-delay: 0.4s; }
-        .about-text:nth-child(3) { animation-delay: 0.6s; }
 
         .about-text:first-child {
           font-size: 20px;
           font-weight: 500;
           color: #2d3748;
+          padding-left: 25px;
         }
 
         .about-text:first-child::before {
@@ -430,37 +432,8 @@ const About = () => {
           height: 100%;
           background: linear-gradient(180deg, #667eea, #764ba2);
           border-radius: 2px;
-          margin-right: 20px;
-          left: -20px;
         }
 
-        /* Responsive Design for About Section */
-        @media (max-width: 968px) {
-          .about-intro-container {
-            grid-template-columns: 1fr;
-            gap: 40px;
-            text-align: center;
-          }
-
-          .about-text {
-            text-align: left;
-          }
-
-          .about-image {
-            height: 300px;
-          }
-        }
-
-        @keyframes slideInRight {
-          from {
-            opacity: 0;
-            transform: translateX(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateX(0);
-          }
-        }
         .cta-section {
           background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
           color: white;
@@ -482,6 +455,8 @@ const About = () => {
         .cta-content {
           position: relative;
           z-index: 1;
+          max-width: 800px;
+          margin: 0 auto;
         }
 
         .cta-title {
@@ -494,6 +469,7 @@ const About = () => {
           font-size: 18px;
           margin-bottom: 40px;
           opacity: 0.9;
+          line-height: 1.6;
         }
 
         .cta-button {
@@ -543,6 +519,17 @@ const About = () => {
           }
         }
 
+        @keyframes slideInRight {
+          from {
+            opacity: 0;
+            transform: translateX(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+
         @keyframes pulse {
           0%, 100% {
             transform: scale(1);
@@ -552,16 +539,49 @@ const About = () => {
           }
         }
 
-        /* Responsive Design */
+        /* Mobile Responsive Design */
+        @media (max-width: 1024px) {
+          .section {
+            padding: 60px 20px;
+          }
+          
+          .about-intro-container {
+            gap: 40px;
+          }
+        }
+
         @media (max-width: 768px) {
+          .about-page {
+            margin-top: 60px;
+          }
+
+          .section {
+            padding: 50px 16px;
+          }
+
+          .section:first-child {
+            padding-top: 20px;
+          }
+
+          .section-title {
+            font-size: clamp(24px, 6vw, 36px);
+            margin-bottom: 40px;
+          }
+
+          /* Timeline Mobile Layout */
+          .timeline-container {
+            padding: 0 10px;
+          }
+
           .timeline-line {
             left: 30px;
+            transform: none;
           }
 
           .timeline-item {
-            width: 100%;
+            width: 100% !important;
             left: 0 !important;
-            padding-left: 80px !important;
+            padding-left: 70px !important;
             padding-right: 20px !important;
             text-align: left !important;
           }
@@ -569,26 +589,170 @@ const About = () => {
           .timeline-circle {
             left: 18px !important;
             right: auto !important;
+            top: 40px;
           }
 
-          .section {
-            padding: 60px 20px;
+          .timeline-content {
+            padding: 20px;
           }
 
-          .mvv-grid,
-          .diff-grid {
+          .timeline-heading {
+            font-size: 20px;
+          }
+
+          .timeline-text {
+            font-size: 14px;
+          }
+
+          /* About section mobile */
+          .about-intro-container {
             grid-template-columns: 1fr;
             gap: 30px;
           }
 
+          .about-image {
+            height: 250px;
+          }
+
+          .about-text {
+            font-size: 16px;
+            text-align: left;
+            margin-bottom: 20px;
+          }
+
+          .about-text:first-child {
+            font-size: 18px;
+            padding-left: 20px;
+          }
+
+          /* MVV Grid mobile */
+          .mvv-grid {
+            grid-template-columns: 1fr;
+            gap: 30px;
+          }
+
+          .mvv-card {
+            padding: 30px 20px;
+          }
+
+          .mvv-icon {
+            font-size: 48px;
+          }
+
+          /* Philosophy section mobile */
+          .philosophy-section {
+            background-attachment: scroll;
+            min-height: 400px;
+            padding: 40px 0;
+          }
+
+          .philosophy-content {
+            padding: 20px;
+          }
+
+          .philosophy-text {
+            font-size: 16px;
+          }
+
+          /* Differentiators mobile */
+          .diff-grid {
+            grid-template-columns: 1fr;
+            gap: 20px;
+          }
+
           .diff-item {
-            flex-direction: column;
-            text-align: center;
+            padding: 20px;
             gap: 15px;
+          }
+
+          .diff-icon {
+            font-size: 32px;
+            margin-top: 2px;
+          }
+
+          .diff-text {
+            font-size: 14px;
+          }
+
+          /* CTA section mobile */
+          .cta-text {
+            font-size: 16px;
+            margin-bottom: 30px;
+          }
+
+          .cta-button {
+            padding: 14px 32px;
+            font-size: 14px;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .about-page {
+            margin-top: 80px;
+          }
+
+          .section {
+            padding: 40px 12px;
+          }
+
+          .section:first-child {
+            padding-top: 15px;
+          }
+
+          .timeline-item {
+            padding-left: 60px !important;
+          }
+
+          .timeline-circle {
+            left: 13px !important;
+            width: 20px;
+            height: 20px;
+          }
+
+          .timeline-line {
+            left: 23px;
+          }
+
+          .mvv-card {
+            padding: 25px 15px;
+          }
+
+          .diff-item {
+            padding: 15px;
+          }
+
+          .about-image {
+            height: 200px;
+          }
+        }
+
+        @media (max-width: 360px) {
+          .about-page {
+            margin-top: 100px;
+          }
+
+          .section:first-child {
+            padding-top: 10px;
+          }
+
+          .timeline-item {
+            padding-left: 50px !important;
+            padding-right: 10px !important;
+          }
+
+          .timeline-circle {
+            left: 8px !important;
+            width: 16px;
+            height: 16px;
+          }
+
+          .timeline-line {
+            left: 16px;
+            width: 3px;
           }
         }
       `}</style>
-
+      
       {/* About Section */}
       <section className="section about-intro-section">
         <div className="about-intro-container">
@@ -622,9 +786,8 @@ const About = () => {
             >
               <div className="timeline-circle"></div>
               <div className="timeline-content">
-                <h3 className="timeline-heading">
-                  {event.year} - {event.title}
-                </h3>
+                <div className="timeline-year">{event.year}</div>
+                <h3 className="timeline-heading">{event.title}</h3>
                 <p className="timeline-text">{event.text}</p>
               </div>
             </div>
@@ -715,7 +878,6 @@ const About = () => {
               staffing to full project teams as your business grows.
             </p>
           </div>
-
           <div className="diff-item">
             <FaChartLine className="diff-icon" style={{ color: "#ed64a6" }} />
             <p className="diff-text">
@@ -725,7 +887,6 @@ const About = () => {
           </div>
         </div>
       </section>
-
 
       {/* Call to Action */}
       <section className="section cta-section">

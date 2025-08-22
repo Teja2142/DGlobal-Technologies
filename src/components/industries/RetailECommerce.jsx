@@ -1,6 +1,8 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const RetailECommerce = () => {
+  const navigate=useNavigate();
   return (
     <>
       <style>{`
@@ -362,10 +364,8 @@ const RetailECommerce = () => {
               Transform your retail business with cutting-edge, scalable digital commerce platforms. 
               Drive growth, enhance customer experience, and dominate your market with enterprise-grade solutions.
             </p>
-            <a href="#contact" className="hero-cta">
-              Start Your Transformation
-              <span>→</span>
-            </a>
+            <button className="hero-cta" onClick={()=>navigate("/contact")}>Start Your Transformation<span>→</span></button>
+            
           </div>
         </section>
 
@@ -474,7 +474,7 @@ const RetailECommerce = () => {
               Let's architect your digital transformation and accelerate your growth.
             </p>
             <div className="cta-buttons">
-              <button className="cta-primary">Schedule Consultation</button>
+              <button className="cta-primary" onClick={()=>navigate("/consultantform")}>Schedule Consultation</button>
               <button className="cta-secondary">View Case Studies</button>
             </div>
           </div>

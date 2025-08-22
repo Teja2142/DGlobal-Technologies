@@ -2,7 +2,9 @@ import React from "react";
 import hydro from "../../assets/Energy/hydro.png";
 import wind from "../../assets/Energy/wind.png";
 import smartgrids from "../../assets/Energy/smartgrids.jpeg";
+import { useNavigate } from "react-router-dom";
 const Energy = () => {
+  const navigate=useNavigate();
   return (
     <>
       <style>{`
@@ -407,7 +409,7 @@ const Energy = () => {
 
         {/* Call to Action */}
         <div className="cta">
-          <button>Explore Our Energy Portfolio</button>
+          <button onClick={()=>navigate("/contact")}>Begin Energy Transformation</button>
         </div>
       </div>
     </>

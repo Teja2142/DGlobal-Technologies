@@ -171,7 +171,7 @@ const Careers = () => {
           background: linear-gradient(135deg, #3b82f6, #1d4ed8);
           color: white;
           padding: 16px 24px;
-          margin: 20px 0;
+          margin-top: 60px;
           border-radius: 16px;
           font-weight: 600;
           text-align: center;

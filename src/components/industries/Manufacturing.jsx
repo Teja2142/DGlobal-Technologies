@@ -2,8 +2,10 @@ import React from "react";
 import aerospace from "../../assets/Manufacturing/aerospace.png";
 import automative from "../../assets/Manufacturing/automative.jpeg";
 import consumer from "../../assets/Manufacturing/consumer.png";
-import manufacturingsolutions from "../../assets/Manufacturing/manufacturingsolutions.png";
 import pharma from "../../assets/Manufacturing/pharma.png";
+import electronics from "../../assets/Manufacturing/electronics.png";
+
+import manufacturingsolutions from "../../assets/Manufacturing/manufacturingsolutions.png";
 import quality from "../../assets/Manufacturing/quality.png";
 import smartmanufacturing from "../../assets/Manufacturing/smartmanufacturing.png";
 import supplychain from "../../assets/Manufacturing/supplychain.png";
@@ -51,17 +53,20 @@ const Manufacturing = () => {
           color: #e5e7eb;
         }
 
-        .image-placeholder {
+       .image-placeholder {
           width: 100%;
-          height: 280px;
-          background: #e5e7eb;
+          background: #fff;
           border-radius: 16px;
           display: flex;
           align-items: center;
           justify-content: center;
-          color: #6b7280;
-          font-size: 1.2rem;
-          margin: 20px 0;
+          overflow: hidden;
+        }
+
+        .image-placeholder img {
+          width: 100%;
+          height: auto;   
+          border-radius: 16px;
         }
 
         .section {
@@ -150,9 +155,6 @@ const Manufacturing = () => {
           </p>
         </div>
 
-        {/* Image Placeholder */}
-        <div className="image-placeholder"><img src={manufacturingsolutions} alt="Manufacturing"/></div>
-
         {/* About Section */}
         <div className="section">
           <h2>Our Expertise</h2>
@@ -190,27 +192,29 @@ const Manufacturing = () => {
         </div>
 
         {/* Industries Served */}
-        <div className="section">
-          <h2>Industries We Serve</h2>
-          <div className="grid">
-            {[
-              "Automotive",
-              "Aerospace",
-              "Electronics",
-              "Pharmaceuticals",
-              "Consumer Goods",
-            ].map((industry, i) => (
-              <div key={i} className="card">
-                <div className="image-placeholder"><img src={aerospace} alt="Manufacturing"/></div>
-                <h3>{industry}</h3>
-                <p>
-                  Tailored solutions designed to meet the unique challenges of
-                  the {industry} sector.
-                </p>
-              </div>
-            ))}
-          </div>
+        <div className="section" style={{"background-color": "lightgray", "padding": "40px", "border-radius": "10px"}}>
+  <h2>Industries We Serve</h2>
+  <div className="grid">
+    {[
+      { name: "Automotive", destination: automative },
+      { name: "Aerospace", destination: aerospace },
+      { name: "Electronics", destination: electronics },
+      { name: "Pharmaceuticals", destination: pharma},
+      { name: "Consumer Goods", destination: consumer },
+    ].map((industry, i) => (
+      <div key={i} className="card">
+        <div className="image-placeholder">
+          <img src={industry.destination} alt={industry.name} />
         </div>
+        <h3>{industry.name}</h3>
+        <p>
+          Tailored solutions designed to meet the unique challenges of the{" "}
+          {industry.name} sector.
+        </p>
+      </div>
+    ))}
+  </div>
+</div>
 
         
       </div>

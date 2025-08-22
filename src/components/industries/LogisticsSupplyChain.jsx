@@ -1,5 +1,7 @@
 import React from "react";
-
+import about from "../../assets/logisticsfolder/about.png";
+import logistics1 from "../../assets/logisticsfolder/logistics.jpeg";
+import logistics2 from "../../assets/logisticsfolder/logistics.png";
 const LogisticsSupplyChain = () => {
   return (
     <>
@@ -38,17 +40,23 @@ const LogisticsSupplyChain = () => {
         }
 
         .image-placeholder {
-          width: 100%;
-          height: 250px;
-          border-radius: 16px;
-          background: #e5e7eb;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          color: #6b7280;
-          font-weight: 500;
-          margin: 30px 0;
-        }
+  width: 100%;
+  max-width: 800px;   /* keeps images centered and not too wide */
+  margin: 40px auto;  /* centers horizontally */
+  background: #fff;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08); /* optional nice effect */
+}
+
+.image-placeholder img {
+  width: 100%;
+  height: auto;       /* keeps aspect ratio */
+  border-radius: 16px;
+}
 
         .section {
           max-width: 1200px;
@@ -130,10 +138,10 @@ const LogisticsSupplyChain = () => {
         </div>
 
         {/* Image Placeholder */}
-        <div className="image-placeholder">Image Space (Replace with your image)</div>
+        <div className="image-placeholder"><img src={about} alt="About"/></div>
 
         {/* About Section */}
-        <div className="section">
+        <div className="section" >
           <h2>About Our Supply Chain Services</h2>
           <p>
             From procurement to last-mile delivery, we ensure seamless supply chain integration. 
@@ -142,12 +150,12 @@ const LogisticsSupplyChain = () => {
         </div>
 
         {/* Image Placeholder */}
-        <div className="image-placeholder">Image Space (Replace with your image)</div>
+        <div className="image-placeholder"><img src={logistics1} alt="Logistics"/></div>
 
         {/* Core Services */}
-        <div className="section">
+        <div className="section" style={{"background-color": "lightgray"}}>
           <h2>Our Core Services</h2>
-          <div className="grid">
+          <div className="grid" >
             <div className="card">
               <h3>Transportation Management</h3>
               <p>
@@ -174,9 +182,6 @@ const LogisticsSupplyChain = () => {
             </div>
           </div>
         </div>
-
-        {/* Image Placeholder */}
-        <div className="image-placeholder">Image Space (Replace with your image)</div>
       </div>
     </>
   );

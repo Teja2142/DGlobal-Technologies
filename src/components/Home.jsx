@@ -1030,9 +1030,9 @@ const Home = () => {
           <h2 className="section-heading" style={{ color: 'white' }}>Ready to Get Started?</h2>
           <div className="cta-buttons">
             <a href="/consultantform" className="cta-button">Request a Consultant Interest Form</a>
-            <a href="#" className="cta-button">Job Description Upload</a>
-            <a href="#" className="cta-button">Request a Hiring Interest Form</a>
-            <a href="#" className="cta-button">Resume Upload</a>
+            <a href="/jobdescription" className="cta-button">Job Description Upload</a>
+            <a href="/hiringform" className="cta-button">Request a Hiring Interest Form</a>
+            <a href="/resumeupload" className="cta-button">Resume Upload</a>
           </div>
         </div>
       </section>

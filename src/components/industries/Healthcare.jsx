@@ -1,6 +1,8 @@
 import React from "react";
-import EHR from "../../assets/energy.png"
+import { useNavigate } from "react-router-dom";
+
 const Healthcare = () => {
+  const navigate = useNavigate();
   return (
     <>
       <style>{`
@@ -409,7 +411,7 @@ const Healthcare = () => {
         </div>
 
         {/* Why Choose Us */}
-        <div className="section">
+        <div className="section" style={{"background-color": "lightgray", "padding": "40px", "border-radius": "10px"}}>
           <h2 className="section-title">Why Industry Leaders Choose Us</h2>
           <div className="grid">
             <div className="card">
@@ -447,9 +449,12 @@ const Healthcare = () => {
               Join leading healthcare organizations worldwide. Partner with us to build
               innovative digital solutions that save lives and drive operational excellence.
             </p>
-            <button className="cta-button">
-              Start Your Transformation
-            </button>
+            <button
+                className="cta-button"
+                onClick={() => navigate("/contact")}
+              >
+                Start Your Transformation
+              </button>
           </div>
         </div>
       </div>

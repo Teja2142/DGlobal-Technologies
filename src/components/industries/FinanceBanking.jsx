@@ -1,6 +1,10 @@
 import React from "react";
+import { useNavigate } from "react-router-dom"; 
+import EnterpriseDashboard from "../../assets/EnterpriseDashboard.png"
 
 const FinanceBanking = () => {
+  const navigate = useNavigate();
+
   return (
     <>
       <style>{`
@@ -425,8 +429,8 @@ const FinanceBanking = () => {
             Transform your business with cutting-edge financial technology. Our comprehensive suite of banking solutions delivers enterprise-grade security, scalability, and performance that Fortune 500 companies trust.
           </p>
           <div className="hero-cta">
-            <button className="btn-primary">Get Started Today</button>
-            <button className="btn-secondary">Schedule Demo</button>
+            <button className="btn-primary" onClick={()=>navigate("/consultantform")}>Get Started Today</button>
+            <button className="btn-secondary" onClick={()=>navigate("/contact")}>Schedule Demo</button>
           </div>
         </div>
 
@@ -501,7 +505,7 @@ const FinanceBanking = () => {
           
           <div className="about-visual">
             <div className="visual-placeholder">
-              Enterprise Dashboard Preview
+              <img style={{ "width": "620px", "height": "400px"}} src={EnterpriseDashboard} alt="Enterprise Dashboard"/>
             </div>
           </div>
         </div>
@@ -513,7 +517,7 @@ const FinanceBanking = () => {
             Join industry leaders who trust our platform for their most critical financial operations. 
             Let's discuss how we can accelerate your digital transformation.
           </p>
-          <button className="btn-primary">Contact Our Enterprise Team</button>
+          <button className="btn-primary" onClick={() => navigate("/contact")}>Contact Our Enterprise Team</button>
         </div>
       </div>
     </>

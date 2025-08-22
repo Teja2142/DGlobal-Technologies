@@ -544,6 +544,22 @@ const ContractStaffing = () => {
             padding: 15px;
             margin-top: 25px;
           }
+         
+  
+  @media (max-width: 768px) {
+          .services-header {
+    padding-top: 80px; /* adjust this number based on navbar height */
+  }
+        }
+
+        @media (max-width: 480px) {
+          .services-header h1{
+    padding-top: 80px;
+  }
+        }
+
+
+
 
          
         }
