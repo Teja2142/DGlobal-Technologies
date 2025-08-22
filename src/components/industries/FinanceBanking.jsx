@@ -322,7 +322,7 @@ const FinanceBanking = () => {
 
         .visual-placeholder {
           width: 100%;
-          height: 400px;
+          height: auto;
           background: linear-gradient(135deg, #1e293b, #334155);
           border-radius: 20px;
           display: flex;
@@ -359,64 +359,56 @@ const FinanceBanking = () => {
           line-height: 1.6;
         }
 
+        /* ✅ Responsive Fixes for About Section */
         @media (max-width: 1024px) {
           .about {
             grid-template-columns: 1fr;
-            gap: 60px;
-            padding: 60px 30px;
+            gap: 40px;
+            padding: 50px 25px;
           }
-          
-          .stats-grid {
-            grid-template-columns: repeat(4, 1fr);
-          }
-        }
 
-        @media (max-width: 768px) {
-          .hero {
-            padding: 80px 20px 60px;
+          .about-visual {
+            display: flex;
+            justify-content: center;
           }
-          
-          .services {
-            margin: 60px auto;
+
+          .visual-placeholder img {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
           }
-          
-          .services-grid {
-            grid-template-columns: 1fr;
-            gap: 24px;
-          }
-          
-          .service-card {
-            padding: 32px 24px;
-          }
-          
-          .about {
-            margin: 80px 20px;
-            padding: 40px 24px;
-          }
-          
+
           .stats-grid {
             grid-template-columns: repeat(2, 1fr);
             gap: 20px;
           }
-          
-          .hero-cta {
-            flex-direction: column;
-            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+          .about {
+            margin: 60px 15px;
+            padding: 30px 20px;
           }
-          
-          .btn-primary, .btn-secondary {
-            width: 100%;
-            max-width: 280px;
+
+          .visual-placeholder img {
+            max-width: 100%;
+            height: auto;
+          }
+
+          .stats-grid {
+            grid-template-columns: 1fr 1fr;
           }
         }
 
         @media (max-width: 480px) {
-          .services-grid {
-            grid-template-columns: 1fr;
+          .about {
+            margin: 40px 10px;
+            padding: 20px 15px;
           }
-          
-          .service-card {
-            margin: 0 10px;
+
+          .stats-grid {
+            grid-template-columns: 1fr;
+            gap: 16px;
           }
         }
       `}</style>
@@ -505,7 +497,11 @@ const FinanceBanking = () => {
           
           <div className="about-visual">
             <div className="visual-placeholder">
-              <img style={{ "width": "620px", "height": "400px"}} src={EnterpriseDashboard} alt="Enterprise Dashboard"/>
+              <img 
+                src={EnterpriseDashboard} 
+                alt="Enterprise Dashboard"
+                style={{ width: "100%", maxWidth: "620px", height: "auto" }}
+              />
             </div>
           </div>
         </div>
@@ -516,7 +512,7 @@ const FinanceBanking = () => {
           <p>
             Join industry leaders who trust our platform for their most critical financial operations. 
             Let's discuss how we can accelerate your digital transformation.
-          </p>
+          </p> 
           <button className="btn-primary" onClick={() => navigate("/contact")}>Contact Our Enterprise Team</button>
         </div>
       </div>
