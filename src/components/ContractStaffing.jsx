@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Erp from "../assets/ServicesImages/Erp.png";
 import Etl from "../assets/ServicesImages/Etl.jpeg";
 import fullstack from "../assets/ServicesImages/full-stack-web-development.jpg";
@@ -9,6 +9,49 @@ import c2c from "../assets/ServicesImages/c2c.jpeg";
 import TechLogosMarquee from "./TechLogosMarquee";
 
 const ContractStaffing = () => {
+  const [navbarHeight, setNavbarHeight] = useState(100);
+
+  useEffect(() => {
+    const calculateNavbarHeight = () => {
+      // Try to find the navbar element by common selectors
+      const navbar = document.querySelector('nav') || 
+                    document.querySelector('.navbar') || 
+                    document.querySelector('[role="navigation"]') ||
+                    document.querySelector('header');
+      
+      if (navbar) {
+        const height = navbar.offsetHeight;
+        setNavbarHeight(height + 20); // Add 20px extra spacing
+      } else {
+        // Fallback heights based on screen size
+        const width = window.innerWidth;
+        if (width <= 480) {
+          setNavbarHeight(200);
+        } else if (width <= 768) {
+          setNavbarHeight(180);
+        } else if (width <= 1024) {
+          setNavbarHeight(160);
+        } else {
+          setNavbarHeight(120);
+        }
+      }
+    };
+
+    // Calculate on mount
+    calculateNavbarHeight();
+
+    // Recalculate on window resize
+    window.addEventListener('resize', calculateNavbarHeight);
+    
+    // Also try to calculate after a short delay in case navbar loads later
+    const timeoutId = setTimeout(calculateNavbarHeight, 500);
+
+    return () => {
+      window.removeEventListener('resize', calculateNavbarHeight);
+      clearTimeout(timeoutId);
+    };
+  }, []);
+
   return (
     <div>
       <style>{`
@@ -21,6 +64,7 @@ const ContractStaffing = () => {
         .services-container {
           font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
           min-height: 100vh;
+          padding-top: ${navbarHeight}px;
           background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #f1f5f9 100%);
           position: relative;
           overflow-x: hidden;
@@ -467,6 +511,10 @@ const ContractStaffing = () => {
             padding: 40px 10px 30px;
           }
 
+          .services-header {
+            margin-bottom: 60px;
+          }
+
           .service-section {
             padding: 30px 20px;
             margin-bottom: 40px;
@@ -514,17 +562,29 @@ const ContractStaffing = () => {
           .sub-section ul {
             grid-template-columns: 1fr;
           }
-
         }
 
         @media (max-width: 480px) {
+          .services-inner {
+            padding: 30px 15px 20px;
+          }
+
           .services-header {
-            margin-bottom: 40px;
+            margin-bottom: 50px;
+          }
+
+          .services-header h1 {
+            font-size: clamp(28px, 6vw, 36px);
+            margin-bottom: 15px;
+          }
+
+          .services-header p {
+            font-size: clamp(14px, 3vw, 18px);
           }
 
           .service-section {
             padding: 25px 15px;
-            margin-bottom: 30px;
+            margin-bottom: 35px;
           }
 
           .service-card {
@@ -544,24 +604,15 @@ const ContractStaffing = () => {
             padding: 15px;
             margin-top: 25px;
           }
-         
-  
-  @media (max-width: 768px) {
-          .services-header {
-    padding-top: 80px; /* adjust this number based on navbar height */
-  }
-        }
 
-        @media (max-width: 480px) {
-          .services-header h1{
-    padding-top: 80px;
-  }
-        }
+          .sub-section h3 {
+            font-size: clamp(16px, 4vw, 20px);
+            margin-bottom: 15px;
+          }
 
-
-
-
-         
+          .sub-section p {
+            font-size: 14px;
+          }
         }
       `}</style>
 

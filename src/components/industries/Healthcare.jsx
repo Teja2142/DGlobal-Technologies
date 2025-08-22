@@ -1,8 +1,10 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 
 const Healthcare = () => {
-  const navigate = useNavigate();
+  const handleNavigate = () => {
+    // Navigation function - replace with your routing solution
+    console.log("Navigate to contact page");
+  };
   return (
     <>
       <style>{`
@@ -26,6 +28,7 @@ const Healthcare = () => {
           max-width: 1400px;
           margin: 0 auto;
           position: relative;
+          width: 100%;
         }
 
         /* Background Elements */
@@ -34,8 +37,8 @@ const Healthcare = () => {
           position: absolute;
           top: -200px;
           right: -200px;
-          width: 600px;
-          height: 600px;
+          width: min(600px, 50vw);
+          height: min(600px, 50vw);
           background: radial-gradient(circle, rgba(20, 184, 166, 0.1) 0%, transparent 70%);
           border-radius: 50%;
           z-index: -1;
@@ -46,8 +49,8 @@ const Healthcare = () => {
           position: absolute;
           bottom: -300px;
           left: -300px;
-          width: 800px;
-          height: 800px;
+          width: min(800px, 60vw);
+          height: min(800px, 60vw);
           background: radial-gradient(circle, rgba(30, 58, 138, 0.08) 0%, transparent 70%);
           border-radius: 50%;
           z-index: -1;
@@ -55,11 +58,11 @@ const Healthcare = () => {
 
         .hero {
           text-align: center;
-          padding: 100px 40px 120px;
+          padding: clamp(60px, 12vh, 100px) clamp(20px, 5vw, 40px) clamp(80px, 15vh, 120px);
           background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #0891b2 100%);
           position: relative;
           color: white;
-          margin-bottom: 100px;
+          margin-bottom: clamp(60px, 12vh, 100px);
           overflow: hidden;
         }
 
@@ -82,34 +85,35 @@ const Healthcare = () => {
         }
 
         .hero h1 {
-          font-size: clamp(2.5rem, 6vw, 4rem);
-          margin-bottom: 24px;
+          font-size: clamp(2rem, 8vw, 4rem);
+          margin-bottom: clamp(16px, 3vw, 24px);
           font-weight: 800;
           letter-spacing: -0.02em;
           background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
+          line-height: 1.1;
         }
 
         .hero p {
-          font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+          font-size: clamp(1rem, 3vw, 1.4rem);
           opacity: 0.95;
-          line-height: 1.7;
+          line-height: 1.6;
           font-weight: 400;
-          max-width: 700px;
+          max-width: min(700px, 90vw);
           margin: 0 auto;
         }
 
         .section {
-          margin-bottom: 120px;
-          padding: 0 40px;
+          margin-bottom: clamp(80px, 15vh, 120px);
+          padding: 0 clamp(20px, 5vw, 40px);
         }
 
         .section-title {
-          font-size: clamp(2rem, 4vw, 2.8rem);
+          font-size: clamp(1.8rem, 5vw, 2.8rem);
           text-align: center;
-          margin-bottom: 60px;
+          margin-bottom: clamp(40px, 8vh, 60px);
           font-weight: 700;
           letter-spacing: -0.01em;
           background: linear-gradient(135deg, #1e40af 0%, #0891b2 100%);
@@ -117,6 +121,7 @@ const Healthcare = () => {
           -webkit-text-fill-color: transparent;
           background-clip: text;
           position: relative;
+          line-height: 1.2;
         }
 
         .section-title::after {
@@ -125,7 +130,7 @@ const Healthcare = () => {
           bottom: -12px;
           left: 50%;
           transform: translateX(-50%);
-          width: 80px;
+          width: clamp(60px, 15vw, 80px);
           height: 4px;
           background: linear-gradient(90deg, #14b8a6, #06b6d4);
           border-radius: 2px;
@@ -133,17 +138,18 @@ const Healthcare = () => {
 
         .grid {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-          gap: 40px;
+          grid-template-columns: repeat(auto-fit, minmax(min(350px, 90vw), 1fr));
+          gap: clamp(24px, 5vw, 40px);
           max-width: 1200px;
           margin: 0 auto;
+          width: 100%;
         }
 
         .card {
           background: rgba(255, 255, 255, 0.95);
           backdrop-filter: blur(10px);
-          border-radius: 24px;
-          padding: 40px 32px;
+          border-radius: clamp(16px, 4vw, 24px);
+          padding: clamp(24px, 5vw, 40px) clamp(20px, 4vw, 32px);
           box-shadow: 
             0 20px 40px rgba(30, 58, 138, 0.1),
             0 8px 16px rgba(0, 0, 0, 0.05),
@@ -152,6 +158,7 @@ const Healthcare = () => {
           text-align: center;
           position: relative;
           border: 1px solid rgba(255, 255, 255, 0.5);
+          width: 100%;
         }
 
         .card::before {
@@ -162,13 +169,13 @@ const Healthcare = () => {
           right: 0;
           height: 4px;
           background: linear-gradient(90deg, #14b8a6, #06b6d4, #0891b2);
-          border-radius: 24px 24px 0 0;
+          border-radius: clamp(16px, 4vw, 24px) clamp(16px, 4vw, 24px) 0 0;
           opacity: 0;
           transition: opacity 0.3s ease;
         }
 
         .card:hover {
-          transform: translateY(-12px) scale(1.02);
+          transform: translateY(-8px) scale(1.01);
           box-shadow: 
             0 32px 64px rgba(30, 58, 138, 0.15),
             0 16px 32px rgba(0, 0, 0, 0.1),
@@ -180,48 +187,58 @@ const Healthcare = () => {
         }
 
         .icon-placeholder {
-          width: 80px;
-          height: 80px;
-          border-radius: 20px;
+          width: clamp(60px, 12vw, 80px);
+          height: clamp(60px, 12vw, 80px);
+          border-radius: clamp(12px, 3vw, 20px);
           background: linear-gradient(135deg, #14b8a6 0%, #06b6d4 100%);
           display: flex;
           align-items: center;
           justify-content: center;
           color: white;
-          font-size: 2rem;
-          margin: 0 auto 24px;
+          font-size: clamp(1.5rem, 4vw, 2rem);
+          margin: 0 auto clamp(16px, 3vw, 24px);
           font-weight: 600;
           box-shadow: 0 8px 24px rgba(20, 184, 166, 0.3);
           transition: all 0.3s ease;
         }
 
         .card:hover .icon-placeholder {
-          transform: scale(1.1) rotate(5deg);
+          transform: scale(1.05) rotate(3deg);
           box-shadow: 0 12px 32px rgba(20, 184, 166, 0.4);
         }
 
         .card h3 {
-          font-size: 1.4rem;
-          margin-bottom: 16px;
+          font-size: clamp(1.1rem, 3vw, 1.4rem);
+          margin-bottom: clamp(12px, 2.5vw, 16px);
           font-weight: 600;
           color: #1e40af;
           letter-spacing: -0.01em;
+          line-height: 1.3;
         }
 
         .card p {
           color: #475569;
-          line-height: 1.7;
-          font-size: 1rem;
+          line-height: 1.6;
+          font-size: clamp(0.9rem, 2.2vw, 1rem);
           font-weight: 400;
+        }
+
+        .section-gray {
+          background-color: rgba(241, 245, 249, 0.7);
+          padding: clamp(32px, 6vw, 40px);
+          border-radius: clamp(16px, 3vw, 24px);
+          margin: clamp(40px, 8vw, 60px) clamp(20px, 5vw, 40px);
+          backdrop-filter: blur(5px);
+          border: 1px solid rgba(255, 255, 255, 0.5);
         }
 
         .cta {
           text-align: center;
-          padding: 80px 40px;
+          padding: clamp(60px, 12vh, 80px) clamp(24px, 5vw, 40px);
           background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
           color: white;
-          border-radius: 32px;
-          margin: 0 40px 60px;
+          border-radius: clamp(20px, 4vw, 32px);
+          margin: 0 clamp(20px, 5vw, 40px) clamp(40px, 8vh, 60px);
           position: relative;
           overflow: hidden;
         }
@@ -248,31 +265,34 @@ const Healthcare = () => {
         }
 
         .cta h2 {
-          font-size: clamp(2rem, 4vw, 2.6rem);
-          margin-bottom: 20px;
+          font-size: clamp(1.8rem, 5vw, 2.6rem);
+          margin-bottom: clamp(16px, 3vw, 20px);
           font-weight: 700;
           letter-spacing: -0.01em;
+          line-height: 1.2;
         }
 
         .cta p {
-          font-size: clamp(1rem, 2vw, 1.2rem);
-          margin-bottom: 32px;
+          font-size: clamp(1rem, 2.5vw, 1.2rem);
+          margin-bottom: clamp(24px, 5vw, 32px);
           opacity: 0.9;
-          max-width: 600px;
+          max-width: min(600px, 90vw);
           margin-left: auto;
           margin-right: auto;
+          margin-bottom: clamp(24px, 5vw, 32px);
           font-weight: 400;
+          line-height: 1.6;
         }
 
         .cta-button {
           display: inline-flex;
           align-items: center;
-          padding: 18px 36px;
+          padding: clamp(14px, 3vw, 18px) clamp(28px, 6vw, 36px);
           background: linear-gradient(135deg, #14b8a6 0%, #06b6d4 100%);
           color: white;
           border: none;
           border-radius: 50px;
-          font-size: 1.1rem;
+          font-size: clamp(1rem, 2.5vw, 1.1rem);
           font-weight: 600;
           font-family: 'Montserrat', sans-serif;
           cursor: pointer;
@@ -281,6 +301,7 @@ const Healthcare = () => {
           position: relative;
           overflow: hidden;
           box-shadow: 0 8px 24px rgba(20, 184, 166, 0.3);
+          white-space: nowrap;
         }
 
         .cta-button::before {
@@ -295,7 +316,7 @@ const Healthcare = () => {
         }
 
         .cta-button:hover {
-          transform: translateY(-2px) scale(1.05);
+          transform: translateY(-2px) scale(1.02);
           box-shadow: 0 12px 32px rgba(20, 184, 166, 0.4);
         }
 
@@ -304,65 +325,38 @@ const Healthcare = () => {
         }
 
         .cta-button:active {
-          transform: translateY(0) scale(1.02);
+          transform: translateY(0) scale(1.01);
         }
 
-        /* Mobile Responsiveness */
-        @media (max-width: 768px) {
-          .hero {
-            padding: 60px 20px 80px;
-            margin-bottom: 60px;
-          }
+        /* Ensure touch targets are adequate */
+        .cta-button {
+          min-height: 48px;
+          min-width: 120px;
+        }
 
-          .section {
-            margin-bottom: 80px;
-            padding: 0 20px;
-          }
-
+        /* Handle very small screens */
+        @media (max-width: 320px) {
           .grid {
             grid-template-columns: 1fr;
-            gap: 30px;
           }
-
-          .card {
-            padding: 32px 24px;
-            border-radius: 20px;
-          }
-
-          .cta {
-            margin: 0 20px 40px;
-            padding: 60px 24px;
-            border-radius: 24px;
-          }
-
-          .icon-placeholder {
-            width: 70px;
-            height: 70px;
+          
+          .hero h1 {
             font-size: 1.8rem;
           }
+          
+          .section-title {
+            font-size: 1.6rem;
+          }
         }
 
-        @media (max-width: 480px) {
+        /* Ensure readability on small screens */
+        @media (max-height: 600px) {
           .hero {
-            padding: 40px 16px 60px;
+            padding: 40px clamp(20px, 5vw, 40px) 60px;
           }
-
+          
           .section {
-            padding: 0 16px;
-          }
-
-          .card {
-            padding: 28px 20px;
-          }
-
-          .cta {
-            margin: 0 16px 32px;
-            padding: 48px 20px;
-          }
-
-          .grid {
-            grid-template-columns: 1fr;
-            gap: 24px;
+            margin-bottom: 60px;
           }
         }
       `}</style>
@@ -384,7 +378,7 @@ const Healthcare = () => {
           <h2 className="section-title">Our Healthcare Solutions</h2>
           <div className="grid">
             <div className="card">
-              <div className="icon-placeholder"><img src="EHR" alt="EHR"/></div>
+              <div className="icon-placeholder">📋</div>
               <h3>Electronic Health Records</h3>
               <p>
                 Enterprise-grade EHR systems with advanced security, seamless integration,
@@ -411,7 +405,7 @@ const Healthcare = () => {
         </div>
 
         {/* Why Choose Us */}
-        <div className="section" style={{"background-color": "lightgray", "padding": "40px", "border-radius": "10px"}}>
+        <div className="section section-gray">
           <h2 className="section-title">Why Industry Leaders Choose Us</h2>
           <div className="grid">
             <div className="card">
@@ -451,7 +445,7 @@ const Healthcare = () => {
             </p>
             <button
                 className="cta-button"
-                onClick={() => navigate("/contact")}
+                onClick={handleNavigate}
               >
                 Start Your Transformation
               </button>
