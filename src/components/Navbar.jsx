@@ -14,6 +14,21 @@ const Navbar = () => {
     setIndustriesOpen(false);
   };
 
+  // Highlight parent if any child route is active
+  const isServicesActive = [
+    "/contractstaffing",
+    "/projectdelivery",
+  ].includes(location.pathname);
+
+  const isIndustriesActive = [
+    "/healthcare",
+    "/finance",
+    "/retail",
+    "/energy",
+    "/manufacturing",
+    "/logistics",
+  ].includes(location.pathname);
+
   return (
     <>
       <style>{`
@@ -64,7 +79,6 @@ const Navbar = () => {
           border-bottom: 2px solid #2563eb;
           padding-bottom: 2px;
         }
-
         /* Dropdown (desktop hover) */
         .dropdown {
           position: absolute;
@@ -86,14 +100,12 @@ const Navbar = () => {
             display: flex;
           }
         }
-
         .menu-icon {
           display: none;
           font-size: 28px;
           cursor: pointer;
           color: #333;
         }
-
         /* Mobile Styles */
         @media (max-width: 768px) {
           .nav-links {
@@ -154,9 +166,7 @@ const Navbar = () => {
               }}
             >
               <span
-                className={`${
-                  location.pathname.includes("/services") ? "active" : ""
-                }`}
+                className={isServicesActive ? "active" : ""}
                 style={{ cursor: "pointer" }}
               >
                 Services ▾
@@ -165,9 +175,7 @@ const Navbar = () => {
                 <Link
                   to="/contractstaffing"
                   className={
-                    location.pathname === "/contractstaffing"
-                      ? "active"
-                      : ""
+                    location.pathname === "/contractstaffing" ? "active" : ""
                   }
                   onClick={handleMenuClose}
                 >
@@ -176,9 +184,7 @@ const Navbar = () => {
                 <Link
                   to="/projectdelivery"
                   className={
-                    location.pathname === "/projectdelivery"
-                      ? "active"
-                      : ""
+                    location.pathname === "/projectdelivery" ? "active" : ""
                   }
                   onClick={handleMenuClose}
                 >
@@ -196,9 +202,7 @@ const Navbar = () => {
               }}
             >
               <span
-                className={`${
-                  location.pathname.includes("/industries") ? "active" : ""
-                }`}
+                className={isIndustriesActive ? "active" : ""}
                 style={{ cursor: "pointer" }}
               >
                 Industries ▾
@@ -206,42 +210,28 @@ const Navbar = () => {
               <div className={`dropdown ${industriesOpen ? "open" : ""}`}>
                 <Link
                   to="/healthcare"
-                  className={
-                    location.pathname === "/healthcare"
-                      ? "active"
-                      : ""
-                  }
+                  className={location.pathname === "/healthcare" ? "active" : ""}
                   onClick={handleMenuClose}
                 >
                   Healthcare
                 </Link>
                 <Link
                   to="/finance"
-                  className={
-                    location.pathname === "/industries/finance"
-                      ? "active"
-                      : ""
-                  }
+                  className={location.pathname === "/finance" ? "active" : ""}
                   onClick={handleMenuClose}
                 >
                   Finance
                 </Link>
                 <Link
                   to="/retail"
-                  className={
-                    location.pathname === "/industries/retail"
-                      ? "active"
-                      : ""
-                  }
+                  className={location.pathname === "/retail" ? "active" : ""}
                   onClick={handleMenuClose}
                 >
                   Retail
                 </Link>
                 <Link
                   to="/energy"
-                  className={
-                    location.pathname === "/industries/energy" ? "active" : ""
-                  }
+                  className={location.pathname === "/energy" ? "active" : ""}
                   onClick={handleMenuClose}
                 >
                   Energy
@@ -249,9 +239,7 @@ const Navbar = () => {
                 <Link
                   to="/manufacturing"
                   className={
-                    location.pathname === "/industries/manufacturing"
-                      ? "active"
-                      : ""
+                    location.pathname === "/manufacturing" ? "active" : ""
                   }
                   onClick={handleMenuClose}
                 >
@@ -259,9 +247,7 @@ const Navbar = () => {
                 </Link>
                 <Link
                   to="/logistics"
-                  className={
-                    location.pathname === "/industries/logistics" ? "active" : ""
-                  }
+                  className={location.pathname === "/logistics" ? "active" : ""}
                   onClick={handleMenuClose}
                 >
                   Logistics
