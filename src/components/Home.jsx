@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { FaUserTie, FaFileAlt, FaClipboardList, FaUpload } from "react-icons/fa";
+
 import ValueProposition from "./ValueProposition";
 
 
@@ -1072,16 +1074,26 @@ const prevSlide = () => {
 
       {/* CTA Section */}
       <section className="section cta-section">
-        <div className="container">
-          <h2 className="section-heading" style={{ color: 'white' }}>Ready to Get Started?</h2>
-          <div className="cta-buttons">
-            <a href="/consultantform" className="cta-button">Request a Consultant Interest Form</a>
-            <a href="/jobdescription" className="cta-button">Job Description Upload</a>
-            <a href="/hiringform" className="cta-button">Request a Hiring Interest Form</a>
-            <a href="/resumeupload" className="cta-button">Resume Upload</a>
-          </div>
-        </div>
-      </section>
+  <div className="container">
+    <h2 className="section-heading" style={{ color: "white" }}>
+      Ready to Get Started?
+    </h2>
+    <div className="cta-buttons">
+      <a href="/consultantform" className="cta-button flex items-center gap-2">
+        <FaUserTie /> &nbsp;&nbsp; Request a Consultant Interest Form
+      </a>
+      <a href="/jobdescription" className="cta-button flex items-center gap-2">
+        <FaFileAlt /> &nbsp;&nbsp; Job Description Upload
+      </a>
+      <a href="/hiringform" className="cta-button flex items-center gap-2">
+        <FaClipboardList />&nbsp;&nbsp; Request a Hiring Interest Form
+      </a>
+      <a href="/resumeupload" className="cta-button flex items-center gap-2">
+        <FaUpload /> &nbsp;&nbsp;   Resume Upload
+      </a>
+    </div>
+  </div>
+</section>
     </div>
   );
 };
