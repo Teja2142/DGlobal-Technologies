@@ -20,7 +20,9 @@ const manufacturing = "https://images.unsplash.com/photo-1610891015188-5369212db
 const logistics = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=500&h=300&fit=crop";
 
 const Home = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
+  const [currentSlide, setCurrentSlide] = useState(1); // start at first "real" slide
+const [isTransitioning, setIsTransitioning] = useState(true);
+
   
   const industries = [
     {
@@ -68,19 +70,35 @@ const Home = () => {
   ];
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % industries.length);
-    }, 4000);
-    return () => clearInterval(interval);
-  }, []);
+  const interval = setInterval(() => {
+    nextSlide();
+  }, 4000);
+  return () => clearInterval(interval);
+}, []);
 
   const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % industries.length);
-  };
+  setIsTransitioning(true);
+  setCurrentSlide((prev) => prev + 1);
+};
 
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + industries.length) % industries.length);
-  };
+const prevSlide = () => {
+  setIsTransitioning(true);
+  setCurrentSlide((prev) => prev - 1);
+};
+
+  const handleTransitionEnd = () => {
+  if (currentSlide === industries.length + 1) {
+    // past last clone → reset to first
+    setIsTransitioning(false);
+    setCurrentSlide(1);
+  }
+  if (currentSlide === 0) {
+    // before first clone → reset to last
+    setIsTransitioning(false);
+    setCurrentSlide(industries.length);
+  }
+};
+
 
   return (
     <div className="min-h-screen bg-white">
@@ -354,14 +372,16 @@ const Home = () => {
         }
 
         .slide {
-          min-width: 100%;
-          padding: 3rem;
-          text-align: center;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-        }
+  min-width: 100%;
+  box-sizing: border-box; /* ensures padding is included in width */
+  padding: 3rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 
         .slide-image {
           width: 100%;
@@ -865,11 +885,11 @@ const Home = () => {
           }
 
           .slide {
-            padding: 1.5rem 1rem;
+            padding: 1rem 1rem;
           }
 
           .slide-image {
-            height: 200px;
+            height: 150px;
           }
 
           .slide-title {
@@ -967,41 +987,67 @@ const Home = () => {
 
       {/* Industries Section */}
       <section className="section" style={{ background: 'linear-gradient(145deg, #f8fafc 0%, #e2e8f0 100%)' }}>
-        <div className="container">
-          <h2 className="section-heading">Industries We Serve</h2>
-          <div className="slider-container">
-            <div className="slider-wrapper">
-              {industries.map((industry, index) => (
-                <div key={index} className="slide">
-                  <img src={industry.image} alt={industry.alt} className="slide-image" />
-                  <h3 className="slide-title">{industry.title}</h3>
-                  <p className="slide-description">{industry.description}</p>
-                  <a href={industry.destination} className="know-more-btn">
-                    Click here to know more
-                  </a>                
-              </div>
-              ))}
-            </div>
-            
-            <button className="slider-nav prev" onClick={prevSlide}>
-              &#8249;
-            </button>
-            <button className="slider-nav next" onClick={nextSlide}>
-              &#8250;
-            </button>
+  <div className="container">
+    <h2 className="section-heading">Industries We Serve</h2>
 
-            <div className="slider-indicators">
-              {industries.map((_, index) => (
-                <div
-                  key={index}
-                  className={`indicator ${index === currentSlide ? 'active' : ''}`}
-                  onClick={() => setCurrentSlide(index)}
-                />
-              ))}
-            </div>
-          </div>
+    <div className="slider-container">
+      
+      {/* Slider wrapper with slides */}
+      <div
+        className="slider-wrapper"
+        style={{
+          transform: `translateX(-${currentSlide * 100}%)`,
+          transition: isTransitioning ? "transform 0.6s ease" : "none",
+        }}
+        onTransitionEnd={handleTransitionEnd}
+      >
+        {/* clone last slide at beginning */}
+        <div className="slide">
+          <img src={industries[industries.length - 1].image} alt="" className="slide-image" />
         </div>
-      </section>
+
+        {/* real slides */}
+        {industries.map((industry, index) => (
+          <div key={index} className="slide">
+            <img src={industry.image} alt={industry.alt} className="slide-image" />
+            <h3 className="slide-title">{industry.title}</h3>
+            <p className="slide-description">{industry.description}</p>
+            <Link to={industry.destination} className="know-more-btn">
+              Click here to know more
+            </Link>
+          </div>
+        ))}
+
+        {/* clone first slide at end */}
+        <div className="slide">
+          <img src={industries[0].image} alt="" className="slide-image" />
+        </div>
+      </div>
+
+      {/* Navigation buttons */}
+      <button className="slider-nav prev" onClick={prevSlide}>
+        &#8249;
+      </button>
+      <button className="slider-nav next" onClick={nextSlide}>
+        &#8250;
+      </button>
+
+      {/* Indicators */}
+      <div className="slider-indicators">
+        {industries.map((_, index) => (
+          <div
+            key={index}
+            className={`indicator ${index === currentSlide ? 'active' : ''}`}
+            onClick={() => setCurrentSlide(index)}
+          />
+        ))}
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
 
       {/* Testimonials Section */}
       <section className="section testimonials-section">
