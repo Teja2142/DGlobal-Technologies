@@ -189,16 +189,32 @@ const About = () => {
           opacity: 0.3;
         }
 
-        .mvv-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-          gap: 40px;
-          text-align: center;
-          max-width: 1200px;
-          margin: 0 auto;
-          position: relative;
-          z-index: 1;
-        }
+        /* Foundation Grid (default: desktop 3-column) */
+.mvv-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  text-align: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* Force vertical stack on mobile/tablet (even in desktop mode) */
+@media (max-width: 1024px) {
+  .mvv-grid {
+    grid-template-columns: 1fr; /* single column */
+    max-width: 600px;           /* center align */
+    justify-items: center;      /* align cards to center */
+  }
+
+  .mvv-card {
+    width: 100%;         /* let it shrink properly */
+    max-width: 400px;    /* keep nice readable width */
+  }
+}
+
 
         .mvv-card {
           background: rgba(255,255,255,0.9);
@@ -352,11 +368,15 @@ const About = () => {
           max-width: 1200px;
           margin: 0 auto;
           display: grid;
-          grid-template-columns: 1fr 1fr;
+          grid-template-columns: 1fr;
           gap: 60px;
           align-items: center;
         }
-
+        @media (min-width: 1024px) {
+  .about-intro-container {
+    grid-template-columns: 1fr 1fr; /* side by side only on desktops */
+  }
+}
         .about-image-wrapper {
           position: relative;
           overflow: hidden;

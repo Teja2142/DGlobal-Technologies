@@ -210,13 +210,29 @@ const Contact = () => {
         }
 
         .contact-info-card,
+
         .form-card {
-          background: white;
-          border: 1px solid #e5e7eb;
-          border-radius: 16px;
-          padding: 2rem;
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-        }
+  background: url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80")
+    no-repeat center center/cover;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  position: relative;
+  color: #fff; /* Makes text readable on image */
+}
+  .form-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  border-radius: 16px;
+}
+
+.form-card * {
+  position: relative;
+  z-index: 1; /* Ensure form elements appear above overlay */
+}
 
         .card-title {
           font-size: 1.5rem;

@@ -43,6 +43,7 @@ const ProjectDelivery = () => {
           background: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%23cbd5e1" fill-opacity="0.3"><circle cx="30" cy="30" r="2"/></g></svg>') repeat;
           pointer-events: none;
         }
+          
 
         .services-inner {
           position: relative;
@@ -525,36 +526,41 @@ const ProjectDelivery = () => {
 
         }
 
-        @media (max-width: 480px) {
-          .services-header {
-            margin-bottom: 40px;
-          }
+        @media (max-width: 768px) {
+  .services-inner {
+    padding: 20px 10px 30px; /* Reduced top padding */
+  }
 
-          .service-section {
-            padding: 25px 15px;
-            margin-bottom: 30px;
-          }
+  .services-header {
+    margin-bottom: 30px; /* Reduced spacing */
+  }
 
-          .service-card {
-            padding: 25px 20px;
-          }
+  .services-header h1 {
+    font-size: 24px; /* Smaller heading */
+  }
 
-          .service-card img {
-            width: 80px;
-            height: 80px;
-          }
+  .services-header p {
+    font-size: 14px;
+  }
+}
 
-          .service-card span {
-            font-size: 15px;
-          }
+@media (max-width: 480px) {
+  .services-inner {
+    padding: 15px 10px 20px; /* Further reduced */
+  }
 
-          .sub-section {
-            padding: 15px;
-            margin-top: 25px;
-          }
+  .services-header {
+    margin-bottom: 20px;
+  }
 
-         
-        }
+  .services-header h1 {
+    font-size: 20px;
+  }
+
+  .services-header p {
+    font-size: 13px;
+  }
+}
       `}</style>
 
       <div className="services-container">
