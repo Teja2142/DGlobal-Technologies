@@ -135,7 +135,7 @@ const RetailECommerce = () => {
           border-radius: 24px;
           text-align: left;
           transition: all 0.4s ease;
-          border: 1px solid #f1f5f9;
+          border: 1px solid #c1c9d1ff;
           position: relative;
           overflow: hidden;
         }

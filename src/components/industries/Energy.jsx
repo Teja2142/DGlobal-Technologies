@@ -151,7 +151,7 @@ const Energy = () => {
           padding: 40px 32px;
           text-align: center;
           transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-          border: 2px solid transparent;
+          border: 2px solid #c1c9d1ff;
           position: relative;
           overflow: hidden;
         }
