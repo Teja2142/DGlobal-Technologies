@@ -500,7 +500,7 @@ const FinanceBanking = () => {
               <img 
                 src={EnterpriseDashboard} 
                 alt="Enterprise Dashboard"
-                style={{ width: "100%", maxWidth: "620px", height: "auto" }}
+                style={{ width: "100%", maxWidth: "auto", height: "auto" }}
               />
             </div>
           </div>
