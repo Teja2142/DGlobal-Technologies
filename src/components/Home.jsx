@@ -950,6 +950,10 @@ const prevSlide = () => {
       <div className="hero-banner">
         <div className="hero-content">
           <h1 className="hero-heading">Consulting Delivered. Projects Executed.</h1>
+          <h3>At D-Global Tech, we bridge talent and technology to deliver scalable solutions and empower businesses to build smarter, faster, and better.</h3>
+
+          <h5>D-Global Tech is a forward-thinking full-cycle IT solutions provider, offering contract staffing and direct project execution with a uniquely agile, quality-first approach.</h5>
+          <h5>We hire top-tier talent and deploy them as consultants to enterprise clients across the U.S. under Corp-to-Corp (C2C) and W2 engagement models. Simultaneously, we handle end-to-end project execution via our in-house delivery teams across technologies like ERP, full-stack development, QA, cloud, data engineering, and more.</h5>
         </div>
       </div>
 
@@ -1080,13 +1084,13 @@ const prevSlide = () => {
     </h2>
     <div className="cta-buttons">
       <a href="/consultantform" className="cta-button flex items-center gap-2">
-        <FaUserTie /> &nbsp;&nbsp; Request a Consultant Interest Form
+        <FaUserTie /> &nbsp;&nbsp; Request a Consultant Interest
       </a>
       <a href="/jobdescription" className="cta-button flex items-center gap-2">
         <FaFileAlt /> &nbsp;&nbsp; Job Description Upload
       </a>
       <a href="/hiringform" className="cta-button flex items-center gap-2">
-        <FaClipboardList />&nbsp;&nbsp; Request a Hiring Interest Form
+        <FaClipboardList />&nbsp;&nbsp; Request a Hiring Interest
       </a>
       <a href="/resumeupload" className="cta-button flex items-center gap-2">
         <FaUpload /> &nbsp;&nbsp;   Resume Upload
