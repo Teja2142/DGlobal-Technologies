@@ -23,18 +23,21 @@ const Healthcare = () => {
   width: 100%;   /* ✅ added */
 }
 
-        .healthcare-container {
+      .healthcare-container {
   width: 100%;
-  margin: 0 auto;
+  margin: 0;
   padding: 0;
+  position: relative;
 }
 
-/* ✅ On large desktops keep max-width */
-@media (min-width: 1400px) {
+/* Limit width only for very large screens */
+@media (min-width: 1600px) {
   .healthcare-container {
     max-width: 1400px;
+    margin: 0 auto;
   }
 }
+
 
 
 
