@@ -25,11 +25,17 @@ const Healthcare = () => {
 
         .healthcare-container {
   width: 100%;
-  max-width: 1400px;
   margin: 0 auto;
-  position: relative;
-  padding: 0; /* optional */
+  padding: 0;
 }
+
+/* ✅ On large desktops keep max-width */
+@media (min-width: 1400px) {
+  .healthcare-container {
+    max-width: 1400px;
+  }
+}
+
 
 
         /* Background Elements */
