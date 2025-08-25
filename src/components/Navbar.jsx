@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import companylogo from "../assets/companylogo.jpeg"
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -32,6 +33,21 @@ const Navbar = () => {
   return (
     <>
       <style>{`
+        .logo {
+          font-size: 24px;
+          font-weight: bold;
+          color: #2563eb;
+          display: flex;            
+          align-items: center;      
+          gap: 8px;                
+        }
+        .company-logo {
+          width: 30px;
+          height: 30px;
+          border-radius: 25%;
+          object-fit: cover;
+          display: block;           
+        }
         .navbar {
           position: fixed;
           top: 0;
@@ -49,11 +65,7 @@ const Navbar = () => {
           align-items: center;
           padding: 12px 20px;
         }
-        .logo {
-          font-size: 24px;
-          font-weight: bold;
-          color: #2563eb;
-        }
+        
         .nav-links {
           display: flex;
           gap: 24px;
@@ -133,12 +145,14 @@ const Navbar = () => {
           .dropdown.open {
             display: flex;
           }
+          
+
         }
       `}</style>
 
       <nav className="navbar">
         <div className="nav-container">
-          <div className="logo">DGlobal</div>
+          <div className="logo"><img className="company-logo" src={companylogo} alt="company logo"/>DGlobal</div>
 
           {/* Hamburger Icon */}
           <div className="menu-icon" onClick={() => setMenuOpen(!menuOpen)}>
@@ -262,6 +276,15 @@ const Navbar = () => {
                 onClick={handleMenuClose}
               >
                 About Us
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/blogs"
+                className={location.pathname === "/blogs" ? "active" : ""}
+                onClick={handleMenuClose}
+              >
+                Blogs
               </Link>
             </li>
             <li>
