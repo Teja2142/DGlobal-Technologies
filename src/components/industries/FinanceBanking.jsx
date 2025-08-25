@@ -19,7 +19,7 @@ const FinanceBanking = () => {
 
         .finance-container {
           min-height: 100vh;
-          background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+          background: #ffffff;
           position: relative;
           overflow-x: hidden;
         }
@@ -32,8 +32,8 @@ const FinanceBanking = () => {
           right: 0;
           bottom: 0;
           background: 
-            radial-gradient(circle at 20% 20%, rgba(20, 184, 166, 0.1) 0%, transparent 50%),
-            radial-gradient(circle at 80% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+            radial-gradient(circle at 20% 20%, rgba(20, 184, 166, 0.05) 0%, transparent 50%),
+            radial-gradient(circle at 80% 80%, rgba(59, 130, 246, 0.05) 0%, transparent 50%);
           pointer-events: none;
         }
 
@@ -47,7 +47,7 @@ const FinanceBanking = () => {
         .hero h1 {
           font-size: clamp(2.5rem, 6vw, 4.5rem);
           font-weight: 900;
-          color: #ffffff;
+          color: #1f2937;
           margin-bottom: 24px;
           letter-spacing: -0.02em;
           line-height: 1.1;
@@ -55,7 +55,7 @@ const FinanceBanking = () => {
 
         .hero .subtitle {
           font-size: clamp(1.1rem, 2.5vw, 1.4rem);
-          color: #cbd5e1;
+          color: #4b5563;
           max-width: 800px;
           margin: 0 auto 40px;
           line-height: 1.6;
@@ -93,17 +93,17 @@ const FinanceBanking = () => {
           padding: 18px 36px;
           font-size: 1.1rem;
           font-weight: 600;
-          border: 2px solid rgba(255, 255, 255, 0.2);
+          border: 2px solid #d1d5db;
           border-radius: 12px;
-          background: rgba(255, 255, 255, 0.05);
-          color: white;
+          background: #f9fafb;
+          color: #374151;
           cursor: pointer;
           transition: all 0.3s ease;
           backdrop-filter: blur(10px);
         }
 
         .btn-secondary:hover {
-          border-color: rgba(20, 184, 166, 0.5);
+          border-color: #14b8a6;
           background: rgba(20, 184, 166, 0.1);
           transform: translateY(-2px);
         }
@@ -138,14 +138,14 @@ const FinanceBanking = () => {
         .services h2 {
           font-size: clamp(2rem, 4vw, 3rem);
           font-weight: 800;
-          color: #ffffff;
+          color: #1f2937;
           margin-bottom: 20px;
           letter-spacing: -0.02em;
         }
 
         .services .subtitle {
           font-size: 1.2rem;
-          color: #94a3b8;
+          color: #6b7280;
           max-width: 600px;
           margin: 0 auto;
           line-height: 1.6;
@@ -159,12 +159,12 @@ const FinanceBanking = () => {
         }
 
         .service-card {
-          background: rgba(255, 255, 255, 0.05);
+          background: #f9fafb;
           border-radius: 20px;
           padding: 40px 32px;
           text-align: left;
           backdrop-filter: blur(20px);
-          border: 1px solid rgba(255, 255, 255, 0.1);
+          border: 1px solid #e5e7eb;
           transition: all 0.4s ease;
           position: relative;
           overflow: hidden;
@@ -188,9 +188,9 @@ const FinanceBanking = () => {
 
         .service-card:hover {
           transform: translateY(-8px);
-          background: rgba(255, 255, 255, 0.08);
+          background: #ffffff;
           border-color: rgba(20, 184, 166, 0.2);
-          box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
+          box-shadow: 0 24px 60px rgba(0, 0, 0, 0.1);
         }
 
         .service-icon {
@@ -211,13 +211,13 @@ const FinanceBanking = () => {
           font-size: 1.4rem;
           font-weight: 700;
           margin-bottom: 16px;
-          color: #ffffff;
+          color: #1f2937;
           letter-spacing: -0.01em;
         }
 
         .service-card p {
           font-size: 1rem;
-          color: #cbd5e1;
+          color: #4b5563;
           line-height: 1.7;
           margin-bottom: 24px;
         }
@@ -238,13 +238,13 @@ const FinanceBanking = () => {
         }
 
         .about {
-          background: rgba(255, 255, 255, 0.03);
+          background: #f9fafb;
           border-radius: 32px;
           padding: 80px 40px;
           margin: 120px auto;
           max-width: 1400px;
           backdrop-filter: blur(20px);
-          border: 1px solid rgba(255, 255, 255, 0.1);
+          border: 1px solid #e5e7eb;
           display: grid;
           grid-template-columns: 1fr 1fr;
           gap: 80px;
@@ -257,7 +257,7 @@ const FinanceBanking = () => {
           font-size: clamp(2rem, 4vw, 2.8rem);
           font-weight: 800;
           margin-bottom: 24px;
-          color: #ffffff;
+          color: #1f2937;
           letter-spacing: -0.02em;
         }
 
@@ -268,7 +268,7 @@ const FinanceBanking = () => {
 
         .about-content p {
           font-size: 1.1rem;
-          color: #cbd5e1;
+          color: #4b5563;
           line-height: 1.8;
           margin-bottom: 32px;
         }
@@ -298,7 +298,7 @@ const FinanceBanking = () => {
 
         .stat-label {
           font-size: 0.9rem;
-          color: #94a3b8;
+          color: #6b7280;
           font-weight: 600;
           text-transform: uppercase;
           letter-spacing: 0.1em;
@@ -315,7 +315,7 @@ const FinanceBanking = () => {
           left: -20px;
           right: -20px;
           bottom: -20px;
-          background: linear-gradient(135deg, rgba(20, 184, 166, 0.2), rgba(8, 145, 178, 0.2));
+          background: linear-gradient(135deg, rgba(20, 184, 166, 0.1), rgba(8, 145, 178, 0.1));
           border-radius: 24px;
           z-index: -1;
         }
@@ -323,15 +323,15 @@ const FinanceBanking = () => {
         .visual-placeholder {
           width: 100%;
           height: auto;
-          background: linear-gradient(135deg, #1e293b, #334155);
+          background: #ffffff;
           border-radius: 20px;
           display: flex;
           align-items: center;
           justify-content: center;
-          color: #64748b;
+          color: #6b7280;
           font-size: 1.2rem;
           font-weight: 600;
-          border: 2px dashed rgba(100, 116, 139, 0.3);
+          border: 2px dashed #d1d5db;
         }
 
         .contact {
@@ -345,12 +345,12 @@ const FinanceBanking = () => {
           font-size: clamp(2rem, 4vw, 3rem);
           font-weight: 800;
           margin-bottom: 24px;
-          color: #ffffff;
+          color: #1f2937;
           letter-spacing: -0.02em;
         }
 
         .contact p {
-          color: #cbd5e1;
+          color: #4b5563;
           font-size: 1.2rem;
           margin-bottom: 40px;
           max-width: 600px;
