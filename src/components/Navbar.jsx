@@ -278,15 +278,7 @@ const Navbar = () => {
                 About Us
               </Link>
             </li>
-            <li>
-              <Link
-                to="/blogs"
-                className={location.pathname === "/blogs" ? "active" : ""}
-                onClick={handleMenuClose}
-              >
-                Blogs
-              </Link>
-            </li>
+            
             <li>
               <Link
                 to="/careers"
