@@ -23,7 +23,6 @@ import ConsultantInterestForm from './components/ConsultantInterestForm';
 import JobDescriptionPage from './components/JobDescriptionPage'
 import HiringInterestForm from './components/HiringInterestForm'
 import ResumeUpload from './components/ResumeUpload'
-import BlogInsights from './components/BlogInsights'
 
 function App() {
   
@@ -38,7 +37,6 @@ function App() {
         <Route path='/careers' element={<Careers/>}/>
         <Route path='/about' element={<About/>}/>
         <Route path='/contact' element={<Contact/>}/>
-        <Route path='/blogs' element={<BlogInsights/>}/>
 
         <Route path='/healthcare' element={<Healthcare/>}/>
         <Route path='/finance' element={<FinanceBanking/>}/>
