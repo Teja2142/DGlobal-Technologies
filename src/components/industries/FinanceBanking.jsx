@@ -321,17 +321,14 @@ const FinanceBanking = () => {
         }
 
         .visual-placeholder {
-          width: 100%;
+          width: auto;
           height: auto;
-          background: #ffffff;
           border-radius: 20px;
           display: flex;
           align-items: center;
           justify-content: center;
-          color: #6b7280;
           font-size: 1.2rem;
           font-weight: 600;
-          border: 2px dashed #d1d5db;
         }
 
         .contact {
