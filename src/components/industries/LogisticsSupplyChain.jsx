@@ -138,7 +138,12 @@ const LogisticsSupplyChain = () => {
         </div>
 
         {/* Image Placeholder */}
-        <div className="image-placeholder"><img src={about} alt="About"/></div>
+        <div className="image-placeholder">
+  <img 
+    src="https://plus.unsplash.com/premium_photo-1749423089108-9ab9871fb9e2?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    alt="Logistics" 
+  />
+</div>
 
         {/* About Section */}
         <div className="section" >
@@ -150,7 +155,13 @@ const LogisticsSupplyChain = () => {
         </div>
 
         {/* Image Placeholder */}
-        <div className="image-placeholder"><img src={logistics1} alt="Logistics"/></div>
+       <div className="image-placeholder">
+  <img 
+    src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=1600&q=80" 
+    alt="Logistics" 
+  />
+</div>
+
 
         {/* Core Services */}
         <div className="section" style={{"background-color": "lightgray"}}>

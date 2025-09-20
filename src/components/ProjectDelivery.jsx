@@ -13,6 +13,10 @@ import cloud from "../assets/ServicesImages/cloudmigration.jpeg";
 import qaprocess from "../assets/ServicesImages/qatestautomation.jpeg";
 import dataservices from "../assets/ServicesImages/etlprocess.png";
 import modernization from "../assets/ServicesImages/applicationmodernization.jpeg";
+import smartautomation from "../assets/ServicesImages/smartautomation.jpeg";
+import ai from "../assets/ServicesImages/ai.jpeg";
+import analytics from "../assets/ServicesImages/analytics.png";
+import digitalmarketing from "../assets/ServicesImages/digitalmarketing.jpeg";
 import CloudTechMarquee from "./CloudTechMarquee";
 
 const ProjectDelivery = () => {
@@ -232,7 +236,7 @@ const ProjectDelivery = () => {
         .service-card img {
           width: 200px;
           height: 200px;
-          object-fit: cover;
+          object-fit: fill;
           margin-bottom: 25px;
           border-radius: 16px;
           background: linear-gradient(145deg, #f1f5f9, #e2e8f0);
@@ -384,7 +388,7 @@ const ProjectDelivery = () => {
           width: 100%;
           max-width: 400px;
           height: 250px;
-          object-fit: cover;
+          object-fit: fill;
           border-radius: 16px;
           margin: 0;
           display: block;
@@ -593,6 +597,22 @@ const ProjectDelivery = () => {
                 <img src={modernization} alt="Modernization"/>
                 <span>Application Modernization</span>
               </li>
+              <li className="service-card">
+                <img src={ai} alt="AI"/>
+                <span>Artificial Intelligence</span>
+              </li>
+              <li className="service-card">
+                <img src={analytics} alt="Analytics"/>
+                <span> Analytics</span>
+              </li>
+              <li className="service-card">
+                <img src={smartautomation} alt="Smart Automation"/>
+                <span> Smart Automation</span>
+              </li>
+              <li className="service-card">
+                <img src={digitalmarketing} alt="Digital Marketing"/>
+                <span> Digital Marketing</span>
+              </li>
             </ul>
 
             <div className="sub-section overview">
@@ -602,7 +622,7 @@ const ProjectDelivery = () => {
                   Our in-house project delivery team specializes in end-to-end software solutions, enabling digital transformation and innovation at scale. We combine deep technical expertise with industry best practices to deliver reliable, future-ready applications. From strategy to execution, we ensure seamless integration, faster time-to-market, and measurable business outcomes.
                 </p>
               </div>
-              <img src={projectdelivery} alt="Project Delivery overview" className="overview-image"/>
+              <img src="https://plus.unsplash.com/premium_photo-1723485760056-2b4f59326d6c?q=80&w=2127&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Project Delivery overview" className="overview-image"/>
             </div>
 
             <div className="sub-section">

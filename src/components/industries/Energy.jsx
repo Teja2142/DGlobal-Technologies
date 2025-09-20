@@ -366,7 +366,7 @@ const Energy = () => {
           {/* Stats */}
           <div className="stats">
             <div className="stat">
-              <span className="stat-number">500+</span>
+              <span className="stat-number">35+</span>
               <span className="stat-label">Projects Delivered</span>
             </div>
             <div className="stat">

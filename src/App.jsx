@@ -23,6 +23,10 @@ import ConsultantInterestForm from './components/ConsultantInterestForm';
 import JobDescriptionPage from './components/JobDescriptionPage'
 import HiringInterestForm from './components/HiringInterestForm'
 import ResumeUpload from './components/ResumeUpload'
+import Job from './components/Job'
+import JobApplication from './components/JobApplication'
+import Login from './components/Login'
+import Blog from './components/Blog'
 
 function App() {
   
@@ -37,6 +41,8 @@ function App() {
         <Route path='/careers' element={<Careers/>}/>
         <Route path='/about' element={<About/>}/>
         <Route path='/contact' element={<Contact/>}/>
+        <Route path='/blog' element={<Blog/>}/>
+        <Route path='/login' element={<Login/>}/>
 
         <Route path='/healthcare' element={<Healthcare/>}/>
         <Route path='/finance' element={<FinanceBanking/>}/>
@@ -49,6 +55,9 @@ function App() {
         <Route path='/jobdescription' element={<JobDescriptionPage/>}/>
         <Route path='/hiringform' element={<HiringInterestForm/>}/>
         <Route path='/resumeupload' element={<ResumeUpload/>}/>
+
+        <Route path='/job/:id' element={<Job/>}/>
+        <Route path='/jobapplication/:id' element={<JobApplication/>}/>
         
       </Routes>
 

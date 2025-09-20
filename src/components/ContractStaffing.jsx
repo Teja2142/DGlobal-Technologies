@@ -657,7 +657,7 @@ const ContractStaffing = () => {
                   We connect businesses with highly skilled professionals across diverse technologies. Our staffing services ensure flexibility, expertise, and scalability for your project. With a focus on quality and agility, we help organizations accelerate growth while reducing hiring complexities.
                 </p>
               </div>
-              <img src={c2c} alt="C2C overview" className="overview-image"/>
+              <img src="https://images.unsplash.com/photo-1709715357444-4662be94e43e?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="C2C overview" className="overview-image"/>
             </div>
 
             <div className="sub-section">

@@ -10,6 +10,7 @@ import {
   FaLayerGroup, 
   FaChartLine
 } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const About = () => {
   const timelineEvents = [
@@ -18,7 +19,7 @@ const About = () => {
     { year: "2023", title: "Nationwide Reach", text: "Serving clients across the U.S. with a growing team of experts." },
     { year: "2025", title: "Future Focus", text: "Driving innovation, compliance excellence, and unmatched service." },
   ];
-
+  const navigate=useNavigate();
   return (
     <div className="about-page">
       <style jsx>{`
@@ -915,10 +916,9 @@ const About = () => {
             Let's Build Something Great Together
           </h2>
           <p className="cta-text">
-            Partner with D-Global Tech for agile, quality-first technology
-            solutions that drive real business results.
+            D-Global Tech is a forward-thinking, full-cycle IT solutions provider specializing in contract staffing and end-to-end project delivery. With a uniquely agile and quality-first approach, we connect enterprises with top-tier consultants under C2C and W2 models, while also executing complete technology projects through our in-house delivery teams.
           </p>
-          <button className="cta-button">
+          <button className="cta-button" onClick={()=>{navigate('/contact')}}>
             Start Your Project
           </button>
         </div>

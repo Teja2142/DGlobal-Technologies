@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
-import companylogo from "../assets/companylogo.jpeg"
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import NewLogo from "../assets/Logo/NewLogo.png"
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -14,6 +14,7 @@ const Navbar = () => {
     setServicesOpen(false);
     setIndustriesOpen(false);
   };
+  const navigate=useNavigate();
 
   // Highlight parent if any child route is active
   const isServicesActive = [
@@ -42,11 +43,12 @@ const Navbar = () => {
           gap: 8px;                
         }
         .company-logo {
-          width: 30px;
-          height: 30px;
-          border-radius: 25%;
-          object-fit: cover;
-          display: block;           
+          height: 50px;          
+          width: auto;           
+          max-height: 60px;      
+          border-radius: 20%;    
+          object-fit: contain;   
+          display: block;
         }
         .navbar {
           position: fixed;
@@ -63,7 +65,8 @@ const Navbar = () => {
           display: flex;
           justify-content: space-between;
           align-items: center;
-          padding: 12px 20px;
+          padding: 12px 20px;    
+          height: 40px;          
         }
         
         .nav-links {
@@ -152,7 +155,7 @@ const Navbar = () => {
 
       <nav className="navbar">
         <div className="nav-container">
-          <div className="logo"><img className="company-logo" src={companylogo} alt="company logo"/>DGlobal</div>
+          <div className="logo" onClick={()=>{navigate('/')}}><img className="company-logo" src={NewLogo} alt="company logo"/></div>
 
           {/* Hamburger Icon */}
           <div className="menu-icon" onClick={() => setMenuOpen(!menuOpen)}>
@@ -165,7 +168,7 @@ const Navbar = () => {
               <Link
                 to="/"
                 className={location.pathname === "/" ? "active" : ""}
-                onClick={handleMenuClose}
+                onClick={handleMenuClose && window.scrollTo(0, 0)}
               >
                 Home
               </Link>
@@ -191,7 +194,7 @@ const Navbar = () => {
                   className={
                     location.pathname === "/contractstaffing" ? "active" : ""
                   }
-                  onClick={handleMenuClose}
+                  onClick={handleMenuClose && window.scrollTo(0, 0)}
                 >
                   Contract Staffing
                 </Link>
@@ -200,7 +203,7 @@ const Navbar = () => {
                   className={
                     location.pathname === "/projectdelivery" ? "active" : ""
                   }
-                  onClick={handleMenuClose}
+                  onClick={handleMenuClose && window.scrollTo(0, 0)}
                 >
                   Project Delivery
                 </Link>
@@ -225,28 +228,28 @@ const Navbar = () => {
                 <Link
                   to="/healthcare"
                   className={location.pathname === "/healthcare" ? "active" : ""}
-                  onClick={handleMenuClose}
+                  onClick={handleMenuClose && window.scrollTo(0, 0)}
                 >
                   Healthcare
                 </Link>
                 <Link
                   to="/finance"
                   className={location.pathname === "/finance" ? "active" : ""}
-                  onClick={handleMenuClose}
+                  onClick={handleMenuClose  && window.scrollTo(0, 0)}
                 >
                   Finance
                 </Link>
                 <Link
                   to="/retail"
                   className={location.pathname === "/retail" ? "active" : ""}
-                  onClick={handleMenuClose}
+                  onClick={handleMenuClose  && window.scrollTo(0, 0)}
                 >
                   Retail
                 </Link>
                 <Link
                   to="/energy"
                   className={location.pathname === "/energy" ? "active" : ""}
-                  onClick={handleMenuClose}
+                  onClick={handleMenuClose  && window.scrollTo(0, 0)}
                 >
                   Energy
                 </Link>
@@ -255,14 +258,14 @@ const Navbar = () => {
                   className={
                     location.pathname === "/manufacturing" ? "active" : ""
                   }
-                  onClick={handleMenuClose}
+                  onClick={handleMenuClose && window.scrollTo(0, 0)}
                 >
                   Manufacturing
                 </Link>
                 <Link
                   to="/logistics"
                   className={location.pathname === "/logistics" ? "active" : ""}
-                  onClick={handleMenuClose}
+                  onClick={handleMenuClose && window.scrollTo(0, 0)}
                 >
                   Logistics
                 </Link>
@@ -273,7 +276,7 @@ const Navbar = () => {
               <Link
                 to="/about"
                 className={location.pathname === "/about" ? "active" : ""}
-                onClick={handleMenuClose}
+                onClick={handleMenuClose && window.scrollTo(0, 0)}
               >
                 About Us
               </Link>
@@ -283,18 +286,36 @@ const Navbar = () => {
               <Link
                 to="/careers"
                 className={location.pathname === "/careers" ? "active" : ""}
-                onClick={handleMenuClose}
+                onClick={handleMenuClose && window.scrollTo(0, 0)}
               >
                 Careers
               </Link>
             </li>
             <li>
               <Link
+                to="/blog"
+                className={location.pathname === "/blog" ? "active" : ""}
+                onClick={handleMenuClose && window.scrollTo(0, 0)}
+              >
+                Blog
+              </Link>
+            </li>
+            <li>
+              <Link
                 to="/contact"
                 className={location.pathname === "/contact" ? "active" : ""}
-                onClick={handleMenuClose}
+                onClick={handleMenuClose && window.scrollTo(0, 0)}
               >
-                Contact
+                Contact Us
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/login"
+                className={location.pathname === "/login" ? "active" : ""}
+                onClick={handleMenuClose && window.scrollTo(0, 0)}
+              >
+               Login
               </Link>
             </li>
           </ul>

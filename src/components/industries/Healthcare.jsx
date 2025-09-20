@@ -1,10 +1,11 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const Healthcare = () => {
   const handleNavigate = () => {
     console.log("Navigate to contact page");
   };
-
+  const navigate=useNavigate();
   return (
     <>
       <style>{`
@@ -439,7 +440,7 @@ const Healthcare = () => {
             </p>
             <button
               className="cta-button"
-              onClick={handleNavigate}
+              onClick={()=>navigate('/contact')}
             >
               Start Your Transformation
             </button>

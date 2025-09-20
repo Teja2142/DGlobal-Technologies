@@ -35,9 +35,9 @@ const Footer = () => {
         {/* Contact Info */}
         <div style={{ flex: "1", minWidth: "250px", textAlign: "left", marginBottom: "20px" }}>
           <h3 style={{ color: "#f7941d", fontSize: "22px", marginBottom: "10px" }}>Contact Us</h3>
-          <p style={{ fontSize: "14px", marginBottom: "6px" }}>📞 +1-314-732-7749, +1-314-354-0634</p>
+          <p style={{ fontSize: "14px", marginBottom: "6px" }}>📞 +1-469-529-2700</p>
           <p style={{ fontSize: "14px", marginBottom: "6px" }}>✉ hr@dglobaltech.com</p>
-          <p style={{ fontSize: "14px" }}>📍 Saint Louis, MO, United States.</p>
+          <p style={{ fontSize: "14px" }}>📍 Austin, Texas, United States.</p>
         </div>
 
         {/* Social Media Links */}
@@ -46,7 +46,7 @@ const Footer = () => {
           <div style={{ display: "flex", gap: "12px" }}>
             <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" style={{ color: "#ffffff", fontSize: "20px" }}><FaFacebookF /></a>
             <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" style={{ color: "#ffffff", fontSize: "20px" }}><FaTwitter /></a>
-            <a href="https://www.linkedin.com/in/gk-technologies-20a187365/" target="_blank" rel="noopener noreferrer" style={{ color: "#ffffff", fontSize: "20px" }}><FaLinkedinIn /></a>
+            <a href="https://www.linkedin.com/company/d-global-technologies-llc/" target="_blank" rel="noopener noreferrer" style={{ color: "#ffffff", fontSize: "20px" }}><FaLinkedinIn /></a>
             <a href="https://www.instagram.com/gk_technologies.stl/" target="_blank" rel="noopener noreferrer" style={{ color: "#ffffff", fontSize: "20px" }}><FaInstagram /></a>
           </div>
         </div>

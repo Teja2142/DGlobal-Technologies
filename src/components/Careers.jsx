@@ -1,91 +1,7 @@
 import React, { useState } from 'react';
-
+import jobs from "../data/jobs.json"; 
+import JobSection from './JobSection';
 const Careers = () => {
-  const [formData, setFormData] = useState({
-    fullName: '',
-    email: '',
-    phone: '',
-    linkedIn: '',
-    position: '',
-    workAuth: '',
-    location: '',
-    availability: '',
-    comments: '',
-    resume: null
-  });
-
-  const [submitted, setSubmitted] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState('');
-  const [filter, setFilter] = useState('All');
-
-  // Sample jobs for demo
-  const jobs = [
-    { title: 'Full Stack Developer', category: 'Tech', location: 'Remote', type: 'Full-time' },
-    { title: 'Cloud Engineer', category: 'Tech', location: 'On-site', type: 'Full-time' },
-    { title: 'Healthcare Data Analyst', category: 'Healthcare', location: 'Hybrid', type: 'Contract' },
-    { title: 'Financial Systems Consultant', category: 'Finance', location: 'Remote', type: 'Full-time' },
-    { title: 'UI/UX Designer', category: 'Tech', location: 'Remote', type: 'Contract' }
-  ];
-
-  const filteredJobs = filter === 'All' ? jobs : jobs.filter(job => job.category === filter);
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
-
-  const handleFileChange = (e) => {
-    setFormData(prev => ({ ...prev, resume: e.target.files[0] }));
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsLoading(true);
-    setError('');
-
-    try {
-      const formDataToSend = new FormData();
-
-      const backendFieldMap = {
-        fullName: 'full_name',
-        email: 'email',
-        phone: 'phone',
-        linkedIn: 'linkedin',
-        position: 'role',
-        workAuth: 'work_auth_status',
-        location: 'preferred_location',
-        availability: 'availability',
-        comments: 'comments'
-      };
-
-      Object.keys(formData).forEach(key => {
-        if (key !== 'resume' && formData[key]) {
-          formDataToSend.append(backendFieldMap[key], formData[key]);
-        }
-      });
-
-      if (formData.resume) {
-        formDataToSend.append('resume', formData.resume);
-      }
-
-      const response = await fetch('https://jenkins-server.kgktechnologies.com/submit', {
-        method: 'POST',
-        body: formDataToSend
-      });
-
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-
-      setSubmitted(true);
-    } catch (err) {
-      console.error('Error submitting form:', err);
-      setError('Failed to submit your information. Please try again later.');
-    } finally {
-      setIsLoading(false);
-    }
-  };
 
   const FloatingParticles = () => (
     <div className="floating-particles">
@@ -321,121 +237,9 @@ const Careers = () => {
           font-weight: 400;
         }
 
-        .jobs-section {
-          margin: 80px 0;
-          padding: 60px 40px;
-          background: rgba(255, 255, 255, 0.95);
-          border-radius: 32px;
-          box-shadow: 0 24px 60px rgba(0,0,0,0.1);
-          animation: slideInUp 0.8s ease-out 0.4s both;
-        }
+        
 
-        .jobs-title {
-          font-size: 2.5rem;
-          font-weight: 700;
-          margin-bottom: 40px;
-          text-align: center;
-          background: linear-gradient(135deg, #667eea, #764ba2);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          letter-spacing: -0.01em;
-        }
-
-        .filter-buttons {
-          display: flex;
-          justify-content: center;
-          flex-wrap: wrap;
-          gap: 12px;
-          margin-bottom: 40px;
-        }
-
-        .filter-buttons button {
-          padding: 12px 24px;
-          border-radius: 50px;
-          border: none;
-          cursor: pointer;
-          background: #f3f4f6;
-          color: #6b7280;
-          font-weight: 500;
-          font-size: 0.95rem;
-          transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-          position: relative;
-          overflow: hidden;
-        }
-
-        .filter-buttons button::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: -100%;
-          width: 100%;
-          height: 100%;
-          background: linear-gradient(135deg, #667eea, #764ba2);
-          transition: left 0.3s ease;
-        }
-
-        .filter-buttons button:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-        }
-
-        .filter-buttons button.active {
-          background: linear-gradient(135deg, #667eea, #764ba2);
-          color: white;
-          box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
-        }
-
-        .job-card {
-          background: white;
-          border-radius: 20px;
-          padding: 32px;
-          margin-bottom: 20px;
-          box-shadow: 0 8px 30px rgba(0,0,0,0.08);
-          border: 1px solid rgba(0,0,0,0.05);
-          transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-          position: relative;
-          overflow: hidden;
-        }
-
-        .job-card::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 4px;
-          height: 100%;
-          background: linear-gradient(135deg, #667eea, #764ba2);
-          transform: scaleY(0);
-          transition: transform 0.3s ease;
-        }
-
-        .job-card:hover {
-          transform: translateY(-4px);
-          box-shadow: 0 16px 40px rgba(0,0,0,0.12);
-        }
-
-        .job-card:hover::before {
-          transform: scaleY(1);
-        }
-
-        .job-card h3 {
-          font-size: 1.25rem;
-          font-weight: 600;
-          margin-bottom: 8px;
-          color: #1f2937;
-        }
-
-        .job-card p {
-          color: #6b7280;
-          margin-bottom: 4px;
-          font-weight: 500;
-        }
-
-        .job-card small {
-          color: #9ca3af;
-          font-size: 0.875rem;
-        }
-
+        
         .immigration-section {
           margin: 80px 0;
           text-align: center;
@@ -449,204 +253,8 @@ const Careers = () => {
           font-weight: 400;
         }
 
-        .form-container {
-          margin: 80px 0;
-          padding: 60px 40px;
-          background: rgba(255, 255, 255, 0.95);
-          border-radius: 32px;
-          box-shadow: 0 24px 60px rgba(0,0,0,0.1);
-          animation: slideInUp 0.8s ease-out 0.8s both;
-        }
-
-        .form-title {
-          font-size: 2.5rem;
-          font-weight: 700;
-          text-align: center;
-          margin-bottom: 40px;
-          background: linear-gradient(135deg, #667eea, #764ba2);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          letter-spacing: -0.01em;
-        }
-
-        .error-banner {
-          background: linear-gradient(135deg, #ef4444, #dc2626);
-          color: white;
-          padding: 16px 24px;
-          margin-bottom: 32px;
-          border-radius: 12px;
-          font-weight: 500;
-          text-align: center;
-        }
-
-        .form-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-          gap: 24px;
-          margin-bottom: 24px;
-        }
-
-        .form-group {
-          display: flex;
-          flex-direction: column;
-        }
-
-        .form-label {
-          font-weight: 600;
-          margin-bottom: 8px;
-          color: #374151;
-          font-size: 0.95rem;
-        }
-
-        .form-input, .form-select, .form-textarea {
-          padding: 16px 20px;
-          border: 2px solid #e5e7eb;
-          border-radius: 12px;
-          font-size: 1rem;
-          transition: all 0.3s ease;
-          background: white;
-          font-family: 'Inter', sans-serif;
-        }
-
-        .form-input:focus, .form-select:focus, .form-textarea:focus {
-          outline: none;
-          border-color: #667eea;
-          box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-        }
-
-        .form-textarea {
-          min-height: 120px;
-          resize: vertical;
-        }
-
-        .file-input {
-          padding: 16px;
-          border: 2px dashed #d1d5db;
-          border-radius: 12px;
-          transition: all 0.3s ease;
-          cursor: pointer;
-          background: #fafafa;
-        }
-
-        .file-input:hover {
-          border-color: #667eea;
-          background: #f8faff;
-        }
-
-        .submit-button {
-          width: 100%;
-          padding: 18px 32px;
-          background: linear-gradient(135deg, #667eea, #764ba2);
-          color: white;
-          border: none;
-          border-radius: 12px;
-          font-size: 1.1rem;
-          font-weight: 600;
-          cursor: pointer;
-          transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 8px;
-          margin-top: 32px;
-          position: relative;
-          overflow: hidden;
-        }
-
-        .submit-button::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: -100%;
-          width: 100%;
-          height: 100%;
-          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-          transition: left 0.5s ease;
-        }
-
-        .submit-button:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 12px 30px rgba(102, 126, 234, 0.3);
-        }
-
-        .submit-button:hover::before {
-          left: 100%;
-        }
-
-        .submit-button:disabled {
-          opacity: 0.7;
-          cursor: not-allowed;
-          transform: none;
-          box-shadow: none;
-        }
-
-        .spinner {
-          width: 20px;
-          height: 20px;
-          border: 2px solid rgba(255,255,255,0.3);
-          border-top: 2px solid white;
-          border-radius: 50%;
-          animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-          0% { transform: rotate(0deg); }
-          100% { transform: rotate(360deg); }
-        }
-
-        .success-container {
-          text-align: center;
-          padding: 80px 40px;
-          background: rgba(255, 255, 255, 0.95);
-          border-radius: 32px;
-          margin: 80px 0;
-          box-shadow: 0 24px 60px rgba(0,0,0,0.1);
-          animation: zoomIn 0.6s ease-out;
-        }
-
-        @keyframes zoomIn {
-          from {
-            opacity: 0;
-            transform: scale(0.9);
-          }
-          to {
-            opacity: 1;
-            transform: scale(1);
-          }
-        }
-
-        .success-icon {
-          font-size: 4rem;
-          color: #10b981;
-          margin-bottom: 24px;
-          display: inline-block;
-          animation: bounce 1s ease-in-out;
-        }
-
-        @keyframes bounce {
-          0%, 20%, 50%, 80%, 100% {
-            transform: translateY(0);
-          }
-          40% {
-            transform: translateY(-20px);
-          }
-          60% {
-            transform: translateY(-10px);
-          }
-        }
-
-        .success-container h2 {
-          font-size: 2rem;
-          font-weight: 700;
-          margin-bottom: 16px;
-          color: #1f2937;
-        }
-
-        .success-container p {
-          font-size: 1.125rem;
-          color: #6b7280;
-          margin-bottom: 32px;
-        }
+       
+        
 
         .testimonials-section {
           margin: 80px 0;
@@ -740,6 +348,25 @@ const Careers = () => {
             padding: 32px 20px;
           }
         }
+        .image-placeholder {
+  width: 100%;
+  max-width: 800px;   
+  margin: 40px auto;  
+  background: #fff;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08); 
+}
+
+.image-placeholder img {
+  width: 100%;
+  height: auto;      
+  border-radius: 16px;
+}
+
       `}</style>
 
       <div className="careers-container">
@@ -777,27 +404,8 @@ const Careers = () => {
           </div>
 
           {/* Jobs Section */}
-          <div className="jobs-section">
-            <h2 className="jobs-title">Available Roles</h2>
-            <div className="filter-buttons">
-              {['All', 'Tech', 'Healthcare', 'Finance'].map(cat => (
-                <button
-                  key={cat}
-                  className={filter === cat ? 'active' : ''}
-                  onClick={() => setFilter(cat)}
-                >
-                  {cat}
-                </button>
-              ))}
-            </div>
-            {filteredJobs.map((job, idx) => (
-              <div key={idx} className="job-card">
-                <h3>{job.title}</h3>
-                <p>{job.location} • {job.type}</p>
-                <small>Category: {job.category}</small>
-              </div>
-            ))}
-          </div>
+         <JobSection/>
+
 
           {/* Immigration Support */}
           <div className="immigration-section">
@@ -805,96 +413,14 @@ const Careers = () => {
             <p style={{ maxWidth: '700px', margin: '0 auto' }}>
               At D-Global Tech, we actively support talented professionals with work visas, OPT/CPT, H-1B, and Green Card processing. Our HR team works closely with you to ensure a smooth process.
             </p>
+             <div className="image-placeholder">
+              <img src="https://images.unsplash.com/photo-1673837552454-9ec933815419?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="greencard"/>
+
+            </div>
           </div>
 
           {/* Form */}
-          {!submitted ? (
-            <div className="form-container">
-              <h2 className="form-title">Submit Your Resume</h2>
-              {error && <div className="error-banner">{error}</div>}
-              <form onSubmit={handleSubmit}>
-                {/* Full Name & Email */}
-                <div className="form-grid">
-                  <div className="form-group">
-                    <label className="form-label">Full Name *</label>
-                    <input type="text" name="fullName" value={formData.fullName} onChange={handleChange} required className="form-input" />
-                  </div>
-                  <div className="form-group">
-                    <label className="form-label">Email *</label>
-                    <input type="email" name="email" value={formData.email} onChange={handleChange} required className="form-input" />
-                  </div>
-                </div>
-                {/* Phone & LinkedIn */}
-                <div className="form-grid">
-                  <div className="form-group">
-                    <label className="form-label">Phone *</label>
-                    <input type="tel" name="phone" value={formData.phone} onChange={handleChange} required className="form-input" />
-                  </div>
-                  <div className="form-group">
-                    <label className="form-label">LinkedIn</label>
-                    <input type="url" name="linkedIn" value={formData.linkedIn} onChange={handleChange} className="form-input" />
-                  </div>
-                </div>
-                {/* Position & Work Auth */}
-                <div className="form-grid">
-                  <div className="form-group">
-                    <label className="form-label">Position *</label>
-                    <input type="text" name="position" value={formData.position} onChange={handleChange} required className="form-input" />
-                  </div>
-                  <div className="form-group">
-                    <label className="form-label">Work Authorization *</label>
-                    <select name="workAuth" value={formData.workAuth} onChange={handleChange} required className="form-select">
-                      <option value="">Select...</option>
-                      <option>OPT</option>
-                      <option>CPT</option>
-                      <option>H1B</option>
-                      <option>Green Card</option>
-                      <option>US Citizen</option>
-                      <option>Other</option>
-                    </select>
-                  </div>
-                </div>
-                {/* Location & Availability */}
-                <div className="form-grid">
-                  <div className="form-group">
-                    <label className="form-label">Preferred Location *</label>
-                    <select name="location" value={formData.location} onChange={handleChange} required className="form-select">
-                      <option value="">Select...</option>
-                      <option>Remote</option>
-                      <option>On-site</option>
-                      <option>Hybrid</option>
-                      <option>Flexible</option>
-                    </select>
-                  </div>
-                  <div className="form-group">
-                    <label className="form-label">Availability *</label>
-                    <input type="text" name="availability" value={formData.availability} onChange={handleChange} required className="form-input" />
-                  </div>
-                </div>
-                {/* Resume */}
-                <div className="form-group">
-                  <label className="form-label">Resume *</label>
-                  <input type="file" name="resume" onChange={handleFileChange} required accept=".pdf,.doc,.docx" className="file-input" />
-                </div>
-                {/* Comments */}
-                <div className="form-group">
-                  <label className="form-label">Comments</label>
-                  <textarea name="comments" value={formData.comments} onChange={handleChange} className="form-textarea" placeholder="Tell us about yourself, your experience, or any specific interests..." />
-                </div>
-                {/* Submit */}
-                <button type="submit" disabled={isLoading} className="submit-button">
-                  {isLoading ? <div className="spinner" /> : 'Submit Application'}
-                </button>
-              </form>
-            </div>
-          ) : (
-            <div className="success-container">
-              <div className="success-icon">✔</div>
-              <h2>Thank You!</h2>
-              <p>We've received your application and will be in touch when we have a matching opportunity.</p>
-              <button onClick={() => { setSubmitted(false); setFormData({ fullName: '', email: '', phone: '', linkedIn: '', position: '', workAuth: '', location: '', availability: '', comments: '', resume: null }); }} className="submit-button">Submit Another Application</button>
-            </div>
-          )}
+          
 
           {/* Testimonials */}
           <div className="testimonials-section">
@@ -943,8 +469,8 @@ const Careers = () => {
               flexWrap: 'wrap',
               alignItems: 'center'
             }}>
-              <span style={{ color: '#9ca3af', fontSize: '0.95rem' }}>📧 hr@dglobaltech.com+</span>
-              <span style={{ color: '#9ca3af', fontSize: '0.95rem' }}>📞 +1 (555) 123-4567</span>
+              <span style={{ color: '#9ca3af', fontSize: '0.95rem' }}>📧 HR@Dglobaltech.com</span>
+              <span style={{ color: '#9ca3af', fontSize: '0.95rem' }}>📞 +1-469-529-2700</span>
             </div>
           </div>
         </div>

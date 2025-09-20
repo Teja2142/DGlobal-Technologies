@@ -67,6 +67,10 @@ const Contact = () => {
                 <p>hr@dglobaltech.com</p>
               </div>
               <div className="info-item">
+                <p className="label">📞 Call Us</p>
+                <p>+1-469-529-2700</p>
+              </div>
+              <div className="info-item">
                 <p className="label">🕒 Business Hours</p>
                 <p>Mon - Fri: 9:00 AM - 6:00 PM CST</p>
               </div>
@@ -211,16 +215,17 @@ const Contact = () => {
 
         .contact-info-card,
 
-        .form-card {
-  background: url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80")
-    no-repeat center center/cover;
-  border: 1px solid #e5e7eb;
+       .form-card {
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); /* Dark gradient */
+  border: 1px solid #2d3748;
   border-radius: 16px;
   padding: 2rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   position: relative;
-  color: #fff; /* Makes text readable on image */
+  color: #f9fafb; /* Light text for readability */
+  font-family: "Poppins", "Segoe UI", sans-serif; /* Clean modern fonts */
 }
+
   .form-card::before {
   content: "";
   position: absolute;
@@ -236,7 +241,7 @@ const Contact = () => {
 
         .card-title {
           font-size: 1.5rem;
-          color: #111827;
+          color: #d9dde6ff;
           margin-bottom: 1.5rem;
         }
 
@@ -262,7 +267,7 @@ const Contact = () => {
 
         .form-title {
           font-size: 1.5rem;
-          color: #111827;
+          color: #d9dde6ff;
           margin-bottom: 0.25rem;
         }
 

@@ -1,10 +1,6 @@
 import React from "react";
 
-// Single-file React page using INTERNAL CSS only
-// Shows a clear message that uploads are not allowed unless you are internal staff.
-
 export default function JobDescriptionPage() {
-  // Flip this to true if you ever need to preview the internal view
   const isInternalUser = false;
 
   return (
@@ -15,7 +11,7 @@ export default function JobDescriptionPage() {
           display: flex;
           align-items: center;
           justify-content: center;
-          background: #0f172a; /* slate-900 */
+          background: white;
           padding: 24px;
           box-sizing: border-box;
           font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial,
@@ -24,7 +20,7 @@ export default function JobDescriptionPage() {
         .card {
           width: 100%;
           max-width: 720px;
-          background: #0b1220; /* deep slate */
+          background: white;
           border: 1px solid rgba(255,255,255,0.08);
           border-radius: 20px;
           box-shadow: 0 20px 50px rgba(0,0,0,0.35);
@@ -32,7 +28,7 @@ export default function JobDescriptionPage() {
         }
         .card-head {
           padding: 24px 28px;
-          background: linear-gradient(135deg, #111827 0%, #0b1220 40%, #0b1220 100%);
+          background: rgba(17,24,39,0.55);
           border-bottom: 1px solid rgba(255,255,255,0.06);
         }
         .title {
@@ -40,12 +36,12 @@ export default function JobDescriptionPage() {
           font-size: 22px;
           font-weight: 700;
           letter-spacing: 0.2px;
-          color: #e5e7eb;
+          color: white;
         }
         .subtitle {
           margin: 6px 0 0 0;
           font-size: 14px;
-          color: #9ca3af;
+          color: white;
         }
         .card-body {
           padding: 24px 28px 28px 28px;
@@ -71,12 +67,12 @@ export default function JobDescriptionPage() {
         }
         .btn {
           appearance: none;
-          cursor: not-allowed; /* always disabled for external users */
+          cursor: not-allowed;
           border: 0;
           padding: 12px 16px;
           border-radius: 12px;
-          background: #1f2937;
-          color: #9ca3af;
+          background: #cd4c35;
+          color: white;
           font-weight: 600;
           font-size: 14px;
           letter-spacing: 0.2px;
@@ -87,26 +83,26 @@ export default function JobDescriptionPage() {
         .meta {
           margin-top: 18px;
           font-size: 12px;
-          color: #9ca3af;
+          color: #0f172a;
         }
         .divider { height: 1px; background: rgba(255,255,255,0.06); margin: 20px 0; }
 
-        /* Internal-only form (hidden for non-internal users) */
         .internal {
           display: none;
         }
         .internal.open {
           display: block;
         }
-        .label { display:block; font-size: 13px; color: #cbd5e1; margin-bottom: 6px; }
-        .input, .textarea {
+        .label { display:block; font-size: 13px; color: #374151; margin-bottom: 6px; }
+        .input, .textarea, .select {
           width: 100%;
           padding: 10px 12px;
           border-radius: 10px;
-          border: 1px solid rgba(255,255,255,0.08);
-          background: #0b1220;
-          color: #e5e7eb;
+          border: 1px solid #d1d5db;
+          background: #f9fafb;
+          color: #111827;
           outline: none;
+          font-size: 14px;
         }
         .textarea { min-height: 120px; resize: vertical; }
         .submit-btn {
@@ -141,20 +137,8 @@ export default function JobDescriptionPage() {
               </div>
 
               <div className="actions">
-                <button
-                  className="btn"
-                  aria-disabled="true"
-                  title="Restricted: Only internal team members can upload JDs"
-                >
-                  Upload JD (disabled)
-                </button>
-                <button
-                  className="btn"
-                  aria-disabled="true"
-                  title="Restricted: Only internal team members can create new JDs"
-                >
-                  Create New JD (disabled)
-                </button>
+                <button className="btn" aria-disabled="true">Upload JD (disabled)</button>
+                <button className="btn" aria-disabled="true">Create New JD (disabled)</button>
               </div>
 
               <p className="meta">
@@ -163,15 +147,49 @@ export default function JobDescriptionPage() {
             </>
           )}
 
-          {/* Internal view (for reference). Toggle isInternalUser to true to preview. */}
-          <div className={`internal ${isInternalUser ? 'open' : ''}`}>
+          {/* Internal form */}
+          <div className={`internal ${isInternalUser ? "open" : ""}`}>
             <div className="divider" />
-            <form onSubmit={(e)=>{e.preventDefault(); alert('JD submitted (internal only preview).');}}>
-              <label className="label" htmlFor="jdTitle">Job Title</label>
-              <input id="jdTitle" className="input" placeholder="e.g., Senior React Engineer" required />
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                alert("JD submitted (internal preview only).");
+              }}
+            >
+              <label className="label" htmlFor="jobTitle">Job Title</label>
+              <input id="jobTitle" className="input" placeholder="e.g., Senior React Engineer" required />
 
-              <label className="label" htmlFor="jdDesc" style={{marginTop:12}}>Job Description</label>
-              <textarea id="jdDesc" className="textarea" placeholder="Paste or type the JD details here…" required />
+              <label className="label" htmlFor="category">Category</label>
+              <select id="category" className="select" required>
+                <option value="">--Choose--</option>
+                <option value="tech">Tech</option>
+                <option value="healthcare">Healthcare</option>
+                <option value="finance">Finance</option>
+              </select>
+
+              <label className="label" htmlFor="location" style={{marginTop:12}}>Location</label>
+              <input id="location" className="input" placeholder="e.g., Hyderabad, India" required />
+
+              <label className="label" htmlFor="jobType">Job Type</label>
+              <input id="jobType" className="input" placeholder="e.g., Full-time / Contract" required />
+
+              <label className="label" htmlFor="experience">Experience</label>
+              <input id="experience" className="input" placeholder="e.g., 3+ years" required />
+
+              <label className="label" htmlFor="salary">Salary Range</label>
+              <input id="salary" className="input" placeholder="e.g., ₹6 LPA – ₹12 LPA" required />
+
+              <label className="label" htmlFor="postedDate">Posted Date</label>
+              <input id="postedDate" className="input" type="date" required />
+
+              <label className="label" htmlFor="description">Description</label>
+              <textarea id="description" className="textarea" placeholder="Enter job description…" required />
+
+              <label className="label" htmlFor="qualifications">Qualifications</label>
+              <textarea id="qualifications" className="textarea" placeholder="Enter required qualifications…" required />
+
+              <label className="label" htmlFor="requirements">Requirements</label>
+              <textarea id="requirements" className="textarea" placeholder="Enter job requirements…" required />
 
               <button type="submit" className="submit-btn">Submit JD</button>
             </form>

@@ -1,0 +1,219 @@
+[
+  { 
+    "id": 1,
+    "title": "Full Stack Developer",
+    "name": "fullstackdeveloper",
+    "category": "Tech",
+    "location": "Remote",
+    "type": "Full-time",
+    "experience": "2-4 years",
+    "salaryRange": "₹10,000 - ₹15,000",
+    "postedDate": "2025-09-10",
+    "description": "Work on building scalable web applications using React, Node.js, and MongoDB.\nCollaborate with cross-functional teams to design and develop modern software solutions.\nParticipate in code reviews, testing, and deployment to ensure high-quality releases.",
+    "qualifications": [
+      "Bachelor’s degree in Computer Science, Engineering, or a related field.",
+      "1-2 years of relevant experience with strong analytical background.",
+      "Proficiency in JavaScript/TypeScript, React, Node.js, and MongoDB.",
+      "Strong understanding of REST APIs and microservices.",
+      "Ability to work in Agile/Scrum teams and manage multiple priorities.",
+      "Excellent communication skills to engage with stakeholders.",
+      "Familiarity with version control (Git) and CI/CD tools."
+    ],
+    "requirements": ["JavaScript/TypeScript", "React", "Node.js", "MongoDB", "REST APIs"],
+    "benefits": [
+      "Flexible remote work environment",
+      "Health and wellness programs",
+      "Professional development opportunities",
+      "Paid time off and holidays",
+      "Collaborative and inclusive team culture"
+    ],
+    "values": [
+      "Care about writing clean, scalable, and maintainable code.",
+      "Commit to delivering high-quality full stack solutions.",
+      "Collaborate with designers, product managers, and fellow developers.",
+      "Challenge yourself to stay ahead in modern frameworks and tools."
+    ],
+    "applyLink": "/apply/fullstack-developer"
+  },
+  { 
+    "id": 2,
+    "title": "Cloud Engineer",
+    "name": "cloudengineer",
+    "category": "Tech",
+    "location": "Remote",
+    "type": "Full-time",
+    "experience": "3-5 years",
+    "salaryRange": "₹10,000 - ₹15,000",
+    "postedDate": "2025-09-12",
+    "description": "Design, implement, and manage cloud infrastructure on AWS and Azure.\nBuild scalable, secure, and cost-optimized solutions for enterprise workloads.\nTroubleshoot and optimize existing cloud deployments to improve performance.",
+    "qualifications": [
+      "Bachelor’s degree in Computer Science, Information Technology, or related field.",
+      "3+ years of experience in cloud architecture and engineering.",
+      "Hands-on experience with AWS, Azure, and Terraform.",
+      "Knowledge of container orchestration (Kubernetes, Docker).",
+      "Strong understanding of CI/CD pipelines and automation tools.",
+      "Ability to work in a dynamic, cross-functional environment.",
+      "Excellent problem-solving and communication skills."
+    ],
+    "requirements": ["AWS", "Azure", "Terraform", "Kubernetes", "CI/CD pipelines"],
+    "benefits": [
+      "Flexible remote work environment",
+      "Health and wellness programs",
+      "Professional development opportunities",
+      "Paid time off and holidays",
+      "Collaborative and inclusive team culture"
+    ],
+    "values": [
+      "Care about building secure and reliable infrastructure.",
+      "Commit to maintaining cost-effective and scalable cloud solutions.",
+      "Collaborate with cross-functional teams to optimize deployments.",
+      "Challenge yourself to master emerging cloud-native technologies."
+    ],
+    "applyLink": "/apply/cloud-engineer"
+  },
+  { 
+    "id": 3,
+    "title": "Healthcare Data Analyst",
+    "name": "healthcaredataanalyst",
+    "category": "Healthcare",
+    "location": "Remote",
+    "type": "Contract",
+    "experience": "1-3 years",
+    "salaryRange": "₹10,000 - ₹15,000",
+    "postedDate": "2025-09-08",
+    "description": "Analyze healthcare data to generate actionable insights for better patient care and cost efficiency.\nWork with physicians, researchers, and IT teams to deliver data-driven solutions.\nBuild dashboards and reports to support decision-making.",
+    "qualifications": [
+      "Bachelor’s degree in Statistics, Finance, Engineering, Mathematics, or Computer Science.",
+      "1-2 years of relevant experience with analytical background.",
+      "Strong SQL programming skills and experience in large data processing.",
+      "Proficiency in Python/R for statistical analysis.",
+      "Experience with Tableau or Power BI for visualization.",
+      "Knowledge of healthcare datasets and regulations (HIPAA preferred).",
+      "Excellent communication and collaboration skills.",
+      "Basic knowledge of statistical techniques including A/B testing."
+    ],
+    "requirements": ["SQL", "Python/R", "Tableau/Power BI", "Healthcare domain knowledge"],
+    "benefits": [
+      "Flexible remote work environment",
+      "Health and wellness programs",
+      "Professional development opportunities",
+      "Paid time off and holidays",
+      "Collaborative and inclusive team culture"
+    ],
+    "values": [
+      "Care about accuracy and integrity when analyzing sensitive healthcare data.",
+      "Commit to improving patient outcomes through data-driven insights.",
+      "Collaborate with doctors, researchers, and IT teams to solve real problems.",
+      "Challenge yourself to apply advanced analytics to complex datasets."
+    ],
+    "applyLink": "/apply/healthcare-data-analyst"
+  },
+  { 
+    "id": 4,
+    "title": "Financial Systems Consultant",
+    "name": "financialsystemsconsultant",
+    "category": "Finance",
+    "location": "Remote",
+    "type": "Full-time",
+    "experience": "4-6 years",
+    "salaryRange": "₹10,000 - ₹15,000",
+    "postedDate": "2025-09-05",
+    "description": "Implement and optimize financial ERP systems for enterprise clients.\nWork closely with finance teams to understand requirements and deliver system enhancements.\nConduct system testing, troubleshooting, and training for end-users.",
+    "qualifications": [
+      "Bachelor’s degree in Finance, Accounting, or Computer Science.",
+      "4+ years of experience with financial ERP systems (SAP, Oracle).",
+      "Strong knowledge of financial reporting and compliance standards.",
+      "Experience in business process modeling and system integration.",
+      "Excellent analytical, problem-solving, and client communication skills.",
+      "Familiarity with cloud ERP solutions is a plus.",
+      "Ability to lead cross-functional teams and manage multiple projects."
+    ],
+    "requirements": ["ERP systems", "SAP/Oracle Finance", "Business Process Modeling", "Client Communication"],
+    "benefits": [
+      "Flexible remote work environment",
+      "Health and wellness programs",
+      "Professional development opportunities",
+      "Paid time off and holidays",
+      "Collaborative and inclusive team culture"
+    ],
+    "values": [
+      "Care about delivering accurate and compliant financial solutions.",
+      "Commit to driving efficiency in financial systems and processes.",
+      "Collaborate with finance stakeholders to meet business goals.",
+      "Challenge yourself to stay updated on ERP and regulatory changes."
+    ],
+    "applyLink": "/apply/financial-consultant"
+  },
+  { 
+    "id": 5,
+    "title": "UI/UX Designer",
+    "name": "uidesigner",
+    "category": "Tech",
+    "location": "Remote",
+    "type": "Contract",
+    "experience": "2-5 years",
+    "salaryRange": "₹10,000 - ₹15,000",
+    "postedDate": "2025-09-15",
+    "description": "Design intuitive and visually appealing user interfaces for web and mobile applications.\nConduct user research, usability testing, and iterate designs based on feedback.\nCollaborate with developers to ensure designs are implemented effectively.",
+    "qualifications": [
+      "Bachelor’s degree in Design, HCI, Computer Science, or related field.",
+      "2+ years of experience in UI/UX design for digital products.",
+      "Strong skills in Figma, Sketch, or Adobe XD.",
+      "Experience in wireframing, prototyping, and user testing.",
+      "Understanding of accessibility standards and responsive design.",
+      "Excellent problem-solving, communication, and teamwork skills.",
+      "Ability to present and defend design decisions to stakeholders."
+    ],
+    "requirements": ["Figma/Sketch/Adobe XD", "Wireframing", "Prototyping", "User Research"],
+    "benefits": [
+      "Flexible remote work environment",
+      "Health and wellness programs",
+      "Professional development opportunities",
+      "Paid time off and holidays",
+      "Collaborative and inclusive team culture"
+    ],
+    "values": [
+      "Care about creating inclusive and user-friendly designs.",
+      "Commit to delivering intuitive and accessible digital experiences.",
+      "Collaborate with developers and stakeholders for seamless delivery.",
+      "Challenge yourself to experiment with new design trends and tools."
+    ],
+    "applyLink": "/apply/uiux-designer"
+  },
+  { 
+    "id": 6,
+    "title": "Cybersecurity Specialist",
+    "name": "cybersecurityspecialist",
+    "category": "Tech",
+    "location": "Remote",
+    "type": "Full-time",
+    "experience": "3-6 years",
+    "salaryRange": "₹12,000 - ₹18,000",
+    "postedDate": "2025-09-18",
+    "description": "Develop and implement security measures to protect company systems and data.\nMonitor network activity for vulnerabilities and threats.\nRespond to incidents, perform risk assessments, and ensure compliance with security standards.",
+    "qualifications": [
+      "Bachelor’s degree in Cybersecurity, Computer Science, or related field.",
+      "3+ years of experience in information security or related role.",
+      "Strong knowledge of firewalls, IDS/IPS, and endpoint security solutions.",
+      "Experience with penetration testing and vulnerability assessments.",
+      "Familiarity with compliance frameworks (ISO 27001, NIST, GDPR).",
+      "Proficiency with SIEM tools and incident response processes.",
+      "Excellent analytical and problem-solving skills."
+    ],
+    "requirements": ["Firewalls", "IDS/IPS", "Penetration Testing", "Vulnerability Assessment", "SIEM tools"],
+    "benefits": [
+      "Flexible remote work environment",
+      "Health and wellness programs",
+      "Professional development opportunities",
+      "Paid time off and holidays",
+      "Collaborative and inclusive team culture"
+    ],
+    "values": [
+      "Care about safeguarding sensitive data and systems.",
+      "Commit to proactive threat detection and response.",
+      "Collaborate with IT and business teams to strengthen security posture.",
+      "Challenge yourself to stay ahead of evolving cyber threats."
+    ],
+    "applyLink": "/apply/cybersecurity-specialist"
+  }
+]

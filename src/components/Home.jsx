@@ -104,7 +104,7 @@ const prevSlide = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      <style jsx>{`
+      <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
         
         * {
@@ -1062,15 +1062,15 @@ const prevSlide = () => {
           <div className="testimonials-grid">
             <div className="testimonial-card">
               Exceptional service with unwavering support — the team was responsive, professional, and always went the extra mile to ensure everything ran smoothly from start to finish!
-              <br /><strong>— Chaitanya</strong>
+              <br /><strong>— Ram</strong>
             </div>
             <div className="testimonial-card">
               They not only delivered the project on time but also went above and beyond our expectations, providing exceptional quality and attention to detail every step of the way!
-              <br /><strong>— Naveen Teja</strong>
+              <br /><strong>— Alex</strong>
             </div>
             <div className="testimonial-card">
               I highly recommend their consulting services — their expertise, professionalism, and commitment to delivering results made a real difference to our project's success.
-              <br /><strong>— Bharathi</strong>
+              <br /><strong>— Siri</strong>
             </div>
           </div>
         </div>

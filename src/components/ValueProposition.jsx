@@ -1,7 +1,4 @@
 import React from "react";
-import c2cImage from "../assets/Home/hirec2c.jpeg";
-import outsourceImage from "../assets/Home/outsource.jpeg";
-import teamImage from "../assets/Home/joinourteam.jpeg";
 
 const ValueProposition = () => {
   return (
@@ -19,13 +16,13 @@ const ValueProposition = () => {
             margin-bottom: 40px;
           }
 
-         .value-heading {
-          font-size: 1.6rem;
-          font-weight: 700;
-          margin-bottom: 1rem;
-          color: #667eea;
-          position: relative;
-        }
+          .value-heading {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #667eea;
+            position: relative;
+          }
 
           /* Container for all 3 sections */
           .value-container {
@@ -57,7 +54,16 @@ const ValueProposition = () => {
             height: 100%;
             object-fit: cover;
             border-radius: 10px;
-            transition: 0.3s ease;
+            transition: transform 0.3s ease, filter 0.3s ease;
+
+            /* Smooth rendering */
+            image-rendering: auto;
+          }
+
+          /* Optional hover effect */
+          .image-container:hover img {
+            transform: scale(1.05);
+            filter: brightness(1.1);
           }
 
           .overlay {
@@ -76,7 +82,7 @@ const ValueProposition = () => {
             opacity: 0;
             transition: opacity 0.3s ease;
             border-radius: 10px;
-            padding: 0;
+            padding: 0 10px;
             text-align: center;
             line-height: 1.6;
             flex-direction: column;
@@ -107,16 +113,24 @@ const ValueProposition = () => {
       </style>
 
       {/* Heading on top */}
-      <h2 className="section-heading">Powering Business Growth with Expertise & Innovation</h2>
+      <h2 className="section-heading">
+        Powering Business Growth with Expertise & Innovation
+      </h2>
 
       <div className="value-container">
         {/* Section 1 */}
         <div className="value-item">
           <h2 className="value-heading">Hire C2C Clients</h2>
           <div className="image-container">
-            <img src={c2cImage} alt="Hire C2C Clients" />
+            <img
+              src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80"
+              alt="Hire C2C Clients"
+            />
             <div className="overlay">
-              Connect with top-tier, pre-vetted consultants to drive your projects forward with expertise and efficiency. Whether you need short-term specialists or long-term partners, we help you find professionals who deliver results, meet deadlines, and align with your business goals.
+              Connect with top-tier, pre-vetted consultants to drive your projects
+              forward with expertise and efficiency. Whether you need short-term
+              specialists or long-term partners, we help you find professionals who
+              deliver results, meet deadlines, and align with your business goals.
             </div>
           </div>
         </div>
@@ -125,9 +139,15 @@ const ValueProposition = () => {
         <div className="value-item">
           <h2 className="value-heading">Outsource Projects</h2>
           <div className="image-container">
-            <img src={outsourceImage} alt="Outsource Projects" />
+            <img
+              src="https://images.unsplash.com/photo-1598257006458-087169a1f08d?auto=format&fit=crop&w=1200&q=80"
+              alt="Outsource Projects"
+            />
             <div className="overlay">
-              Let us manage your project execution from start to finish with precision, expertise, and a commitment to excellence. We ensure timely delivery, cost efficiency, and high-quality results—so you can focus on growing your business while we take care of the rest.
+              Let us manage your project execution from start to finish with
+              precision, expertise, and a commitment to excellence. We ensure timely
+              delivery, cost efficiency, and high-quality results—so you can focus on
+              growing your business while we take care of the rest.
             </div>
           </div>
         </div>
@@ -136,9 +156,14 @@ const ValueProposition = () => {
         <div className="value-item">
           <h2 className="value-heading">Join Our Team</h2>
           <div className="image-container">
-            <img src={teamImage} alt="Join Our Team" />
+            <img
+              src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80"
+              alt="Join Our Team"
+            />
             <div className="overlay">
-              Be part of a dynamic and innovative team where your ideas are valued, your skills are sharpened, and your career can thrive. Together, we create solutions that make an impact.
+              Be part of a dynamic and innovative team where your ideas are valued,
+              your skills are sharpened, and your career can thrive. Together, we
+              create solutions that make an impact.
             </div>
           </div>
         </div>
