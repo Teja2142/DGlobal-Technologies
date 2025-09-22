@@ -168,7 +168,10 @@ const Navbar = () => {
               <Link
                 to="/"
                 className={location.pathname === "/" ? "active" : ""}
-                onClick={handleMenuClose && window.scrollTo(0, 0)}
+                onClick={() => {
+                  handleMenuClose();
+                  window.scrollTo(0, 0);
+                }}
               >
                 Home
               </Link>
@@ -194,7 +197,10 @@ const Navbar = () => {
                   className={
                     location.pathname === "/contractstaffing" ? "active" : ""
                   }
-                  onClick={handleMenuClose && window.scrollTo(0, 0)}
+                  onClick={() => {
+                  handleMenuClose();
+                  window.scrollTo(0, 0);
+                }}
                 >
                   Contract Staffing
                 </Link>
@@ -203,7 +209,10 @@ const Navbar = () => {
                   className={
                     location.pathname === "/projectdelivery" ? "active" : ""
                   }
-                  onClick={handleMenuClose && window.scrollTo(0, 0)}
+                  onClick={() => {
+                  handleMenuClose();
+                  window.scrollTo(0, 0);
+                }}
                 >
                   Project Delivery
                 </Link>
@@ -228,28 +237,40 @@ const Navbar = () => {
                 <Link
                   to="/healthcare"
                   className={location.pathname === "/healthcare" ? "active" : ""}
-                  onClick={handleMenuClose && window.scrollTo(0, 0)}
+                  onClick={() => {
+                  handleMenuClose();
+                  window.scrollTo(0, 0);
+                }}
                 >
                   Healthcare
                 </Link>
                 <Link
                   to="/finance"
                   className={location.pathname === "/finance" ? "active" : ""}
-                  onClick={handleMenuClose  && window.scrollTo(0, 0)}
+                  onClick={() => {
+                    handleMenuClose();
+                    window.scrollTo(0, 0);
+                  }}
                 >
                   Finance
                 </Link>
                 <Link
                   to="/retail"
                   className={location.pathname === "/retail" ? "active" : ""}
-                  onClick={handleMenuClose  && window.scrollTo(0, 0)}
+                  onClick={() => {
+                    handleMenuClose();
+                    window.scrollTo(0, 0);
+                  }}
                 >
                   Retail
                 </Link>
                 <Link
                   to="/energy"
                   className={location.pathname === "/energy" ? "active" : ""}
-                  onClick={handleMenuClose  && window.scrollTo(0, 0)}
+                  onClick={() => {
+                    handleMenuClose();
+                    window.scrollTo(0, 0);
+                  }}
                 >
                   Energy
                 </Link>
@@ -258,14 +279,20 @@ const Navbar = () => {
                   className={
                     location.pathname === "/manufacturing" ? "active" : ""
                   }
-                  onClick={handleMenuClose && window.scrollTo(0, 0)}
+                  onClick={() => {
+                    handleMenuClose();
+                    window.scrollTo(0, 0);
+                  }}
                 >
                   Manufacturing
                 </Link>
                 <Link
                   to="/logistics"
                   className={location.pathname === "/logistics" ? "active" : ""}
-                  onClick={handleMenuClose && window.scrollTo(0, 0)}
+                  onClick={() => {
+                    handleMenuClose();
+                    window.scrollTo(0, 0);
+                  }}
                 >
                   Logistics
                 </Link>
@@ -276,7 +303,10 @@ const Navbar = () => {
               <Link
                 to="/about"
                 className={location.pathname === "/about" ? "active" : ""}
-                onClick={handleMenuClose && window.scrollTo(0, 0)}
+                onClick={() => {
+                    handleMenuClose();
+                    window.scrollTo(0, 0);
+                  }}
               >
                 About Us
               </Link>
@@ -286,7 +316,10 @@ const Navbar = () => {
               <Link
                 to="/careers"
                 className={location.pathname === "/careers" ? "active" : ""}
-                onClick={handleMenuClose && window.scrollTo(0, 0)}
+                onClick={() => {
+                    handleMenuClose();
+                    window.scrollTo(0, 0);
+                  }}
               >
                 Careers
               </Link>
@@ -295,7 +328,10 @@ const Navbar = () => {
               <Link
                 to="/blog"
                 className={location.pathname === "/blog" ? "active" : ""}
-                onClick={handleMenuClose && window.scrollTo(0, 0)}
+                onClick={() => {
+                    handleMenuClose();
+                    window.scrollTo(0, 0);
+                  }}
               >
                 Blog
               </Link>
@@ -304,7 +340,10 @@ const Navbar = () => {
               <Link
                 to="/contact"
                 className={location.pathname === "/contact" ? "active" : ""}
-                onClick={handleMenuClose && window.scrollTo(0, 0)}
+                onClick={() => {
+                    handleMenuClose();
+                    window.scrollTo(0, 0);
+                  }}
               >
                 Contact Us
               </Link>
@@ -313,7 +352,10 @@ const Navbar = () => {
               <Link
                 to="/login"
                 className={location.pathname === "/login" ? "active" : ""}
-                onClick={handleMenuClose && window.scrollTo(0, 0)}
+                onClick={() => {
+                    handleMenuClose();
+                    window.scrollTo(0, 0);
+                  }}
               >
                Login
               </Link>

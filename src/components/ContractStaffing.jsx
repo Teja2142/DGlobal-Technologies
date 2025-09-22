@@ -630,7 +630,7 @@ const ContractStaffing = () => {
             <ul className="service-list five-items">
               <li className="service-card">
                 <img src={Erp} alt="ERP"/>
-                <span>ERP (Oracle, SAP)</span>
+                <span> ERP (Enterprise Resource Planning)</span>
               </li>
               <li className="service-card">
                 <img src={fullstack} alt="Full Stack"/>

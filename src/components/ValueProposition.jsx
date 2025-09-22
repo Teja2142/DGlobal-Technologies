@@ -1,6 +1,7 @@
 import React from "react";
-
+import { useNavigate } from "react-router-dom";
 const ValueProposition = () => {
+  const navigate=useNavigate();
   return (
     <section className="value-proposition">
       <style>
@@ -86,6 +87,7 @@ const ValueProposition = () => {
             text-align: center;
             line-height: 1.6;
             flex-direction: column;
+            cursor: pointer;
           }
 
           .image-container:hover .overlay {
@@ -126,7 +128,10 @@ const ValueProposition = () => {
               src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80"
               alt="Hire C2C Clients"
             />
-            <div className="overlay">
+            <div className="overlay" onClick={() => {
+              navigate('/careers');
+              window.scrollTo(0, 0);
+            }}>
               Connect with top-tier, pre-vetted consultants to drive your projects
               forward with expertise and efficiency. Whether you need short-term
               specialists or long-term partners, we help you find professionals who
@@ -138,7 +143,10 @@ const ValueProposition = () => {
         {/* Section 2 */}
         <div className="value-item">
           <h2 className="value-heading">Outsource Projects</h2>
-          <div className="image-container">
+          <div className="image-container" onClick={() => {
+            navigate('/contractstaffing');
+            window.scrollTo(0, 0);
+          }}>
             <img
               src="https://images.unsplash.com/photo-1598257006458-087169a1f08d?auto=format&fit=crop&w=1200&q=80"
               alt="Outsource Projects"
@@ -155,7 +163,10 @@ const ValueProposition = () => {
         {/* Section 3 */}
         <div className="value-item">
           <h2 className="value-heading">Join Our Team</h2>
-          <div className="image-container">
+          <div className="image-container" onClick={() => {
+            navigate('/healthcare');
+            window.scrollTo(0, 0);
+          }}>
             <img
               src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80"
               alt="Join Our Team"
