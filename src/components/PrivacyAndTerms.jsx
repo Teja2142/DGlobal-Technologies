@@ -85,6 +85,7 @@ const PrivacyAndTerms = () => {
       </section>
 
       <section id="use-of-information">
+        
         <h3>How We Use Information</h3>
         <p>
           The data we collect allows us to improve our services and create
@@ -109,6 +110,18 @@ const PrivacyAndTerms = () => {
             applicable legal and regulatory requirements.
           </li>
         </ul>
+
+        <h3>SMS Messaging</h3>
+        <p>
+         
+        By providing your phone number to D-Global Tech, you consent to receive SMS messages from us.
+        Messages may include job opportunities, interview reminders, service updates, and professional communications.
+        Message frequency may vary.
+        You can opt out at any time by replying STOP. For help, reply HELP.
+        Standard message and data rates may apply depending on your carrier.
+        Carriers are not liable for delayed or undelivered messages.
+
+        </p>
       </section>
 
       <section id="cookies">
@@ -204,6 +217,17 @@ const PrivacyAndTerms = () => {
         </p>
       </section>
 
+      <section id="smsprogramterms">
+        <h3>SMS Program Terms</h3>
+        <p>
+          
+          By opting in, you agree to receive SMS messages from D-Global Tech related to jobs, services, or business communications.
+          Message frequency may vary based on your engagement with us.
+          You may opt out at any time by replying STOP. Reply HELP for assistance.
+          Standard message and data rates may apply.
+          Carriers are not responsible for delayed or undelivered messages.
+        </p>
+      </section>
       <section id="liability">
         <h3>Limitation of Liability</h3>
         <p>
