@@ -27,6 +27,7 @@ import Job from './components/Job'
 import JobApplication from './components/JobApplication'
 import Login from './components/Login'
 import Blog from './components/Blog'
+import PrivacyAndTerms from './components/PrivacyAndTerms'
 
 function App() {
   
@@ -58,6 +59,7 @@ function App() {
 
         <Route path='/job/:id' element={<Job/>}/>
         <Route path='/jobapplication/:id' element={<JobApplication/>}/>
+        <Route path='/privacy-policy' element={<PrivacyAndTerms/>}/>
         
       </Routes>
 
